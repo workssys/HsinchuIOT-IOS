@@ -7,13 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77409E30A069987F993F50EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 051AECE3D074982522424437 /* libPods.a */; };
 		C118BB201C1606FD00CC7D81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB1F1C1606FD00CC7D81 /* AppDelegate.swift */; };
 		C118BB221C1606FD00CC7D81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB211C1606FD00CC7D81 /* ViewController.swift */; };
 		C118BB251C1606FD00CC7D81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C118BB231C1606FD00CC7D81 /* Main.storyboard */; };
-		C118BB271C1606FD00CC7D81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C118BB261C1606FD00CC7D81 /* Assets.xcassets */; };
 		C118BB2A1C1606FE00CC7D81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C118BB281C1606FE00CC7D81 /* LaunchScreen.storyboard */; };
 		C118BB351C1606FE00CC7D81 /* HsinchuIOTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB341C1606FE00CC7D81 /* HsinchuIOTTests.swift */; };
 		C118BB401C1606FE00CC7D81 /* HsinchuIOTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB3F1C1606FE00CC7D81 /* HsinchuIOTUITests.swift */; };
+		C118BB4F1C160A4400CC7D81 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C118BB4E1C160A4400CC7D81 /* Images.xcassets */; };
+		C118BB511C16153600CC7D81 /* LauchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB501C16153600CC7D81 /* LauchScreenViewController.swift */; };
+		C11D3B621C1760FB00E8F65D /* AdminUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C11D3B611C1760FB00E8F65D /* AdminUser.storyboard */; };
+		C11D3B641C17611400E8F65D /* NormalUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C11D3B631C17611400E8F65D /* NormalUser.storyboard */; };
+		C11D3B661C1762F100E8F65D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11D3B651C1762F100E8F65D /* Constants.swift */; };
+		C13889B01C1A877100543F44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13889B21C1A877100543F44 /* Localizable.strings */; };
+		C16EE3151C19455A00726659 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C16EE3141C19455A00726659 /* .swiftlint.yml */; };
+		C16EE3171C19F83100726659 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16EE3161C19F83100726659 /* LoginViewController.swift */; };
+		C1D754811C21B6DB0038C085 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754801C21B6DB0038C085 /* UIColorExtension.swift */; };
+		C1D754831C230CC80038C085 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754821C230CC80038C085 /* LanguageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,11 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		051AECE3D074982522424437 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C118BB1C1C1606FD00CC7D81 /* HsinchuIOT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HsinchuIOT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C118BB1F1C1606FD00CC7D81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C118BB211C1606FD00CC7D81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C118BB241C1606FD00CC7D81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C118BB261C1606FD00CC7D81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C118BB291C1606FE00CC7D81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C118BB2B1C1606FE00CC7D81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C118BB301C1606FE00CC7D81 /* HsinchuIOTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HsinchuIOTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +57,26 @@
 		C118BB3B1C1606FE00CC7D81 /* HsinchuIOTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HsinchuIOTUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C118BB3F1C1606FE00CC7D81 /* HsinchuIOTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HsinchuIOTUITests.swift; sourceTree = "<group>"; };
 		C118BB411C1606FE00CC7D81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C118BB4E1C160A4400CC7D81 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C118BB501C16153600CC7D81 /* LauchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LauchScreenViewController.swift; sourceTree = "<group>"; };
+		C11D3B611C1760FB00E8F65D /* AdminUser.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdminUser.storyboard; sourceTree = "<group>"; };
+		C11D3B631C17611400E8F65D /* NormalUser.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NormalUser.storyboard; sourceTree = "<group>"; };
+		C11D3B651C1762F100E8F65D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C11D3B681C17EF3B00E8F65D /* HsinchuIOT-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HsinchuIOT-Bridging-Header.h"; sourceTree = "<group>"; };
+		C13889B11C1A877100543F44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C13889B31C1A87FA00543F44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		C13889B41C1A87FA00543F44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		C13889B51C1A87FA00543F44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		C13889B61C1A88DE00543F44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C16EE3141C19455A00726659 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		C16EE3161C19F83100726659 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C1D754801C21B6DB0038C085 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		C1D754821C230CC80038C085 /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		C1D754841C2322B90038C085 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		C1D754851C2322BA0038C085 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		C1D754861C2322BA0038C085 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		DB984CAE3F6FB048739AB56F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E86593AF5344646BD324F99E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77409E30A069987F993F50EF /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,13 +105,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		90BE82C5E3F7A60BE5EC539C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				051AECE3D074982522424437 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C118BB131C1606FD00CC7D81 = {
 			isa = PBXGroup;
 			children = (
+				C16EE3141C19455A00726659 /* .swiftlint.yml */,
 				C118BB1E1C1606FD00CC7D81 /* HsinchuIOT */,
 				C118BB331C1606FE00CC7D81 /* HsinchuIOTTests */,
 				C118BB3E1C1606FE00CC7D81 /* HsinchuIOTUITests */,
 				C118BB1D1C1606FD00CC7D81 /* Products */,
+				DDC095729014E339798D9E1C /* Pods */,
+				90BE82C5E3F7A60BE5EC539C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +139,20 @@
 		C118BB1E1C1606FD00CC7D81 /* HsinchuIOT */ = {
 			isa = PBXGroup;
 			children = (
+				C13889AA1C1A6A5500543F44 /* Resources */,
 				C118BB1F1C1606FD00CC7D81 /* AppDelegate.swift */,
 				C118BB211C1606FD00CC7D81 /* ViewController.swift */,
 				C118BB231C1606FD00CC7D81 /* Main.storyboard */,
-				C118BB261C1606FD00CC7D81 /* Assets.xcassets */,
 				C118BB281C1606FE00CC7D81 /* LaunchScreen.storyboard */,
 				C118BB2B1C1606FE00CC7D81 /* Info.plist */,
+				C118BB501C16153600CC7D81 /* LauchScreenViewController.swift */,
+				C11D3B611C1760FB00E8F65D /* AdminUser.storyboard */,
+				C11D3B631C17611400E8F65D /* NormalUser.storyboard */,
+				C11D3B651C1762F100E8F65D /* Constants.swift */,
+				C11D3B681C17EF3B00E8F65D /* HsinchuIOT-Bridging-Header.h */,
+				C16EE3161C19F83100726659 /* LoginViewController.swift */,
+				C1D754801C21B6DB0038C085 /* UIColorExtension.swift */,
+				C1D754821C230CC80038C085 /* LanguageManager.swift */,
 			);
 			path = HsinchuIOT;
 			sourceTree = "<group>";
@@ -125,6 +175,24 @@
 			path = HsinchuIOTUITests;
 			sourceTree = "<group>";
 		};
+		C13889AA1C1A6A5500543F44 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C118BB4E1C160A4400CC7D81 /* Images.xcassets */,
+				C13889B21C1A877100543F44 /* Localizable.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		DDC095729014E339798D9E1C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E86593AF5344646BD324F99E /* Pods.debug.xcconfig */,
+				DB984CAE3F6FB048739AB56F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +200,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C118BB441C1606FE00CC7D81 /* Build configuration list for PBXNativeTarget "HsinchuIOT" */;
 			buildPhases = (
+				3031E13E581502BB207BC09D /* Check Pods Manifest.lock */,
 				C118BB181C1606FD00CC7D81 /* Sources */,
 				C118BB191C1606FD00CC7D81 /* Frameworks */,
 				C118BB1A1C1606FD00CC7D81 /* Resources */,
+				3F7CDBF731D6849E30B2C3E5 /* Embed Pods Frameworks */,
+				FF9EBDB149D38CD5695518B6 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -210,6 +281,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = C118BB131C1606FD00CC7D81;
 			productRefGroup = C118BB1D1C1606FD00CC7D81 /* Products */;
@@ -228,9 +301,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C16EE3151C19455A00726659 /* .swiftlint.yml in Resources */,
+				C11D3B641C17611400E8F65D /* NormalUser.storyboard in Resources */,
 				C118BB2A1C1606FE00CC7D81 /* LaunchScreen.storyboard in Resources */,
-				C118BB271C1606FD00CC7D81 /* Assets.xcassets in Resources */,
+				C13889B01C1A877100543F44 /* Localizable.strings in Resources */,
+				C118BB4F1C160A4400CC7D81 /* Images.xcassets in Resources */,
 				C118BB251C1606FD00CC7D81 /* Main.storyboard in Resources */,
+				C11D3B621C1760FB00E8F65D /* AdminUser.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,13 +327,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3031E13E581502BB207BC09D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3F7CDBF731D6849E30B2C3E5 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF9EBDB149D38CD5695518B6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C118BB181C1606FD00CC7D81 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C118BB221C1606FD00CC7D81 /* ViewController.swift in Sources */,
+				C1D754831C230CC80038C085 /* LanguageManager.swift in Sources */,
 				C118BB201C1606FD00CC7D81 /* AppDelegate.swift in Sources */,
+				C118BB511C16153600CC7D81 /* LauchScreenViewController.swift in Sources */,
+				C16EE3171C19F83100726659 /* LoginViewController.swift in Sources */,
+				C11D3B661C1762F100E8F65D /* Constants.swift in Sources */,
+				C1D754811C21B6DB0038C085 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +426,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				C118BB241C1606FD00CC7D81 /* Base */,
+				C13889B31C1A87FA00543F44 /* zh-Hans */,
+				C1D754841C2322B90038C085 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -304,8 +436,21 @@
 			isa = PBXVariantGroup;
 			children = (
 				C118BB291C1606FE00CC7D81 /* Base */,
+				C13889B41C1A87FA00543F44 /* zh-Hans */,
+				C1D754851C2322BA0038C085 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C13889B21C1A877100543F44 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C13889B11C1A877100543F44 /* en */,
+				C13889B51C1A87FA00543F44 /* zh-Hans */,
+				C13889B61C1A88DE00543F44 /* Base */,
+				C1D754861C2322BA0038C085 /* zh-Hant */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -351,6 +496,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "HsinchuIOT/HsinchuIOT-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -388,29 +534,36 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "HsinchuIOT/HsinchuIOT-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		C118BB451C1606FE00CC7D81 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E86593AF5344646BD324F99E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HsinchuIOT/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.slstudio.iot.HsinchuIOT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HsinchuIOT/HsinchuIOT-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		C118BB461C1606FE00CC7D81 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB984CAE3F6FB048739AB56F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HsinchuIOT/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.slstudio.iot.HsinchuIOT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HsinchuIOT/HsinchuIOT-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -481,6 +634,7 @@
 				C118BB461C1606FE00CC7D81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C118BB471C1606FE00CC7D81 /* Build configuration list for PBXNativeTarget "HsinchuIOTTests" */ = {
 			isa = XCConfigurationList;
@@ -489,6 +643,7 @@
 				C118BB491C1606FE00CC7D81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C118BB4A1C1606FE00CC7D81 /* Build configuration list for PBXNativeTarget "HsinchuIOTUITests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +652,7 @@
 				C118BB4C1C1606FE00CC7D81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
