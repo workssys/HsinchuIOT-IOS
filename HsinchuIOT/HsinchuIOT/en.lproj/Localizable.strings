@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  HsinchuIOT
+
+  Created by Chandler Li on 12/11/15.
+  Copyright © 2015 SL Studio. All rights reserved.
+*/
+"LOGINNAME_HIHT" = "Username";
+"PASSWORD_HINT" = "Password";
+"LOGIN_REMEMBER_ME" = "Remember Me";
+"LOGIN_LOGIN_BTN" = "Login";
+"APP_TITLE_1" = "AIR QUALITY MANAGEMENT";
+"APP_TITLE_2" = "SYSTEM OF HSINCHU";
+"OK" = "Ok";
+"ERROR_TITLE" = "Error";
+"ERROR_NOT_INPUT_LOGINNAME" = "Please input login name.";
+"ERROR_NOT_INPUT_PASSWORD" = "Please input password";
