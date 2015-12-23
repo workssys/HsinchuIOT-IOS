@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CryptoSwift
 
 class AFHTTPIOTServer: IOTServerProtocol{
     var serverAddress: String {
@@ -65,8 +66,8 @@ class AFHTTPIOTServer: IOTServerProtocol{
         onFailed: ((IOTError)->())?) {
             let url = serverAddress + ServerAPIURI.LOGIN
             
-            let pwdMD5: String = password.md5
-            let mangledPWD = (pwdMD5 + ":" + sessionID).md5
+            let pwdMD5: String = password.md5()
+            let mangledPWD = (pwdMD5 + ":" + sessionID).md5()
            
             let parameters = ["dataType": "xml", "__session_id": sessionID, "username": loginName, "mangled_password": mangledPWD, "lang": "zh-cn", "timezone": "-480"]
             

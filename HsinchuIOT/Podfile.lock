@@ -24,6 +24,7 @@ PODS:
     - AFNetworking (>= 2.0)
     - XMLDictionary
   - BButton (4.0.2)
+  - CryptoSwift (0.2.1)
   - M13Checkbox (1.1.2)
   - XMLDictionary (1.4)
 
@@ -31,12 +32,24 @@ DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
   - AFXMLDictionarySerializer
   - BButton
+  - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift`, branch `master`)
   - M13Checkbox
+
+EXTERNAL SOURCES:
+  CryptoSwift:
+    :branch: master
+    :git: https://github.com/krzyzanowskim/CryptoSwift
+
+CHECKOUT OPTIONS:
+  CryptoSwift:
+    :commit: f81c691284d5af68c92d062e66e909d17221e4a1
+    :git: https://github.com/krzyzanowskim/CryptoSwift
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   AFXMLDictionarySerializer: 12f42d62f7d6ad2a31aff4c8da3b14701d4c232f
   BButton: ab0f2ed3b998ae73c5188b57d270d81e4a1eeb27
+  CryptoSwift: f137af19c369362debf82957d0366c8d79329341
   M13Checkbox: 0c0bb08dcd144c4ea33f883b68270f3f56908ea2
   XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
 

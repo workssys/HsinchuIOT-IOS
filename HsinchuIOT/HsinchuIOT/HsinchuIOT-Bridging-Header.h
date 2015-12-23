@@ -10,10 +10,9 @@
 #define HsinchuIOT_Bridging_Header_h
 
 
-#import <AFNetworking/AFNetworking.h>
-#import <M13Checkbox/M13Checkbox.h>
-#import <BButton/BButton.h>
-#import <AFXMLDictionarySerializer/AFXMLDictionaryResponseSerializer.h>
-#import <CommonCrypto/CommonCrypto.h>
+#import "AFNetworking.h"
+#import "M13Checkbox.h"
+#import "BButton.h"
+#import "AFXMLDictionaryResponseSerializer.h"
 
 #endif /* HsinchuIOT_Bridging_Header_h */

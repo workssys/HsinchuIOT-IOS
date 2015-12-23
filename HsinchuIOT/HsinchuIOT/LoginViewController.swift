@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CryptoSwift
+
 
 class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate{
     
@@ -178,16 +180,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         func loginSucceed(user: User){
             //first save loginname and password
             if controller.cbRememberMe.checkState == M13CheckboxStateChecked {
-                let key = "HSINCHUIOT"
-                if let encryptedPwd = user.password?.encryptWith(SymmetricCryptorAlgorithm.AES_128, key: key) {
-                    controller.showErrorString(encryptedPwd)
-                    
-                    if let decryptedPwd = encryptedPwd.decryptWith(SymmetricCryptorAlgorithm.AES_128, key: key){
-                    
-                        controller.showErrorString(decryptedPwd)
+                let key = "HSINCHUIOT000000"
+                let iv = "1234567890123456"
+                if let pwd = user.password {
+                    if let encryptedPwd: String = try? pwd.encrypt(AES(key: key, iv: iv)){
+                        controller.showErrorString(encryptedPwd)
+                        
+                        if let encryptedData = NSData(base64EncodedString: encryptedPwd, options: NSDataBase64DecodingOptions(rawValue:0)){
+                        
+                        
+                            if let decryptedData = try? encryptedData.decrypt(AES(key: key, iv: iv)) {
+                                if let decryptedStr = String(data: decryptedData, encoding: NSUTF8StringEncoding){
+                                    controller.showErrorString(decryptedStr)
+                                }
+                            }
+                        }
                     }
-                    
                 }
+                
                 
                 
                 
