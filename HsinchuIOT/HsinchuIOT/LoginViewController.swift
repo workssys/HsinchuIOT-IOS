@@ -54,7 +54,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         cbRememberMe.strokeWidth = 1
         cbRememberMe.titleLabel.text = getString(StringKey.REMEMBER_ME)
         cbRememberMe.titleLabel.font = UIFont(name: "System Font", size: 12.0)
-        cbRememberMe.checkState = M13CheckboxStateChecked
+        
+        if let loginName = PreferenceManager.instance.valueForKey(PreferenceKey.LOGINNAME){
+            if !loginName.isEmpty{
+                cbRememberMe.checkState = M13CheckboxStateChecked
+                tvLoginname.text = loginName
+            }
+        }
+        //if let password = PreferenceManager
+        cbRememberMe.checkState = M13CheckboxStateUnchecked
+        
         
         btnLogin.setTitle(getString(StringKey.LOGIN_BTN), forState: UIControlState.Normal)
         //btnLogin.color = UIColor.whiteColor()
@@ -94,17 +103,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
     }
     
     @IBAction func loginBtnClicked(sender: UIButton) {
-        if tvLoginname.text?.characters.count == 0 {
-            showError(getString(StringKey.ERROR_NOT_INPUT_LOGINNAME))
-            return
-        }
-        
-        if tvPassword.text?.characters.count == 0 {
-            showError(getString(StringKey.ERROR_NOT_INPUT_PASSWORD))
-            return
-        }
-
-        
+        loginIn()
     }
     
     @IBAction func switchLanguageBtnClicked(sender: UISegmentedControl) {
@@ -123,6 +122,82 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
             changeUILanguage()
         }
     }
+    
+    func loginIn() {
+        if tvLoginname.text?.characters.count == 0 {
+            showErrorString(getString(StringKey.ERROR_NOT_INPUT_LOGINNAME))
+            return
+        }
+        
+        if tvPassword.text?.characters.count == 0 {
+            showErrorString(getString(StringKey.ERROR_NOT_INPUT_PASSWORD))
+            return
+        }
+        
+        let loginName = tvLoginname.text!
+        let password = tvPassword.text!
+        
+        
+        IOTServer.getServer().getSessionID(SessionHandler(controller: self, loginName: loginName, password: password).doLoginIn, onFailed: showError)
+        
+        
+    }
+    struct SessionHandler {
+        let controller: LoginViewController
+        let loginName: String
+        let password: String
+        
+        init(controller: LoginViewController, loginName: String, password: String){
+            self.controller = controller
+            self.loginName = loginName
+            self.password = password
+        }
+        
+        func doLoginIn(session: Session){
+            IOTServer.getServer().login(
+                session.sessionID,
+                loginName: loginName,
+                password: password,
+                onSucceed: LoginHandler(controller: controller, session: session).loginSucceed,
+                onFailed: controller.showError)
+            
+        }
+        
+        
+    }
+    
+    struct LoginHandler {
+        let controller: LoginViewController
+        let session: Session
+        
+        init(controller: LoginViewController, session: Session){
+            self.controller = controller
+            self.session = session
+        }
+        
+        func loginSucceed(user: User){
+            //first save loginname and password
+            if controller.cbRememberMe.checkState == M13CheckboxStateChecked {
+                let key = "HSINCHUIOT"
+                if let encryptedPwd = user.password?.encryptWith(SymmetricCryptorAlgorithm.AES_128, key: key) {
+                    controller.showErrorString(encryptedPwd)
+                    
+                    if let decryptedPwd = encryptedPwd.decryptWith(SymmetricCryptorAlgorithm.AES_128, key: key){
+                    
+                        controller.showErrorString(decryptedPwd)
+                    }
+                    
+                }
+                
+                
+                
+                
+            }
+            
+            controller.showErrorString(user.permission!)
+        }
+    }
+    
     
     func changeUILanguage(){
         tvLoginname.placeholder = getString(StringKey.LOGINNAME_HINT)
@@ -147,7 +222,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         
     }
     
-    func showError(message: String){
+    func showError(error: IOTError){
+        showErrorString(error.errorMsg!)
+    }
+    
+    func showErrorString(message: String){
         let alertView = UIAlertView(title: getString(StringKey.ERROR_TITLE), message: message, delegate: self, cancelButtonTitle: getString(StringKey.OK))
         alertView.show()
     }

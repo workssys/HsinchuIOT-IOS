@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		77409E30A069987F993F50EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 051AECE3D074982522424437 /* libPods.a */; };
+		06A6331C354403C1B0C2E9D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D87F39318D94D68B99335801 /* libPods.a */; };
 		C118BB201C1606FD00CC7D81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB1F1C1606FD00CC7D81 /* AppDelegate.swift */; };
 		C118BB221C1606FD00CC7D81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB211C1606FD00CC7D81 /* ViewController.swift */; };
 		C118BB251C1606FD00CC7D81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C118BB231C1606FD00CC7D81 /* Main.storyboard */; };
@@ -20,10 +20,18 @@
 		C11D3B641C17611400E8F65D /* NormalUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C11D3B631C17611400E8F65D /* NormalUser.storyboard */; };
 		C11D3B661C1762F100E8F65D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11D3B651C1762F100E8F65D /* Constants.swift */; };
 		C13889B01C1A877100543F44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13889B21C1A877100543F44 /* Localizable.strings */; };
-		C16EE3151C19455A00726659 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C16EE3141C19455A00726659 /* .swiftlint.yml */; };
 		C16EE3171C19F83100726659 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16EE3161C19F83100726659 /* LoginViewController.swift */; };
+		C1CF144C1C27AAAC000E70F3 /* StringExension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF144B1C27AAAC000E70F3 /* StringExension.swift */; };
+		C1CF144E1C27B40C000E70F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF144D1C27B40C000E70F3 /* User.swift */; };
+		C1CF14501C29DAE7000E70F3 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF144F1C29DAE7000E70F3 /* PreferenceManager.swift */; };
+		C1CF14521C29E355000E70F3 /* SymmetricCryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF14511C29E355000E70F3 /* SymmetricCryptor.swift */; };
 		C1D754811C21B6DB0038C085 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754801C21B6DB0038C085 /* UIColorExtension.swift */; };
 		C1D754831C230CC80038C085 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754821C230CC80038C085 /* LanguageManager.swift */; };
+		C1D754881C247B330038C085 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754871C247B330038C085 /* AppConfig.swift */; };
+		C1D7548A1C24F96C0038C085 /* IOTServerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754891C24F96C0038C085 /* IOTServerProtocol.swift */; };
+		C1D7548C1C24FC690038C085 /* AFHTTPIOTServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D7548B1C24FC690038C085 /* AFHTTPIOTServer.swift */; };
+		C1D754931C25020C0038C085 /* IOTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754921C25020C0038C085 /* IOTError.swift */; };
+		C1D754951C2503860038C085 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754941C2503860038C085 /* Session.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +52,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		051AECE3D074982522424437 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C118BB1C1C1606FD00CC7D81 /* HsinchuIOT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HsinchuIOT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C118BB1F1C1606FD00CC7D81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C118BB211C1606FD00CC7D81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,13 +75,22 @@
 		C13889B41C1A87FA00543F44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		C13889B51C1A87FA00543F44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C13889B61C1A88DE00543F44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C16EE3141C19455A00726659 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C16EE3161C19F83100726659 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C1CF144B1C27AAAC000E70F3 /* StringExension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExension.swift; sourceTree = "<group>"; };
+		C1CF144D1C27B40C000E70F3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C1CF144F1C29DAE7000E70F3 /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
+		C1CF14511C29E355000E70F3 /* SymmetricCryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymmetricCryptor.swift; sourceTree = "<group>"; };
 		C1D754801C21B6DB0038C085 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		C1D754821C230CC80038C085 /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		C1D754841C2322B90038C085 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		C1D754851C2322BA0038C085 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		C1D754861C2322BA0038C085 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		C1D754871C247B330038C085 /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		C1D754891C24F96C0038C085 /* IOTServerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOTServerProtocol.swift; sourceTree = "<group>"; };
+		C1D7548B1C24FC690038C085 /* AFHTTPIOTServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFHTTPIOTServer.swift; sourceTree = "<group>"; };
+		C1D754921C25020C0038C085 /* IOTError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOTError.swift; sourceTree = "<group>"; };
+		C1D754941C2503860038C085 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		D87F39318D94D68B99335801 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB984CAE3F6FB048739AB56F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E86593AF5344646BD324F99E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77409E30A069987F993F50EF /* libPods.a in Frameworks */,
+				06A6331C354403C1B0C2E9D7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +124,7 @@
 		90BE82C5E3F7A60BE5EC539C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				051AECE3D074982522424437 /* libPods.a */,
+				D87F39318D94D68B99335801 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -116,7 +132,6 @@
 		C118BB131C1606FD00CC7D81 = {
 			isa = PBXGroup;
 			children = (
-				C16EE3141C19455A00726659 /* .swiftlint.yml */,
 				C118BB1E1C1606FD00CC7D81 /* HsinchuIOT */,
 				C118BB331C1606FE00CC7D81 /* HsinchuIOTTests */,
 				C118BB3E1C1606FE00CC7D81 /* HsinchuIOTUITests */,
@@ -139,20 +154,17 @@
 		C118BB1E1C1606FD00CC7D81 /* HsinchuIOT */ = {
 			isa = PBXGroup;
 			children = (
+				C1D754911C24FF910038C085 /* storyboard */,
+				C1D754901C24FF770038C085 /* server */,
+				C1D7548F1C24FF600038C085 /* util */,
+				C1D7548E1C24FF260038C085 /* model */,
+				C1D7548D1C24FECF0038C085 /* controller */,
 				C13889AA1C1A6A5500543F44 /* Resources */,
 				C118BB1F1C1606FD00CC7D81 /* AppDelegate.swift */,
-				C118BB211C1606FD00CC7D81 /* ViewController.swift */,
-				C118BB231C1606FD00CC7D81 /* Main.storyboard */,
-				C118BB281C1606FE00CC7D81 /* LaunchScreen.storyboard */,
 				C118BB2B1C1606FE00CC7D81 /* Info.plist */,
-				C118BB501C16153600CC7D81 /* LauchScreenViewController.swift */,
-				C11D3B611C1760FB00E8F65D /* AdminUser.storyboard */,
-				C11D3B631C17611400E8F65D /* NormalUser.storyboard */,
 				C11D3B651C1762F100E8F65D /* Constants.swift */,
 				C11D3B681C17EF3B00E8F65D /* HsinchuIOT-Bridging-Header.h */,
-				C16EE3161C19F83100726659 /* LoginViewController.swift */,
-				C1D754801C21B6DB0038C085 /* UIColorExtension.swift */,
-				C1D754821C230CC80038C085 /* LanguageManager.swift */,
+				C1D754871C247B330038C085 /* AppConfig.swift */,
 			);
 			path = HsinchuIOT;
 			sourceTree = "<group>";
@@ -182,6 +194,58 @@
 				C13889B21C1A877100543F44 /* Localizable.strings */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		C1D7548D1C24FECF0038C085 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				C118BB211C1606FD00CC7D81 /* ViewController.swift */,
+				C118BB501C16153600CC7D81 /* LauchScreenViewController.swift */,
+				C16EE3161C19F83100726659 /* LoginViewController.swift */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		C1D7548E1C24FF260038C085 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				C1D754921C25020C0038C085 /* IOTError.swift */,
+				C1D754941C2503860038C085 /* Session.swift */,
+				C1CF144D1C27B40C000E70F3 /* User.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		C1D7548F1C24FF600038C085 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				C1D754821C230CC80038C085 /* LanguageManager.swift */,
+				C1D754801C21B6DB0038C085 /* UIColorExtension.swift */,
+				C1CF144B1C27AAAC000E70F3 /* StringExension.swift */,
+				C1CF144F1C29DAE7000E70F3 /* PreferenceManager.swift */,
+				C1CF14511C29E355000E70F3 /* SymmetricCryptor.swift */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
+		C1D754901C24FF770038C085 /* server */ = {
+			isa = PBXGroup;
+			children = (
+				C1D7548B1C24FC690038C085 /* AFHTTPIOTServer.swift */,
+				C1D754891C24F96C0038C085 /* IOTServerProtocol.swift */,
+			);
+			name = server;
+			sourceTree = "<group>";
+		};
+		C1D754911C24FF910038C085 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				C118BB231C1606FD00CC7D81 /* Main.storyboard */,
+				C11D3B611C1760FB00E8F65D /* AdminUser.storyboard */,
+				C118BB281C1606FE00CC7D81 /* LaunchScreen.storyboard */,
+				C11D3B631C17611400E8F65D /* NormalUser.storyboard */,
+			);
+			name = storyboard;
 			sourceTree = "<group>";
 		};
 		DDC095729014E339798D9E1C /* Pods */ = {
@@ -301,7 +365,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C16EE3151C19455A00726659 /* .swiftlint.yml in Resources */,
 				C11D3B641C17611400E8F65D /* NormalUser.storyboard in Resources */,
 				C118BB2A1C1606FE00CC7D81 /* LaunchScreen.storyboard in Resources */,
 				C13889B01C1A877100543F44 /* Localizable.strings in Resources */,
@@ -381,9 +444,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C118BB221C1606FD00CC7D81 /* ViewController.swift in Sources */,
+				C1CF14521C29E355000E70F3 /* SymmetricCryptor.swift in Sources */,
+				C1D754881C247B330038C085 /* AppConfig.swift in Sources */,
 				C1D754831C230CC80038C085 /* LanguageManager.swift in Sources */,
+				C1D754931C25020C0038C085 /* IOTError.swift in Sources */,
+				C1CF144C1C27AAAC000E70F3 /* StringExension.swift in Sources */,
+				C1D7548A1C24F96C0038C085 /* IOTServerProtocol.swift in Sources */,
+				C1CF144E1C27B40C000E70F3 /* User.swift in Sources */,
 				C118BB201C1606FD00CC7D81 /* AppDelegate.swift in Sources */,
 				C118BB511C16153600CC7D81 /* LauchScreenViewController.swift in Sources */,
+				C1D7548C1C24FC690038C085 /* AFHTTPIOTServer.swift in Sources */,
+				C1CF14501C29DAE7000E70F3 /* PreferenceManager.swift in Sources */,
+				C1D754951C2503860038C085 /* Session.swift in Sources */,
 				C16EE3171C19F83100726659 /* LoginViewController.swift in Sources */,
 				C11D3B661C1762F100E8F65D /* Constants.swift in Sources */,
 				C1D754811C21B6DB0038C085 /* UIColorExtension.swift in Sources */,

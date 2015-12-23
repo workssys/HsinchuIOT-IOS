@@ -13,5 +13,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <M13Checkbox/M13Checkbox.h>
 #import <BButton/BButton.h>
+#import <AFXMLDictionarySerializer/AFXMLDictionaryResponseSerializer.h>
+#import <CommonCrypto/CommonCrypto.h>
 
 #endif /* HsinchuIOT_Bridging_Header_h */

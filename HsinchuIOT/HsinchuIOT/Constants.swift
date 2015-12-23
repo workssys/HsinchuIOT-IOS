@@ -40,3 +40,8 @@ struct Colors{
     static let BORDER = UIColor.lightGrayColor()
     static let TEXT = UIColor.darkGrayColor()
 }
+
+struct ServerAPIURI {
+    static let GET_SESSION_ID = "_NBI/get_session_id.lua"
+    static let LOGIN = "_NBI/login.lua"
+}

@@ -17,10 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         //check remember username/password
-        let userDefaults = NSUserDefaults.standardUserDefaults()
         
-        if let loginame = userDefaults.objectForKey(PreferenceKey.LOGINNAME) as? String{
-            if let password = userDefaults.objectForKey(PreferenceKey.PASSWORD) as? String{
+        if let loginame = PreferenceManager.instance.valueForKey(PreferenceKey.LOGINNAME){
+            if let password = PreferenceManager.instance.valueForKey(PreferenceKey.PASSWORD){
                 print("Username:'\(loginame)' Password:\(password)")
             }
             

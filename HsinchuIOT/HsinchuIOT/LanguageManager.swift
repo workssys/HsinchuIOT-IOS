@@ -22,8 +22,6 @@ class LanguageManager{
         return Singleton._instance!
     }
     
-    let userDefaults = NSUserDefaults.standardUserDefaults()
-    
     var bundle: NSBundle{
         get{
             let curLan = getCurrentLanguage()
@@ -43,7 +41,7 @@ class LanguageManager{
     
     func getCurrentLanguage() -> String{
         var curLan: String?
-        if let language = userDefaults.objectForKey(PreferenceKey.LANGUAGE) as? String{
+        if let language = PreferenceManager.instance.valueForKey(PreferenceKey.LANGUAGE) {
             curLan = language
         }else{
             //let languages = userDefaults.objectForKey(PreferenceKey.SYSTEM_LANGUAGE) as! NSArray
@@ -55,8 +53,7 @@ class LanguageManager{
     }
     
     func setCurrentLanguage(language: String){
-        userDefaults.setObject(language, forKey: PreferenceKey.LANGUAGE)
-        userDefaults.synchronize()
+        PreferenceManager.instance.setValue(language, forKey: PreferenceKey.LANGUAGE)
     }
     
 }
