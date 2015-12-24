@@ -11,18 +11,10 @@ import Foundation
 
 class LanguageManager{
     
-    class var instance: LanguageManager {
-        struct Singleton{
-            static var onceToken: dispatch_once_t = 0
-            static var _instance: LanguageManager? = nil
-        }
-        dispatch_once(&Singleton.onceToken){
-            Singleton._instance = LanguageManager()
-        }
-        return Singleton._instance!
-    }
+    static let sharedInstance = LanguageManager()
     
-    var bundle: NSBundle{
+    
+    private var bundle: NSBundle{
         get{
             let curLan = getCurrentLanguage()
             let path = NSBundle.mainBundle().pathForResource(curLan, ofType: "lproj")
@@ -36,12 +28,11 @@ class LanguageManager{
     }
     
     private init(){
-        print(getCurrentLanguage())
     }
     
     func getCurrentLanguage() -> String{
         var curLan: String?
-        if let language = PreferenceManager.instance.valueForKey(PreferenceKey.LANGUAGE) {
+        if let language = PreferenceManager.sharedInstance.valueForKey(PreferenceKey.LANGUAGE) {
             curLan = language
         }else{
             //let languages = userDefaults.objectForKey(PreferenceKey.SYSTEM_LANGUAGE) as! NSArray
@@ -53,11 +44,11 @@ class LanguageManager{
     }
     
     func setCurrentLanguage(language: String){
-        PreferenceManager.instance.setValue(language, forKey: PreferenceKey.LANGUAGE)
+        PreferenceManager.sharedInstance.setValue(language, forKey: PreferenceKey.LANGUAGE)
     }
     
 }
 
 func getString(key: String) -> String{
-    return NSLocalizedString(key, tableName: "Localizable", bundle: LanguageManager.instance.bundle, comment: "")
+    return NSLocalizedString(key, tableName: "Localizable", bundle: LanguageManager.sharedInstance.bundle, comment: "")
 }

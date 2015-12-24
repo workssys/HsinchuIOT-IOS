@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //check remember username/password
         
-        if let loginame = PreferenceManager.instance.valueForKey(PreferenceKey.LOGINNAME){
-            if let password = PreferenceManager.instance.valueForKey(PreferenceKey.PASSWORD){
+        if let loginame = PreferenceManager.sharedInstance.valueForKey(PreferenceKey.LOGINNAME){
+            if let password = PreferenceManager.sharedInstance.valueForKey(PreferenceKey.PASSWORD){
                 print("Username:'\(loginame)' Password:\(password)")
             }
             

@@ -57,7 +57,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         cbRememberMe.titleLabel.text = getString(StringKey.REMEMBER_ME)
         cbRememberMe.titleLabel.font = UIFont(name: "System Font", size: 12.0)
         
-        if let loginName = PreferenceManager.instance.valueForKey(PreferenceKey.LOGINNAME){
+        if let loginName = PreferenceManager.sharedInstance.valueForKey(PreferenceKey.LOGINNAME){
             if !loginName.isEmpty{
                 cbRememberMe.checkState = M13CheckboxStateChecked
                 tvLoginname.text = loginName
@@ -112,13 +112,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         if sender.isEqual(segLanguage) {
             switch(sender.selectedSegmentIndex){
             case 0:
-                LanguageManager.instance.setCurrentLanguage("zh-Hant")
+                LanguageManager.sharedInstance.setCurrentLanguage("zh-Hant")
             case 1:
-                LanguageManager.instance.setCurrentLanguage("zh-Hans")
+                LanguageManager.sharedInstance.setCurrentLanguage("zh-Hans")
             case 2:
-                LanguageManager.instance.setCurrentLanguage("en")
+                LanguageManager.sharedInstance.setCurrentLanguage("en")
             default:
-                LanguageManager.instance.setCurrentLanguage("zh-Hant")
+                LanguageManager.sharedInstance.setCurrentLanguage("zh-Hant")
                 
             }
             changeUILanguage()

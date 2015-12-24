@@ -9,21 +9,14 @@
 import Foundation
 
 class PreferenceManager{
-    class var instance: PreferenceManager{
-        struct Singleton{
-            static var onceToken: dispatch_once_t = 0
-            static var _instance: PreferenceManager? = nil
-        }
-        
-        dispatch_once(&Singleton.onceToken){
-            Singleton._instance = PreferenceManager()
-        }
-        
-        return Singleton._instance!
-        
-    }
     
-    let userDefaults = NSUserDefaults.standardUserDefaults()
+    static let sharedInstance = PreferenceManager()
+    
+    private let userDefaults:NSUserDefaults
+    
+    private init(){
+        userDefaults =  NSUserDefaults.standardUserDefaults();
+    }
     
     func valueForKey(key: String) -> String?{
         return (userDefaults.valueForKey(key) as? String)
