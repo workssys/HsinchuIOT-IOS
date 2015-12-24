@@ -22,6 +22,7 @@
 		C16EE3171C19F83100726659 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16EE3161C19F83100726659 /* LoginViewController.swift */; };
 		C1CF144E1C27B40C000E70F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF144D1C27B40C000E70F3 /* User.swift */; };
 		C1CF14501C29DAE7000E70F3 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF144F1C29DAE7000E70F3 /* PreferenceManager.swift */; };
+		C1CF148C1C2C2086000E70F3 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF148B1C2C2086000E70F3 /* SessionManager.swift */; };
 		C1D754811C21B6DB0038C085 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754801C21B6DB0038C085 /* UIColorExtension.swift */; };
 		C1D754831C230CC80038C085 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754821C230CC80038C085 /* LanguageManager.swift */; };
 		C1D754881C247B330038C085 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754871C247B330038C085 /* AppConfig.swift */; };
@@ -76,6 +77,7 @@
 		C16EE3161C19F83100726659 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C1CF144D1C27B40C000E70F3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C1CF144F1C29DAE7000E70F3 /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
+		C1CF148B1C2C2086000E70F3 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = "../../../HsinchuIOT-IOS-back/HsinchuIOT/HsinchuIOT/SessionManager.swift"; sourceTree = "<group>"; };
 		C1D754801C21B6DB0038C085 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		C1D754821C230CC80038C085 /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		C1D754841C2322B90038C085 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				C1D754821C230CC80038C085 /* LanguageManager.swift */,
 				C1D754801C21B6DB0038C085 /* UIColorExtension.swift */,
 				C1CF144F1C29DAE7000E70F3 /* PreferenceManager.swift */,
+				C1CF148B1C2C2086000E70F3 /* SessionManager.swift */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				C1CF144E1C27B40C000E70F3 /* User.swift in Sources */,
 				C118BB201C1606FD00CC7D81 /* AppDelegate.swift in Sources */,
 				C118BB511C16153600CC7D81 /* LauchScreenViewController.swift in Sources */,
+				C1CF148C1C2C2086000E70F3 /* SessionManager.swift in Sources */,
 				C1D7548C1C24FC690038C085 /* AFHTTPIOTServer.swift in Sources */,
 				C1CF14501C29DAE7000E70F3 /* PreferenceManager.swift in Sources */,
 				C1D754951C2503860038C085 /* Session.swift in Sources */,

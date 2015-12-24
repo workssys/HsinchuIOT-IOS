@@ -13,5 +13,8 @@
 "APP_TITLE_2" = "SYSTEM OF HSINCHU";
 "OK" = "Ok";
 "ERROR_TITLE" = "Error";
+"ERROR_UNKNOWN" = "Unknown Error";
 "ERROR_NOT_INPUT_LOGINNAME" = "Please input login name.";
 "ERROR_NOT_INPUT_PASSWORD" = "Please input password";
+"ERROR_USER_PERMISSION_WRONG" = "User permission not allow to login";
+"ERROR_INVALID_MESSAGE" = "Invaild server message";

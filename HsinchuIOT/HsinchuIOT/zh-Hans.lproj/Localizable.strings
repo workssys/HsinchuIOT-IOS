@@ -1,4 +1,5 @@
-/* 
+
+/*
   Localizable.strings
   HsinchuIOT
 
@@ -13,5 +14,8 @@
 "APP_TITLE_2" = "自主管理系统";
 "OK" = "确定";
 "ERROR_TITLE" = "错误";
+"ERROR_UNKNOWN" = "未知错误";
 "ERROR_NOT_INPUT_LOGINNAME" = "请输入登录名";
 "ERROR_NOT_INPUT_PASSWORD" = "请输入密码";
+"ERROR_USER_PERMISSION_WRONG" = "用户权限不允许登录系统";
+"ERROR_INVALID_MESSAGE" = "非法的服务器消息";

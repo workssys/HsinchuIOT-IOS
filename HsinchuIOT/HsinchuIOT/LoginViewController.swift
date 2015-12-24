@@ -57,14 +57,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         cbRememberMe.titleLabel.text = getString(StringKey.REMEMBER_ME)
         cbRememberMe.titleLabel.font = UIFont(name: "System Font", size: 12.0)
         
+        cbRememberMe.checkState = M13CheckboxStateUnchecked
+        
         if let loginName = PreferenceManager.sharedInstance.valueForKey(PreferenceKey.LOGINNAME){
             if !loginName.isEmpty{
                 cbRememberMe.checkState = M13CheckboxStateChecked
                 tvLoginname.text = loginName
             }
         }
-        //if let password = PreferenceManager
-        cbRememberMe.checkState = M13CheckboxStateUnchecked
+        if let encryptedPassword = PreferenceManager.sharedInstance.valueForKey(PreferenceKey.PASSWORD){
+            if !encryptedPassword.isEmpty{
+                if let encryptedData = NSData(base64EncodedString: encryptedPassword, options: NSDataBase64DecodingOptions(rawValue:0)){
+                    
+                    
+                    if let decryptedData = try? encryptedData.decrypt(AES(key: CryptoAlgorithm.AES_KEY, iv: CryptoAlgorithm.IV)) {
+                        if let decryptedPassword = String(data: decryptedData, encoding: NSUTF8StringEncoding){
+                            tvPassword.text = decryptedPassword
+                        }
+                    }
+                }
+            }
+        }
         
         
         btnLogin.setTitle(getString(StringKey.LOGIN_BTN), forState: UIControlState.Normal)
@@ -79,6 +92,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         btnLogin.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
         
         segLanguage.tintColor = Colors.TEXT_BLUE
+        
+        let currentLanguage = LanguageManager.sharedInstance.getCurrentLanguage()
+        if currentLanguage == Language.EN {
+            segLanguage.selectedSegmentIndex = 2
+        }else if currentLanguage == Language.CN_SIMPLIFIED{
+            segLanguage.selectedSegmentIndex = 1
+        }else{
+            segLanguage.selectedSegmentIndex = 0
+        }
         
         
         lbAppName1.textColor = Colors.TEXT_BLUE
@@ -112,13 +134,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         if sender.isEqual(segLanguage) {
             switch(sender.selectedSegmentIndex){
             case 0:
-                LanguageManager.sharedInstance.setCurrentLanguage("zh-Hant")
+                LanguageManager.sharedInstance.setCurrentLanguage(Language.CN_TRADITIONAL)
             case 1:
-                LanguageManager.sharedInstance.setCurrentLanguage("zh-Hans")
+                LanguageManager.sharedInstance.setCurrentLanguage(Language.CN_SIMPLIFIED)
             case 2:
-                LanguageManager.sharedInstance.setCurrentLanguage("en")
+                LanguageManager.sharedInstance.setCurrentLanguage(Language.EN)
             default:
-                LanguageManager.sharedInstance.setCurrentLanguage("zh-Hant")
+                LanguageManager.sharedInstance.setCurrentLanguage(Language.CN_TRADITIONAL)
                 
             }
             changeUILanguage()
@@ -127,12 +149,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
     
     func loginIn() {
         if tvLoginname.text?.characters.count == 0 {
-            showErrorString(getString(StringKey.ERROR_NOT_INPUT_LOGINNAME))
+            showError(IOTError(errorCode: IOTError.LoginNameIsEmptyError, errorGroup: "Client"))
             return
         }
         
         if tvPassword.text?.characters.count == 0 {
-            showErrorString(getString(StringKey.ERROR_NOT_INPUT_PASSWORD))
+            showError(IOTError(errorCode: IOTError.PasswordIsEmptyError, errorGroup: "Client"))
             return
         }
         
@@ -178,33 +200,36 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         }
         
         func loginSucceed(user: User){
-            //first save loginname and password
+            //first set session ID and login user
+            
+            SessionManager.sharedInstance.session = session
+            SessionManager.sharedInstance.loginUser = user
+            
+            //then save loginname and password
             if controller.cbRememberMe.checkState == M13CheckboxStateChecked {
-                let key = "HSINCHUIOT000000"
-                let iv = "1234567890123456"
-                if let pwd = user.password {
-                    if let encryptedPwd: String = try? pwd.encrypt(AES(key: key, iv: iv)){
-                        controller.showErrorString(encryptedPwd)
-                        
-                        if let encryptedData = NSData(base64EncodedString: encryptedPwd, options: NSDataBase64DecodingOptions(rawValue:0)){
-                        
-                        
-                            if let decryptedData = try? encryptedData.decrypt(AES(key: key, iv: iv)) {
-                                if let decryptedStr = String(data: decryptedData, encoding: NSUTF8StringEncoding){
-                                    controller.showErrorString(decryptedStr)
-                                }
-                            }
-                        }
-                    }
+                
+                if let loginname = user.loginName{
+                    PreferenceManager.sharedInstance.setValue(loginname, forKey: PreferenceKey.LOGINNAME)
                 }
                 
-                
-                
-                
-                
+                if let pwd = user.password {
+                    if let encryptedPwd: String = try? pwd.encrypt(AES(key: CryptoAlgorithm.AES_KEY, iv: CryptoAlgorithm.IV)){
+                        PreferenceManager.sharedInstance.setValue(encryptedPwd, forKey: PreferenceKey.PASSWORD)
+                    }
+                }
+            }else{
+                PreferenceManager.sharedInstance.setValue(nil, forKey: PreferenceKey.LOGINNAME)
+                PreferenceManager.sharedInstance.setValue(nil, forKey: PreferenceKey.PASSWORD)
             }
             
-            controller.showErrorString(user.permission!)
+            
+            if user.isAdminUser() {
+                //goto Admin user screen
+            }else if user.isNormalUser() {
+                //goto Normal user screen
+            }else{
+                controller.showError(IOTError(errorCode: IOTError.UserPermissionWrongError, errorGroup: "Client"))
+            }
         }
     }
     

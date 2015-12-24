@@ -30,32 +30,31 @@ class AFHTTPIOTServer: IOTServerProtocol{
             url,
             parameters: ["dataType": "xml"],
             success: { (operation, response) -> Void in
-                if let dict = response as? NSDictionary{
-                    if let dict2 = dict.objectForKey("GetSessionIDResponse") as? NSDictionary{
-                        if let sessionID = dict2.objectForKey("SessionID") as? String{
-                            let session = Session(sessionID: sessionID)
-                            if let succeedFunc = onSucceed {
-                                succeedFunc(session)
-                            }
-                        } else {
-                            if let failedFunc = onFailed {
-                                failedFunc(IOTError(errorCode: -1, errorMsg: "Unknown Error"))
+                var error: IOTError? = IOTError(errorCode: IOTError.InvalidMessageError, errorGroup: "GetSessionID")
+                
+                if let responseName = response.valueForKey?("__name") as? String{
+                    if responseName == "NBIResponse" {
+                        if let sessionID = response.valueForKey?("GetSessionIDResponse")?.valueForKey?("SessionID") as? String {
+                            error = nil
+                            onSucceed?(Session(sessionID: sessionID))
+                        }
+                    }else if responseName == "NBIError" {
+                        if let errorCodeStr = response.valueForKey?("Code") as? String{
+                            if let errorCode = Int(errorCodeStr){
+                                if let errorMsg = response.valueForKey?("String") as? String{
+                                    error = IOTError(errorCode: errorCode, errorMsg: errorMsg, errorGroup: "GetSessionID")
+                                }
                             }
                         }
-                    }else{
-                        if let failedFunc = onFailed {
-                            failedFunc(IOTError(errorCode: -1, errorMsg: "Unknown Error"))
-                        }
-                    }
-                }else{
-                    if let failedFunc = onFailed {
-                        failedFunc(IOTError(errorCode: -1, errorMsg: "Unknown Error"))
                     }
                 }
+                
+                if error != nil{
+                    onFailed?(error!)
+                }
+                
             }, failure: { (operation, error) -> Void in
-                if let failedFunc = onFailed {
-                    failedFunc(error.error)
-                }
+                onFailed?(error.error("GetSessionID"))
             })
     }
     
@@ -77,78 +76,38 @@ class AFHTTPIOTServer: IOTServerProtocol{
                 url,
                 parameters: parameters,
                 success: {(operation, response) -> Void in
-                    print(operation.responseString)
-                    if let dict = response as? NSDictionary{
-                        if let responseName = dict.valueForKey("__name") as? String {
-                            if responseName == "NBIResponse" {
-                                if let dict2 = dict.valueForKey("LoginResponse") as? NSDictionary{
-                                    if let userID = dict2.valueForKey("user_id") as? String {
-                                        var user = User(userID: userID)
-                                        user.loginName = loginName
-                                        user.password = password
-                                        
-                                        if let permission = dict2.valueForKey("permission") as? String{
-                                            user.permission = permission
-                                        }
-                                        
-                                        if let succeedFunc = onSucceed {
-                                            succeedFunc(user)
-                                        }
-                                        
-                                        
-                                    }else{
-                                        if let failedFunc = onFailed {
-                                            failedFunc(IOTError(errorCode: -2, errorMsg: "Invalid User"))
-                                        }
-                                    }
-                                }else{
-                                    if let failedFunc = onFailed {
-                                        failedFunc(IOTError(errorCode: -3, errorMsg: "Invalid Message"))
+                    var error: IOTError? = IOTError(errorCode: IOTError.InvalidMessageError, errorGroup: "Login")
+                    
+                    if let responseName = response.valueForKey?("__name") as? String{
+                        if responseName == "NBIResponse" {
+                            if let userID = response.valueForKey?("LoginResponse")?.valueForKey?("user_id") as? String {
+                                var user = User(userID: userID)
+                                user.loginName = loginName
+                                user.password = password
+                                if let permission = response.valueForKey?("LoginResponse")?.valueForKey?("permission") as? String{
+                                    user.permission = permission
+                                }
+                                error = nil
+                                onSucceed?(user)
+                            }
+                        }else if responseName == "NBIError" {
+                            if let errorCodeStr = response.valueForKey?("Code") as? String{
+                                if let errorCode = Int(errorCodeStr){
+                                    if let errorMsg = response.valueForKey?("String") as? String{
+                                        error = IOTError(errorCode: errorCode, errorMsg: errorMsg, errorGroup: "Login")
                                     }
                                 }
-                            } else if responseName == "NBIError" {
-                                var errorCode: Int? = nil
-                                
-                                if let errorCodeStr = dict.valueForKey("Code") as? String{
-                                    errorCode = Int(errorCodeStr)
-                                    
-                                }
-                                if(errorCode == nil){
-                                    errorCode = -1
-                                }
-                                
-                                var errorMsg: String? = nil
-                                if let msg = dict.valueForKey("String") as? String {
-                                    errorMsg = msg
-                                }else{
-                                    errorMsg = "Unknown Error"
-                                }
-                                
-                                if let failedFunc = onFailed {
-                                    failedFunc(IOTError(errorCode: errorCode!, errorMsg: errorMsg))
-                                }
-
-                            }else{
-                                if let failedFunc = onFailed {
-                                    failedFunc(IOTError(errorCode: -1, errorMsg: "Unknown Error"))
-                                }
-                            }
-                        }else{
-                            if let failedFunc = onFailed {
-                                failedFunc(IOTError(errorCode: -1, errorMsg: "Unknown Error"))
                             }
                         }
-                    }else{
-                        if let failedFunc = onFailed {
-                            failedFunc(IOTError(errorCode: -1, errorMsg: "Unknown Error"))
-                        }
+                    }
+                    
+                    if error != nil{
+                        onFailed?(error!)
                     }
                     
                 },
                 failure: {(operation, error) -> Void in
-                    if let failedFunc = onFailed {
-                        failedFunc(error.error)
-                    }
+                    onFailed?(error.error("Login"))
                 }
         )
 

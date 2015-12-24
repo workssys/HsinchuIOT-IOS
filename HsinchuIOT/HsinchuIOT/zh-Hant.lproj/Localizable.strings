@@ -14,5 +14,8 @@
 "APP_TITLE_2" = "自主管理系統";
 "OK" = "確定";
 "ERROR_TITLE" = "錯誤";
+"ERROR_UNKNOWN" = "未知錯誤";
 "ERROR_NOT_INPUT_LOGINNAME" = "請輸入登錄名";
 "ERROR_NOT_INPUT_PASSWORD" = "請輸入密碼";
+"ERROR_USER_PERMISSION_WRONG" = "用戶權限不允許登錄系統";
+"ERROR_INVALID_MESSAGE" = "非法的服務器消息";

@@ -31,16 +31,13 @@ class LanguageManager{
     }
     
     func getCurrentLanguage() -> String{
-        var curLan: String?
         if let language = PreferenceManager.sharedInstance.valueForKey(PreferenceKey.LANGUAGE) {
-            curLan = language
+            return language
         }else{
             //let languages = userDefaults.objectForKey(PreferenceKey.SYSTEM_LANGUAGE) as! NSArray
-            curLan = "zh-Hant"
-            setCurrentLanguage("zh-Hant")
-            
+            setCurrentLanguage(Language.CN_TRADITIONAL)
+            return Language.CN_TRADITIONAL
         }
-        return curLan!
     }
     
     func setCurrentLanguage(language: String){

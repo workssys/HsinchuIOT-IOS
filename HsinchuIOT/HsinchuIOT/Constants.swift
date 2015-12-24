@@ -28,8 +28,12 @@ struct StringKey{
     static let OK = "OK"
     
     static let ERROR_TITLE = "ERROR_TITLE"
+    static let ERROR_UNKNOWN = "ERROR_UNKNOWN"
     static let ERROR_NOT_INPUT_LOGINNAME = "ERROR_NOT_INPUT_LOGINNAME"
     static let ERROR_NOT_INPUT_PASSWORD = "ERROR_NOT_INPUT_PASSWORD"
+    static let ERROR_USER_PERMISSION_WRONG = "ERROR_USER_PERMISSION_WRONG"
+    static let ERROR_INVALID_USER = "ERROR_INVALID_USER"
+    static let ERROR_INVALID_MESSAGE = "ERROR_INVALID_MESSAGE"
 }
 
 struct Colors{
@@ -44,4 +48,16 @@ struct Colors{
 struct ServerAPIURI {
     static let GET_SESSION_ID = "_NBI/get_session_id.lua"
     static let LOGIN = "_NBI/login.lua"
+}
+
+struct CryptoAlgorithm{
+    //key and iv need to be 16 bytes
+    static let AES_KEY = "HSINCHUIOT000000"
+    static let IV = "0123456789012345"
+}
+
+struct Language{
+    static let EN = "en"
+    static let CN_SIMPLIFIED = "zh-Hans"
+    static let CN_TRADITIONAL = "zh-Hant"
 }
