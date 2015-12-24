@@ -6,3 +6,4 @@ pod 'M13Checkbox'
 pod 'BButton'
 pod 'AFXMLDictionarySerializer'
 pod 'CryptoSwift', :git => "https://github.com/krzyzanowskim/CryptoSwift", :branch => "master"
+pod 'MBProgressHUD', '~> 0.9.2'

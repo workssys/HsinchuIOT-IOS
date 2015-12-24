@@ -27,6 +27,8 @@ struct StringKey{
     
     static let OK = "OK"
     
+    static let INFO_WAITING = "INFO_WAITING"
+    
     static let ERROR_TITLE = "ERROR_TITLE"
     static let ERROR_UNKNOWN = "ERROR_UNKNOWN"
     static let ERROR_NOT_INPUT_LOGINNAME = "ERROR_NOT_INPUT_LOGINNAME"

@@ -13,6 +13,7 @@
 "APP_TITLE_1" = "新竹縣室內空氣品質";
 "APP_TITLE_2" = "自主管理系統";
 "OK" = "確定";
+"INFO_WAITING" = "請稍候...";
 "ERROR_TITLE" = "錯誤";
 "ERROR_UNKNOWN" = "未知錯誤";
 "ERROR_NOT_INPUT_LOGINNAME" = "請輸入登錄名";

@@ -8,6 +8,7 @@
 
 import Foundation
 import CryptoSwift
+import MBProgressHUD
 
 
 class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate{
@@ -28,6 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
     
     @IBOutlet weak var lbAppName2: UILabel!
     
+    var waitingBar: MBProgressHUD!
     
     
     
@@ -127,6 +129,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
     }
     
     @IBAction func loginBtnClicked(sender: UIButton) {
+        waitingBar = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        waitingBar.labelText = getString(StringKey.INFO_WAITING)
+        waitingBar.removeFromSuperViewOnHide = true
+        
         loginIn()
     }
     
@@ -221,7 +227,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
                 PreferenceManager.sharedInstance.setValue(nil, forKey: PreferenceKey.LOGINNAME)
                 PreferenceManager.sharedInstance.setValue(nil, forKey: PreferenceKey.PASSWORD)
             }
-            
+            controller.waitingBar.hide(true)
             
             if user.isAdminUser() {
                 //goto Admin user screen
@@ -258,6 +264,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
     }
     
     func showError(error: IOTError){
+        waitingBar.hide(true)
         showErrorString(error.errorMsg!)
     }
     
@@ -265,5 +272,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         let alertView = UIAlertView(title: getString(StringKey.ERROR_TITLE), message: message, delegate: self, cancelButtonTitle: getString(StringKey.OK))
         alertView.show()
     }
+    
     
 }

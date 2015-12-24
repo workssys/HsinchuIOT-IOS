@@ -13,6 +13,7 @@
 "APP_TITLE_1" = "新竹县室内空气品质";
 "APP_TITLE_2" = "自主管理系统";
 "OK" = "确定";
+"INFO_WAITING" = "请稍候...";
 "ERROR_TITLE" = "错误";
 "ERROR_UNKNOWN" = "未知错误";
 "ERROR_NOT_INPUT_LOGINNAME" = "请输入登录名";

@@ -12,6 +12,7 @@
 "APP_TITLE_1" = "AIR QUALITY MANAGEMENT";
 "APP_TITLE_2" = "SYSTEM OF HSINCHU";
 "OK" = "Ok";
+"INFO_WAITING" = "Please wait...";
 "ERROR_TITLE" = "Error";
 "ERROR_UNKNOWN" = "Unknown Error";
 "ERROR_NOT_INPUT_LOGINNAME" = "Please input login name.";
