@@ -15,5 +15,4 @@
 #import "BButton.h"
 #import "AFXMLDictionaryResponseSerializer.h"
 
-
 #endif /* HsinchuIOT_Bridging_Header_h */

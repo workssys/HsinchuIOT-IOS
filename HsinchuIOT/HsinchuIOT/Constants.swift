@@ -29,6 +29,7 @@ struct StringKey{
     
     static let INFO_WAITING = "INFO_WAITING"
     
+    //error message key
     static let ERROR_TITLE = "ERROR_TITLE"
     static let ERROR_UNKNOWN = "ERROR_UNKNOWN"
     static let ERROR_NOT_INPUT_LOGINNAME = "ERROR_NOT_INPUT_LOGINNAME"
@@ -36,6 +37,11 @@ struct StringKey{
     static let ERROR_USER_PERMISSION_WRONG = "ERROR_USER_PERMISSION_WRONG"
     static let ERROR_INVALID_USER = "ERROR_INVALID_USER"
     static let ERROR_INVALID_MESSAGE = "ERROR_INVALID_MESSAGE"
+    
+    //admin user 
+    
+    static let ADMINUSER_TAB_AVERAGEVALUE = "ADMINUSER_TAB_AVERAGEVALUE"
+    static let ADMINUSER_TAB_REALTIMEDATA = "ADMINUSER_TAB_REALTIMEDATA"
 }
 
 struct Colors{

@@ -19,3 +19,5 @@
 "ERROR_NOT_INPUT_PASSWORD" = "Please input password";
 "ERROR_USER_PERMISSION_WRONG" = "User permission not allow to login";
 "ERROR_INVALID_MESSAGE" = "Invaild server message";
+"ADMINUSER_TAB_AVERAGEVALUE" = "Average Value";
+"ADMINUSER_TAB_REALTIMEDATA" = "Realtime Data";

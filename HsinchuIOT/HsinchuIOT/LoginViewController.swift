@@ -88,8 +88,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         btnLogin.layer.masksToBounds = true
         btnLogin.layer.borderColor = Colors.BORDER.CGColor
         btnLogin.layer.borderWidth = 1.0
-        btnLogin.setBackgroundImage(imageWithColor(UIColor.whiteColor()), forState: UIControlState.Normal)
-        btnLogin.setBackgroundImage(imageWithColor(Colors.TEXT_BLUE), forState: UIControlState.Highlighted)
+        btnLogin.setBackgroundImage(UIColor.whiteColor().toImage(), forState: UIControlState.Normal)
+        btnLogin.setBackgroundImage(Colors.TEXT_BLUE.toImage(), forState: UIControlState.Highlighted)
         btnLogin.setTitleColor(Colors.TEXT, forState: UIControlState.Normal)
         btnLogin.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
         
@@ -230,9 +230,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
             controller.waitingBar.hide(true)
             
             if user.isAdminUser() {
-                //goto Admin user screen
+                controller.gotoAdminUserScreen()
             }else if user.isNormalUser() {
-                //goto Normal user screen
+                controller.gotoNormalUserScreen()
             }else{
                 controller.showError(IOTError(errorCode: IOTError.UserPermissionWrongError, errorGroup: "Client"))
             }
@@ -250,19 +250,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         
     }
     
-    func imageWithColor(color: UIColor) -> UIImage{
-        let rect = CGRectMake(0.0, 0.0, 1.0, 1.0)
-        UIGraphicsBeginImageContext(rect.size)
-        let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, color.CGColor)
-        CGContextFillRect(context, rect)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
         
-        return image
-        
-    }
-    
     func showError(error: IOTError){
         waitingBar.hide(true)
         showErrorString(error.errorMsg!)
@@ -271,6 +259,53 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
     func showErrorString(message: String){
         let alertView = UIAlertView(title: getString(StringKey.ERROR_TITLE), message: message, delegate: self, cancelButtonTitle: getString(StringKey.OK))
         alertView.show()
+    }
+    
+    func gotoAdminUserScreen() {
+        let storyboard = UIStoryboard(name: "AdminUser", bundle: nil)
+        
+        let tabVC = storyboard.instantiateViewControllerWithIdentifier("adminUserHome") as! AdminUserHomeViewController
+        
+        //setup tab average value
+        let avListVC = storyboard.instantiateViewControllerWithIdentifier("averageValueList") as! AdminUserAverageValueListViewController
+        
+        avListVC.tabBarItem.title = getString(StringKey.ADMINUSER_TAB_AVERAGEVALUE)
+        
+        
+        avListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: UIControlState.Highlighted)
+        avListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Normal)
+        
+        avListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 15)!], forState: UIControlState.Normal)
+        
+        avListVC.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -14)
+        
+        
+        let rdListVC = storyboard.instantiateViewControllerWithIdentifier("realtimeDataList") as! AdminUserRealtimeDataListViewController
+        
+        rdListVC.tabBarItem.title = getString(StringKey.ADMINUSER_TAB_REALTIMEDATA)
+        
+        rdListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: UIControlState.Highlighted)
+        rdListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Normal)
+        
+        rdListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 15)!], forState: UIControlState.Normal)
+        
+        rdListVC.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -14)
+
+        
+        
+        tabVC.viewControllers = [avListVC, rdListVC]
+        
+        
+        self.presentViewController(tabVC, animated: true, completion: nil)
+        
+    }
+    
+    func gotoNormalUserScreen() {
+        let storyboard = UIStoryboard(name: "NormalUser", bundle: nil)
+        let normalUserHomeViewController = storyboard.instantiateViewControllerWithIdentifier("normalUserHome")
+        self.presentViewController(normalUserHomeViewController, animated: true, completion: nil)
     }
     
     

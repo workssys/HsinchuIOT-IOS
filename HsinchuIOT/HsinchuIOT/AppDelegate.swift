@@ -25,9 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         //show login page
-        
-        let c          = UIColor(red: 0.988, green: 0.3754, blue: 0.9993, alpha: 1.0)
-        let c2         = UIColor(red: 0.7, green: 0.6, blue: 0.9, alpha: 1)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc         = storyboard.instantiateViewControllerWithIdentifier("login")
         self.window?.rootViewController = vc
