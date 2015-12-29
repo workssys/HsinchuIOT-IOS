@@ -112,4 +112,70 @@ class AFHTTPIOTServer: IOTServerProtocol{
         )
 
     }
+    
+    func getSiteListWithAggrData(sessionID: String,
+        onSucceed: (([Site]) -> ())?,
+        onFailed: ((IOTError) -> ())?) {
+        
+        let url = serverAddress + ServerAPIURI.GET_SITE_LIST_WITH_AGGREGATION_DATA
+        let parameters = ["dataType": "json", "__session_id": sessionID]
+            
+        var manager = AFHTTPRequestOperationManager()
+        manager.responseSerializer  = AFJSONResponseSerializer()
+        manager.GET(
+            url,
+            parameters: parameters,
+            success: { (operation, response) -> Void in
+                //print(response)
+                
+                let symbol = "$"
+                var result: [Site] = []
+                if let count = response.objectForKey("count") as? Int{
+                    for i in 1 ... count{
+                        
+                        if let siteObj = response.objectForKey("\(i)") {
+                            if let deviceID = siteObj.objectForKey("did")?.objectForKey(symbol) as? Int{
+                                
+                                var site: Site = Site(siteID: "\(deviceID)")
+                                
+                                var device = Device(deviceID: "\(deviceID)")
+                                
+                                if let deviceSN = siteObj.objectForKey("sn")?.objectForKey(symbol) as? String{
+                                    device.deviceSN = deviceSN
+                                }
+                                if let domainName = siteObj.objectForKey("domain_name")?.objectForKey(symbol) as? String{
+                                    device.adminDomain = domainName
+                                }
+                                site.device = device
+                                site.siteName = device.siteName
+                                
+                                var iotData = IOTMonitorData()
+                                if let co2Value = siteObj.objectForKey("co2_eight_hours_avg")?.objectForKey(symbol) as? String{
+                                    if let value = Float(co2Value) {
+                                        iotData.co2 = ceil(value * 100) / 100
+                                    }
+                                }
+                                if let temperatureValue = siteObj.objectForKey("temp_hour_avg")?.objectForKey(symbol) as? String{
+                                    if let value = Float(temperatureValue){
+                                        iotData.temperature = ceil(value * 100) / 100
+                                    }
+                                }
+                                if let humidityValue = siteObj.objectForKey("humidity_hour_avg")?.objectForKey(symbol) as? String{
+                                    if let value = Float(humidityValue){
+                                        iotData.humidity = ceil(value * 100) / 100
+                                    }
+                                }
+                                site.aggregationData = iotData
+                                
+                                result.append(site)
+                            }
+                        }
+                    }
+                }
+                onSucceed?(result)
+            },
+            failure: { (operation, error) -> Void in
+                onFailed?(error.error("getSiteListWithAggrData"))
+            })
+    }
 }

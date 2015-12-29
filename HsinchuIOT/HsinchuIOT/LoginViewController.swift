@@ -11,7 +11,7 @@ import CryptoSwift
 import MBProgressHUD
 
 
-class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate{
+class LoginViewController: BaseViewController, UITextFieldDelegate, UIAlertViewDelegate{
     
     @IBOutlet weak var ivBg: UIImageView!
     
@@ -29,8 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
     
     @IBOutlet weak var lbAppName2: UILabel!
     
-    var waitingBar: MBProgressHUD!
-    
+   
     
     
     override func viewDidLoad() {
@@ -57,7 +56,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         cbRememberMe.strokeColor = Colors.BORDER
         cbRememberMe.strokeWidth = 1
         cbRememberMe.titleLabel.text = getString(StringKey.REMEMBER_ME)
-        cbRememberMe.titleLabel.font = UIFont(name: "System Font", size: 12.0)
+        cbRememberMe.titleLabel.font = UIFont(name: "HelveticaNeue", size: 12.0)
         
         cbRememberMe.checkState = M13CheckboxStateUnchecked
         
@@ -129,10 +128,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
     }
     
     @IBAction func loginBtnClicked(sender: UIButton) {
-        waitingBar = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        waitingBar.labelText = getString(StringKey.INFO_WAITING)
-        waitingBar.removeFromSuperViewOnHide = true
-        
+        showWaitingBar()
         loginIn()
     }
     
@@ -227,7 +223,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
                 PreferenceManager.sharedInstance.setValue(nil, forKey: PreferenceKey.LOGINNAME)
                 PreferenceManager.sharedInstance.setValue(nil, forKey: PreferenceKey.PASSWORD)
             }
-            controller.waitingBar.hide(true)
+            controller.hideWaitingBar()
             
             if user.isAdminUser() {
                 controller.gotoAdminUserScreen()
@@ -251,15 +247,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
     }
     
         
-    func showError(error: IOTError){
-        waitingBar.hide(true)
-        showErrorString(error.errorMsg!)
-    }
     
-    func showErrorString(message: String){
-        let alertView = UIAlertView(title: getString(StringKey.ERROR_TITLE), message: message, delegate: self, cancelButtonTitle: getString(StringKey.OK))
-        alertView.show()
-    }
+    
     
     func gotoAdminUserScreen() {
         let storyboard = UIStoryboard(name: "AdminUser", bundle: nil)

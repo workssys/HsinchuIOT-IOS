@@ -56,7 +56,7 @@ extension UIColor{
         self.init(red: red, green: green, blue: blue, alpha: alpha)
         
     }
-    func toImage() -> UIImage{
+    @objc public func toImage() -> UIImage{
         return toImage(CGSize(width: 1.0, height: 1.0))
     }
 
