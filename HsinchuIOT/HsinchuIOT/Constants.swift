@@ -74,6 +74,9 @@ struct ServerAPIURI {
     static let GET_SESSION_ID = "_NBI/get_session_id.lua"
     static let LOGIN = "_NBI/login.lua"
     static let GET_SITE_LIST_WITH_AGGREGATION_DATA = "_NBI/app_list.lua"
+    static let GET_DEVICE_LIST = "Device/_NBI/list.lua"
+    static let GET_MULTIPLE_DEVICES_REALTIME_DATA = "M2M_Last/_NBI/list.lua"
+    
 }
 
 struct CryptoAlgorithm{

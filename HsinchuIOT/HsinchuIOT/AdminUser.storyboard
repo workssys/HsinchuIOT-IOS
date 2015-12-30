@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--AverageValue-->
+        <!--SiteList-->
         <scene sceneID="Qae-az-ib7">
             <objects>
-                <viewController storyboardIdentifier="averageValueList" id="Pp8-ND-1AI" customClass="AdminUserAverageValueListViewController" customModule="HsinchuIOT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="siteList" id="Pp8-ND-1AI" userLabel="SiteList" customClass="AdminUserSiteListViewController" customModule="HsinchuIOT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w5X-uk-aZc"/>
                         <viewControllerLayoutGuide type="bottom" id="WEB-aL-qi4"/>
@@ -33,7 +33,7 @@
                                             <action selector="logoffBtnClicked:" destination="Pp8-ND-1AI" eventType="touchUpInside" id="biS-cD-Kxd"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJy-8I-kkx">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJy-8I-kkx">
                                         <rect key="frame" x="100" y="13" width="280" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -101,13 +101,13 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1H9-wV-UvR" userLabel="SiteAV Table View">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1H9-wV-UvR" userLabel="Site List Table View">
                                 <rect key="frame" x="0.0" y="46" width="600" height="503"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="blue" indentationWidth="10" reuseIdentifier="siteAVTableViewHeader" rowHeight="40" id="hKz-pI-wkB" userLabel="SiteAV Table View Header">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="blue" indentationWidth="10" reuseIdentifier="siteListTableViewHeader" rowHeight="40" id="hKz-pI-wkB" userLabel="Site List Table View Header">
                                         <rect key="frame" x="0.0" y="28" width="600" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hKz-pI-wkB" id="QL3-xW-IyF">
@@ -155,11 +155,11 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1g-OE-pMM">
-                                                    <rect key="frame" x="8" y="38" width="584" height="2"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1g-OE-pMM" userLabel="Seperator">
+                                                    <rect key="frame" x="8" y="39" width="584" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="2" id="189-uW-NGa"/>
+                                                        <constraint firstAttribute="height" constant="1" id="189-uW-NGa"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -211,6 +211,8 @@
                                                     <exclude reference="Mgi-FW-LOQ"/>
                                                     <exclude reference="U8a-rv-YaT"/>
                                                     <exclude reference="VCO-1x-tEd"/>
+                                                    <exclude reference="7IN-Pt-XEs"/>
+                                                    <exclude reference="W6a-lS-9B5"/>
                                                     <exclude reference="4D4-kg-NON"/>
                                                     <exclude reference="BDw-fn-Mhk"/>
                                                     <exclude reference="Hog-Yh-Q5z"/>
@@ -219,8 +221,6 @@
                                                     <exclude reference="gOF-Hd-DPn"/>
                                                     <exclude reference="sss-1F-1Sv"/>
                                                     <exclude reference="zMi-7I-V1x"/>
-                                                    <exclude reference="7IN-Pt-XEs"/>
-                                                    <exclude reference="W6a-lS-9B5"/>
                                                     <exclude reference="AI2-RL-qlM"/>
                                                     <exclude reference="KlB-yG-kcG"/>
                                                     <exclude reference="UVU-6x-pZm"/>
@@ -240,7 +240,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" indentationWidth="10" reuseIdentifier="siteAVTableViewCell" rowHeight="40" id="3Qu-3N-CvM" userLabel="SiteAV Table View Cell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" indentationWidth="10" reuseIdentifier="siteListTableViewCell" rowHeight="40" id="3Qu-3N-CvM" userLabel="Site List Table View Cell">
                                         <rect key="frame" x="0.0" y="68" width="600" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Qu-3N-CvM" id="1Y8-3a-HOo">
@@ -293,7 +293,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7yA-TB-wAL">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7yA-TB-wAL" userLabel="Seperator">
                                                     <rect key="frame" x="8" y="39" width="584" height="1"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <constraints>
@@ -400,31 +400,12 @@
                         <outlet property="btnLogoff" destination="Mgz-Pp-KWJ" id="CCo-f3-DKp"/>
                         <outlet property="btnSort" destination="Xex-CD-Fay" id="XJ4-mT-eyT"/>
                         <outlet property="lbTitle" destination="dJy-8I-kkx" id="DNX-uf-XvT"/>
-                        <outlet property="tvSiteAV" destination="1H9-wV-UvR" id="Ln3-K1-9ry"/>
+                        <outlet property="tvSiteList" destination="1H9-wV-UvR" id="9dc-zc-nJd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SE-5K-Mfi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="377" y="-53"/>
-        </scene>
-        <!--RealtimeData-->
-        <scene sceneID="iyk-15-3L0">
-            <objects>
-                <viewController storyboardIdentifier="realtimeDataList" id="jlz-9h-rXJ" customClass="AdminUserRealtimeDataListViewController" customModule="HsinchuIOT" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="BiW-42-wtx"/>
-                        <viewControllerLayoutGuide type="bottom" id="9mc-Qv-6Nv"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="0ew-I5-dab">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="RealtimeData" id="pJ2-ZO-rMa"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gar-I9-Jbm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="505.5" y="663"/>
         </scene>
         <!--Admin User Home View Controller-->
         <scene sceneID="JqC-TW-rDi">
@@ -437,7 +418,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="Pp8-ND-1AI" kind="relationship" relationship="viewControllers" id="Q5r-m9-Sh5"/>
-                        <segue destination="jlz-9h-rXJ" kind="relationship" relationship="viewControllers" id="FEa-gE-zTu"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hX-26-Fok" userLabel="First Responder" sceneMemberID="firstResponder"/>

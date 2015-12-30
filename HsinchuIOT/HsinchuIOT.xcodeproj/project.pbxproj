@@ -31,8 +31,7 @@
 		C1CF148C1C2C2086000E70F3 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF148B1C2C2086000E70F3 /* SessionManager.swift */; };
 		C1CF148E1C2C76EF000E70F3 /* AdminUserHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF148D1C2C76EF000E70F3 /* AdminUserHomeViewController.swift */; };
 		C1CF14901C2C7A3F000E70F3 /* NormalUserHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF148F1C2C7A3F000E70F3 /* NormalUserHomeViewController.swift */; };
-		C1CF14931C2D0B84000E70F3 /* AdminUserAverageValueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF14921C2D0B84000E70F3 /* AdminUserAverageValueListViewController.swift */; };
-		C1CF14951C2D0BD4000E70F3 /* AdminUserRealtimeDataListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF14941C2D0BD4000E70F3 /* AdminUserRealtimeDataListViewController.swift */; };
+		C1CF14931C2D0B84000E70F3 /* AdminUserSiteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF14921C2D0B84000E70F3 /* AdminUserSiteListViewController.swift */; };
 		C1D754811C21B6DB0038C085 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754801C21B6DB0038C085 /* UIColorExtension.swift */; };
 		C1D754831C230CC80038C085 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754821C230CC80038C085 /* LanguageManager.swift */; };
 		C1D754881C247B330038C085 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754871C247B330038C085 /* AppConfig.swift */; };
@@ -94,8 +93,7 @@
 		C1CF148B1C2C2086000E70F3 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = "../../../HsinchuIOT-IOS-back/HsinchuIOT/HsinchuIOT/SessionManager.swift"; sourceTree = "<group>"; };
 		C1CF148D1C2C76EF000E70F3 /* AdminUserHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdminUserHomeViewController.swift; path = "../../../HsinchuIOT-IOS-back/HsinchuIOT/HsinchuIOT/AdminUserHomeViewController.swift"; sourceTree = "<group>"; };
 		C1CF148F1C2C7A3F000E70F3 /* NormalUserHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NormalUserHomeViewController.swift; path = "../../../HsinchuIOT-IOS-back/HsinchuIOT/HsinchuIOT/NormalUserHomeViewController.swift"; sourceTree = "<group>"; };
-		C1CF14921C2D0B84000E70F3 /* AdminUserAverageValueListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdminUserAverageValueListViewController.swift; path = "../../../HsinchuIOT-IOS-back/HsinchuIOT/HsinchuIOT/AdminUserAverageValueListViewController.swift"; sourceTree = "<group>"; };
-		C1CF14941C2D0BD4000E70F3 /* AdminUserRealtimeDataListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdminUserRealtimeDataListViewController.swift; path = "../../../HsinchuIOT-IOS-back/HsinchuIOT/HsinchuIOT/AdminUserRealtimeDataListViewController.swift"; sourceTree = "<group>"; };
+		C1CF14921C2D0B84000E70F3 /* AdminUserSiteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdminUserSiteListViewController.swift; path = "../../../HsinchuIOT-IOS-back/HsinchuIOT/HsinchuIOT/AdminUserSiteListViewController.swift"; sourceTree = "<group>"; };
 		C1D754801C21B6DB0038C085 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		C1D754821C230CC80038C085 /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		C1D754861C2322BA0038C085 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -215,8 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				C1CF148D1C2C76EF000E70F3 /* AdminUserHomeViewController.swift */,
-				C1CF14921C2D0B84000E70F3 /* AdminUserAverageValueListViewController.swift */,
-				C1CF14941C2D0BD4000E70F3 /* AdminUserRealtimeDataListViewController.swift */,
+				C1CF14921C2D0B84000E70F3 /* AdminUserSiteListViewController.swift */,
 			);
 			name = adminuser;
 			sourceTree = "<group>";
@@ -482,10 +479,9 @@
 				C1CF148E1C2C76EF000E70F3 /* AdminUserHomeViewController.swift in Sources */,
 				C1D7548A1C24F96C0038C085 /* IOTServerProtocol.swift in Sources */,
 				C1589A0A1C2F8CD5007F81B9 /* Site.swift in Sources */,
-				C1CF14951C2D0BD4000E70F3 /* AdminUserRealtimeDataListViewController.swift in Sources */,
 				C1589A101C2F99A9007F81B9 /* IOTMonitorData.swift in Sources */,
 				C1CF144E1C27B40C000E70F3 /* User.swift in Sources */,
-				C1CF14931C2D0B84000E70F3 /* AdminUserAverageValueListViewController.swift in Sources */,
+				C1CF14931C2D0B84000E70F3 /* AdminUserSiteListViewController.swift in Sources */,
 				C118BB201C1606FD00CC7D81 /* AppDelegate.swift in Sources */,
 				C132F9491C32E0E500B9CE51 /* MockServer.swift in Sources */,
 				C118BB511C16153600CC7D81 /* LauchScreenViewController.swift in Sources */,

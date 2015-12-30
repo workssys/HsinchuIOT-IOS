@@ -230,7 +230,11 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, UIAlertViewD
             }else if user.isNormalUser() {
                 controller.gotoNormalUserScreen()
             }else{
-                controller.showError(IOTError(errorCode: IOTError.UserPermissionWrongError, errorGroup: "Client"))
+                if AppConfig.TEST {
+                    controller.gotoAdminUserScreen()
+                }else{
+                    controller.showError(IOTError(errorCode: IOTError.UserPermissionWrongError, errorGroup: "Client"))
+                }
             }
         }
     }
@@ -256,10 +260,10 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, UIAlertViewD
         let tabVC = storyboard.instantiateViewControllerWithIdentifier("adminUserHome") as! AdminUserHomeViewController
         
         //setup tab average value
-        let avListVC = storyboard.instantiateViewControllerWithIdentifier("averageValueList") as! AdminUserAverageValueListViewController
+        let avListVC = storyboard.instantiateViewControllerWithIdentifier("siteList") as! AdminUserSiteListViewController
+        avListVC.dataLoader = AverageValueLoader()
         
         avListVC.tabBarItem.title = getString(StringKey.ADMINUSER_TAB_AVERAGEVALUE)
-        
         
         avListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: UIControlState.Highlighted)
         avListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Normal)
@@ -270,7 +274,9 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, UIAlertViewD
         avListVC.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -14)
         
         
-        let rdListVC = storyboard.instantiateViewControllerWithIdentifier("realtimeDataList") as! AdminUserRealtimeDataListViewController
+        let rdListVC = storyboard.instantiateViewControllerWithIdentifier("siteList") as! AdminUserSiteListViewController
+        
+        rdListVC.dataLoader = RealtimeDataLoader()
         
         rdListVC.tabBarItem.title = getString(StringKey.ADMINUSER_TAB_REALTIMEDATA)
         

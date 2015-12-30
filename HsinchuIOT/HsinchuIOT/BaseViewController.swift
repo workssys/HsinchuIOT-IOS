@@ -23,9 +23,7 @@ class BaseViewController: UIViewController {
         waitingBar?.hide(true)
     }
     
-    func refreshData(){
-    }
-    
+
     func showError(error: IOTError){
         hideWaitingBar()
         showErrorMsg(error.errorMsg!)

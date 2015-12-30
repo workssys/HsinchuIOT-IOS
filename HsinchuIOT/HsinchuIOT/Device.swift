@@ -15,8 +15,13 @@ struct Device {
     
     var siteName: String{
         if let domain = adminDomain{
-            if let lastIndex = domain.lastIndexOf(":"){
-                return (domain as NSString).substringFromIndex(lastIndex + 1)
+            if let lastIndex = domain.lastIndexOf("."){
+                let str = (domain as NSString).substringToIndex(lastIndex)
+                if let lastIndex2 = str.lastIndexOf("."){
+                    return (str as NSString).substringFromIndex(lastIndex2 + 1)
+                }else{
+                    return str
+                }
             }else{
                 return domain
             }
