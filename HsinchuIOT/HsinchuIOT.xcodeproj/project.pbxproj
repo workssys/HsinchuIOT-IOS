@@ -19,6 +19,12 @@
 		C11D3B641C17611400E8F65D /* NormalUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C11D3B631C17611400E8F65D /* NormalUser.storyboard */; };
 		C11D3B661C1762F100E8F65D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11D3B651C1762F100E8F65D /* Constants.swift */; };
 		C132F9491C32E0E500B9CE51 /* MockServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F9481C32E0E400B9CE51 /* MockServer.swift */; };
+		C132F94F1C369E4D00B9CE51 /* SiteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F94E1C369E4D00B9CE51 /* SiteDetailViewController.swift */; };
+		C132F9511C36FBBB00B9CE51 /* IOTSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F9501C36FBBB00B9CE51 /* IOTSampleData.swift */; };
+		C132F9571C3C32E900B9CE51 /* ReportUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F9561C3C32E900B9CE51 /* ReportUtil.swift */; };
+		C132F95A1C3EE65100B9CE51 /* LegendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F9591C3EE65100B9CE51 /* LegendView.swift */; };
+		C132F95C1C418E0000B9CE51 /* ChartPointPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F95B1C418E0000B9CE51 /* ChartPointPopupView.swift */; };
+		C132F95E1C42C02800B9CE51 /* IOTChartAxisValueDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F95D1C42C02800B9CE51 /* IOTChartAxisValueDate.swift */; };
 		C1343BBC1C2DBF1B000C7889 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1343BBB1C2DBF1B000C7889 /* Icons.xcassets */; };
 		C13889B01C1A877100543F44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13889B21C1A877100543F44 /* Localizable.strings */; };
 		C1589A0A1C2F8CD5007F81B9 /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1589A091C2F8CD5007F81B9 /* Site.swift */; };
@@ -79,6 +85,12 @@
 		C11D3B651C1762F100E8F65D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C11D3B681C17EF3B00E8F65D /* HsinchuIOT-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HsinchuIOT-Bridging-Header.h"; sourceTree = "<group>"; };
 		C132F9481C32E0E400B9CE51 /* MockServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockServer.swift; sourceTree = "<group>"; };
+		C132F94E1C369E4D00B9CE51 /* SiteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteDetailViewController.swift; sourceTree = "<group>"; };
+		C132F9501C36FBBB00B9CE51 /* IOTSampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOTSampleData.swift; sourceTree = "<group>"; };
+		C132F9561C3C32E900B9CE51 /* ReportUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportUtil.swift; sourceTree = "<group>"; };
+		C132F9591C3EE65100B9CE51 /* LegendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegendView.swift; sourceTree = "<group>"; };
+		C132F95B1C418E0000B9CE51 /* ChartPointPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPointPopupView.swift; sourceTree = "<group>"; };
+		C132F95D1C42C02800B9CE51 /* IOTChartAxisValueDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOTChartAxisValueDate.swift; sourceTree = "<group>"; };
 		C1343BBB1C2DBF1B000C7889 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		C13889B11C1A877100543F44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C13889B51C1A87FA00543F44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -166,6 +178,7 @@
 		C118BB1E1C1606FD00CC7D81 /* HsinchuIOT */ = {
 			isa = PBXGroup;
 			children = (
+				C132F9581C3EE62C00B9CE51 /* ui */,
 				C1D754911C24FF910038C085 /* storyboard */,
 				C1D754901C24FF770038C085 /* server */,
 				C1D7548F1C24FF600038C085 /* util */,
@@ -199,6 +212,16 @@
 			path = HsinchuIOTUITests;
 			sourceTree = "<group>";
 		};
+		C132F9581C3EE62C00B9CE51 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				C132F9591C3EE65100B9CE51 /* LegendView.swift */,
+				C132F95B1C418E0000B9CE51 /* ChartPointPopupView.swift */,
+				C132F95D1C42C02800B9CE51 /* IOTChartAxisValueDate.swift */,
+			);
+			name = ui;
+			sourceTree = "<group>";
+		};
 		C13889AA1C1A6A5500543F44 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +249,7 @@
 				C118BB501C16153600CC7D81 /* LauchScreenViewController.swift */,
 				C16EE3161C19F83100726659 /* LoginViewController.swift */,
 				C1CF148F1C2C7A3F000E70F3 /* NormalUserHomeViewController.swift */,
+				C132F94E1C369E4D00B9CE51 /* SiteDetailViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -239,6 +263,7 @@
 				C1589A091C2F8CD5007F81B9 /* Site.swift */,
 				C1589A0B1C2F8D82007F81B9 /* Device.swift */,
 				C1589A0F1C2F99A9007F81B9 /* IOTMonitorData.swift */,
+				C132F9501C36FBBB00B9CE51 /* IOTSampleData.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -251,6 +276,7 @@
 				C1CF144F1C29DAE7000E70F3 /* PreferenceManager.swift */,
 				C1CF148B1C2C2086000E70F3 /* SessionManager.swift */,
 				C1589A0D1C2F94AC007F81B9 /* StringExtension.swift */,
+				C132F9561C3C32E900B9CE51 /* ReportUtil.swift */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -473,6 +499,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C118BB221C1606FD00CC7D81 /* BaseViewController.swift in Sources */,
+				C132F95E1C42C02800B9CE51 /* IOTChartAxisValueDate.swift in Sources */,
+				C132F95A1C3EE65100B9CE51 /* LegendView.swift in Sources */,
 				C1D754881C247B330038C085 /* AppConfig.swift in Sources */,
 				C1D754831C230CC80038C085 /* LanguageManager.swift in Sources */,
 				C1D754931C25020C0038C085 /* IOTError.swift in Sources */,
@@ -485,16 +513,20 @@
 				C118BB201C1606FD00CC7D81 /* AppDelegate.swift in Sources */,
 				C132F9491C32E0E500B9CE51 /* MockServer.swift in Sources */,
 				C118BB511C16153600CC7D81 /* LauchScreenViewController.swift in Sources */,
+				C132F9571C3C32E900B9CE51 /* ReportUtil.swift in Sources */,
 				C1589A0C1C2F8D82007F81B9 /* Device.swift in Sources */,
 				C1CF148C1C2C2086000E70F3 /* SessionManager.swift in Sources */,
 				C1D7548C1C24FC690038C085 /* AFHTTPIOTServer.swift in Sources */,
+				C132F94F1C369E4D00B9CE51 /* SiteDetailViewController.swift in Sources */,
 				C1CF14501C29DAE7000E70F3 /* PreferenceManager.swift in Sources */,
 				C1D754951C2503860038C085 /* Session.swift in Sources */,
 				C16EE3171C19F83100726659 /* LoginViewController.swift in Sources */,
 				C11D3B661C1762F100E8F65D /* Constants.swift in Sources */,
+				C132F9511C36FBBB00B9CE51 /* IOTSampleData.swift in Sources */,
 				C1CF14901C2C7A3F000E70F3 /* NormalUserHomeViewController.swift in Sources */,
 				C1589A0E1C2F94AC007F81B9 /* StringExtension.swift in Sources */,
 				C1D754811C21B6DB0038C085 /* UIColorExtension.swift in Sources */,
+				C132F95C1C418E0000B9CE51 /* ChartPointPopupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

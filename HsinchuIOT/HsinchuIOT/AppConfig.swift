@@ -13,6 +13,6 @@ struct AppConfig{
     static let DOMAIN = "hsinchu.enable.mobi"
     static let PORT = 80
  
-    static let TEST = true
+    static let TEST = false
     
 }

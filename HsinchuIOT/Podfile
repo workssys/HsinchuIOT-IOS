@@ -9,3 +9,4 @@ pod 'MBProgressHUD', '~> 0.9.2'
 pod 'ADDropDownMenuView', '~> 1.0.0'
 pod 'KxMenu'
 pod 'CryptoSwift', :git => "https://github.com/krzyzanowskim/CryptoSwift", :branch => "master"
+pod 'SwiftCharts', '~> 0.3'

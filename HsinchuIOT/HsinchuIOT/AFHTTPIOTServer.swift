@@ -34,12 +34,26 @@ class AFHTTPIOTServer: IOTServerProtocol{
         }
     }
     
+    var xmlManager: AFHTTPRequestOperationManager!
+    
+    var jsonManager: AFHTTPRequestOperationManager!
+    
+    init(){
+        xmlManager = AFHTTPRequestOperationManager()
+        xmlManager.responseSerializer = AFXMLDictionaryResponseSerializer()
+        
+        jsonManager = AFHTTPRequestOperationManager()
+        jsonManager.responseSerializer = AFJSONResponseSerializer()
+    }
+    
+    func cancelAllRequests(){
+        xmlManager.operationQueue.cancelAllOperations()
+        jsonManager.operationQueue.cancelAllOperations()
+    }
     
     func getSessionID(onSucceed: ((Session) -> ())?, onFailed: ((IOTError) -> ())?) {
         let url = serverAddress + ServerAPIURI.GET_SESSION_ID
-        var manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer = AFXMLDictionaryResponseSerializer()
-        manager.GET(
+        xmlManager.GET(
             url,
             parameters: ["dataType": "xml"],
             success: { (operation, response) -> Void in
@@ -83,9 +97,7 @@ class AFHTTPIOTServer: IOTServerProtocol{
            
             let parameters = ["dataType": "xml", "__session_id": sessionID, "username": loginName, "mangled_password": mangledPWD, "lang": "zh-cn", "timezone": "-480"]
             
-            var manager = AFHTTPRequestOperationManager()
-            manager.responseSerializer  = AFXMLDictionaryResponseSerializer()
-            manager.POST(
+            xmlManager.POST(
                 url,
                 parameters: parameters,
                 success: {(operation, response) -> Void in
@@ -133,13 +145,11 @@ class AFHTTPIOTServer: IOTServerProtocol{
         let url = serverAddress + ServerAPIURI.GET_SITE_LIST_WITH_AGGREGATION_DATA
         let parameters = ["dataType": "json", "__session_id": sessionID]
             
-        var manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer  = AFJSONResponseSerializer()
-        manager.GET(
+        jsonManager.GET(
             url,
             parameters: parameters,
             success: { (operation, response) -> Void in
-                print(response)
+                //print(response)
                 
                 var symbol: String
                 if AppConfig.TEST {
@@ -212,13 +222,11 @@ class AFHTTPIOTServer: IOTServerProtocol{
             "__page_size": "1000",
             "__sort": "-id"]
         
-        var manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer  = AFXMLDictionaryResponseSerializer()
-        manager.GET(
+        xmlManager.GET(
             url,
             parameters: parameters,
             success: { (operation, response) -> Void in
-                print(response)
+                //print(response)
                 var error: IOTError? = IOTError(errorCode: IOTError.InvalidMessageError, errorGroup: "GetDeviceList")
                 
                 if let responseName = response.valueForKey?("__name") as? String{
@@ -261,7 +269,7 @@ class AFHTTPIOTServer: IOTServerProtocol{
                 
             },
             failure: { (operation, error) -> Void in
-                onFailed?(error.error("getSiteListWithAggrData"))
+                onFailed?(error.error("GetDeviceList"))
         })
 
         
@@ -286,13 +294,13 @@ class AFHTTPIOTServer: IOTServerProtocol{
             parameters.updateValue(deviceList[i].deviceID, forKey: "did[\(i)]")
         }
         
-        var manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer  = AFXMLDictionaryResponseSerializer()
-        manager.GET(
+        
+        
+        xmlManager.GET(
             url,
             parameters: parameters,
             success: { (operation, response) -> Void in
-                print(response)
+                //print(response)
                 var error: IOTError? = IOTError(errorCode: IOTError.InvalidMessageError, errorGroup: "getMultipleDevicesRealtimeData")
                 
                 if let responseName = response.valueForKey?("__name") as? String{
@@ -348,9 +356,741 @@ class AFHTTPIOTServer: IOTServerProtocol{
                 
             },
             failure: { (operation, error) -> Void in
-                onFailed?(error.error("getSiteListWithAggrData"))
+                onFailed?(error.error("getMultipleDevicesRealtimeData"))
         })
 
         
+    }
+    
+    func getDeviceRealtimeData(sessionID: String, deviceID: String, onSucceed: ((IOTMonitorData?) -> ())?, onFailed: ((IOTError) -> ())?) {
+        //print("sending request for device:\(deviceID))")
+        
+        let url = serverAddress + ServerAPIURI.GET_DEVICE_REALTIME_DATA
+        
+        var parameters = [
+            "dataType": "xml",
+            "__session_id": sessionID,
+            "__page_no": "1",
+            "__column": "did,sensor,name,value,t",
+            "__having_max": "id",
+            "__group_by": "did,name",
+            "__sort": "-id",
+            "did[0]": deviceID ]
+        
+        xmlManager.GET(
+            url,
+            parameters: parameters,
+            success: { (operation, response) -> Void in
+                //print(response)
+                //print("get response for device:\(deviceID))")
+                var error: IOTError? = IOTError(errorCode: IOTError.InvalidMessageError, errorGroup: "getDeviceRealtimeData")
+                
+                if let responseName = response.valueForKey?("__name") as? String{
+                    if responseName == "NBIResponse" {
+                        if let dataDictList = response.valueForKey?("Items")?.valueForKey?("Item") as? [AnyObject] {
+                            var data: IOTMonitorData? = nil
+                            
+                            for dataDict in dataDictList {
+                                if data == nil {
+                                    data = IOTMonitorData()
+                                }
+                                if let name = dataDict.valueForKey?("name") as? String {
+                                    if name == AFHTTPIOTServer.NAME_CO2 {
+                                        if let value = dataDict.valueForKey?("value") as? String {
+                                            data!.co2 = Float(value)
+                                        }
+                                    }else if name == AFHTTPIOTServer.NAME_TEMPERATURE || name == AFHTTPIOTServer.NAME_TEMPERATURE_FULL {
+                                        if let value = dataDict.valueForKey?("value") as? String {
+                                            data!.temperature = Float(value)
+                                        }
+                                    }else if name == AFHTTPIOTServer.NAME_HUMIDITY {
+                                        if let value = dataDict.valueForKey?("value") as? String {
+                                            data!.humidity = Float(value)
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            error = nil
+                            onSucceed?(data)
+                        }
+                    }else if responseName == "NBIError" {
+                        if let errorCodeStr = response.valueForKey?("Code") as? String{
+                            if let errorCode = Int(errorCodeStr){
+                                if let errorMsg = response.valueForKey?("String") as? String{
+                                    error = IOTError(errorCode: errorCode, errorMsg: errorMsg, errorGroup: "getDeviceRealtimeData")
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if error != nil{
+                    onFailed?(error!)
+                }
+                
+                
+            },
+            failure: { (operation, error) -> Void in
+                onFailed?(error.error("getDeviceRealtimeData"))
+                
+        })
+        
+        //print("sended request for device:\(deviceID))")
+
+    }
+    
+    func getDeviceRealtimeDataList(sessionID: String, deviceID: String, recordNumber: Int, onSucceed: (([IOTSampleData]) -> ())?, onFailed: ((IOTError) -> ())?) {
+        
+        let url = serverAddress + ServerAPIURI.GET_DEVICE_REALTIME_DATA_LIST
+        
+        var parameters = [
+            "dataType": "xml",
+            "__session_id": sessionID,
+            "__page_no": "1",
+            "__column": "name,value,t",
+            "__page_size": "\(recordNumber)",
+            "__group_by": "did,name",
+            "__sort": "-id",
+            "did[0]": deviceID ]
+        
+        xmlManager.GET(
+            url,
+            parameters: parameters,
+            success: { (operation, response) -> Void in
+                //print(response)
+                //print("get response for device:\(deviceID))")
+                var error: IOTError? = IOTError(errorCode: IOTError.InvalidMessageError, errorGroup: "getDeviceRealtimeDataList")
+                
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                
+                
+                if let responseName = response.valueForKey?("__name") as? String{
+                    if responseName == "NBIResponse" {
+                        if let dataDictList = response.valueForKey?("Items")?.valueForKey?("Item") as? [AnyObject] {
+                            var result: [IOTSampleData] = []
+                            
+                            for dataDict in dataDictList {
+                                if let name = dataDict.valueForKey?("name") as? String {
+                                    var data = IOTSampleData()
+                                    
+                                    if name == AFHTTPIOTServer.NAME_CO2 {
+                                        data.type = IOTSampleData.SampleType.CO2
+                                    }else if name == AFHTTPIOTServer.NAME_TEMPERATURE || name == AFHTTPIOTServer.NAME_TEMPERATURE_FULL {
+                                        data.type = IOTSampleData.SampleType.Temperature
+                                    }else if name == AFHTTPIOTServer.NAME_HUMIDITY {
+                                        data.type = IOTSampleData.SampleType.Humidity
+                                    }
+                                    
+                                    if let value = dataDict.valueForKey?("value") as? String {
+                                        data.value = Float(value)
+                                    }
+                                    
+                                    if let time = dataDict.valueForKey?("t") as? String {
+                                        data.time = formatter.dateFromString(time)
+                                    }
+                                    result.append(data)
+                                }
+                            }
+                            
+                            error = nil
+                            onSucceed?(result)
+                        }
+                    }else if responseName == "NBIError" {
+                        if let errorCodeStr = response.valueForKey?("Code") as? String{
+                            if let errorCode = Int(errorCodeStr){
+                                if let errorMsg = response.valueForKey?("String") as? String{
+                                    error = IOTError(errorCode: errorCode, errorMsg: errorMsg, errorGroup: "getDeviceRealtimeDataList")
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if error != nil{
+                    onFailed?(error!)
+                }
+                
+                
+            },
+            failure: { (operation, error) -> Void in
+                onFailed?(error.error("getDeviceRealtimeDataList"))
+                
+        })
+        
+    }
+    
+    func getDeviceAggregationDataListBy15Seconds(sessionID: String, deviceID: String, from: NSDate, to: NSDate, onSucceed: (([IOTSampleData]) -> ())?, onFailed: ((IOTError) -> ())?) {
+        let url = serverAddress + ServerAPIURI.GET_DEVICE_AGGREGATION_DATA_LIST_BY_15S
+        
+        var parameters = [
+            "dataType": "xml",
+            "__session_id": sessionID,
+            "__page_no": "1",
+            "__column": "name,value,t",
+            "__group_by": "did,name",
+            "__sort": "-id",
+            "did[0]": deviceID,
+            "t__from": ReportUtil.getServerTimeString(from),
+            "t__to": ReportUtil.getServerTimeString(to)
+        ]
+        
+       xmlManager.GET(
+            url,
+            parameters: parameters,
+            success: { (operation, response) -> Void in
+                //print(response)
+                //print("get response for device:\(deviceID))")
+                var error: IOTError? = IOTError(errorCode: IOTError.InvalidMessageError, errorGroup: "getDeviceAggregationDataListBy15Seconds")
+                
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                
+                
+                if let responseName = response.valueForKey?("__name") as? String{
+                    if responseName == "NBIResponse" {
+                        if let dataDictList = response.valueForKey?("Items")?.valueForKey?("Item") as? [AnyObject] {
+                            var result: [IOTSampleData] = []
+                            
+                            for dataDict in dataDictList {
+                                if let name = dataDict.valueForKey?("name") as? String {
+                                    var data = IOTSampleData()
+                                    
+                                    if name == AFHTTPIOTServer.NAME_CO2 {
+                                        data.type = IOTSampleData.SampleType.CO2
+                                    }else if name == AFHTTPIOTServer.NAME_TEMPERATURE || name == AFHTTPIOTServer.NAME_TEMPERATURE_FULL {
+                                        data.type = IOTSampleData.SampleType.Temperature
+                                    }else if name == AFHTTPIOTServer.NAME_HUMIDITY {
+                                        data.type = IOTSampleData.SampleType.Humidity
+                                    }
+                                    
+                                    if let value = dataDict.valueForKey?("value") as? String {
+                                        data.value = Float(value)
+                                    }
+                                    
+                                    if let time = dataDict.valueForKey?("t") as? String {
+                                        data.time = formatter.dateFromString(time)
+                                    }
+                                    result.append(data)
+                                }
+                            }
+                            
+                            error = nil
+                            onSucceed?(result)
+                        }
+                    }else if responseName == "NBIError" {
+                        if let errorCodeStr = response.valueForKey?("Code") as? String{
+                            if let errorCode = Int(errorCodeStr){
+                                if let errorMsg = response.valueForKey?("String") as? String{
+                                    error = IOTError(errorCode: errorCode, errorMsg: errorMsg, errorGroup: "getDeviceAggregationDataListBy15Seconds")
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if error != nil{
+                    onFailed?(error!)
+                }
+                
+                
+            },
+            failure: { (operation, error) -> Void in
+                onFailed?(error.error("getDeviceAggregationDataListBy15Seconds"))
+                
+        })
+    }
+    
+    func getDeviceAggregationDataListBy1Quarter(sessionID: String, deviceID: String, from: NSDate, to: NSDate, onSucceed: (([IOTSampleData]) -> ())?, onFailed: ((IOTError) -> ())?) {
+        let url = serverAddress + ServerAPIURI.GET_DEVICE_AGGREGATION_DATA_LIST_BY_1Q
+        
+        var parameters = [
+            "dataType": "xml",
+            "__session_id": sessionID,
+            "__page_no": "1",
+            "__page_size": "10000",
+            "__column": "did,name,value,quarter_in_epoch",
+            "__group_by": "did,name,quarter_in_epoch",
+            "__sort": "-id",
+            "did[0]": deviceID,
+            "quarter_in_epoch__from": ReportUtil.getServerTimeString(from),
+            "quarter_in_epoch__to": ReportUtil.getServerTimeString(to)
+        ]
+        
+        xmlManager.GET(
+            url,
+            parameters: parameters,
+            success: { (operation, response) -> Void in
+                //print(response)
+                //print("get response for device:\(deviceID))")
+                var error: IOTError? = IOTError(errorCode: IOTError.InvalidMessageError, errorGroup: "getDeviceAggregationDataListBy1Quarter")
+                
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                
+                
+                if let responseName = response.valueForKey?("__name") as? String{
+                    if responseName == "NBIResponse" {
+                        if let dataDictList = response.valueForKey?("Items")?.valueForKey?("Item") as? [AnyObject] {
+                            var result: [IOTSampleData] = []
+                            
+                            for dataDict in dataDictList {
+                                if let name = dataDict.valueForKey?("name") as? String {
+                                    var data = IOTSampleData()
+                                    
+                                    if name == AFHTTPIOTServer.NAME_CO2 {
+                                        data.type = IOTSampleData.SampleType.CO2
+                                    }else if name == AFHTTPIOTServer.NAME_TEMPERATURE || name == AFHTTPIOTServer.NAME_TEMPERATURE_FULL {
+                                        data.type = IOTSampleData.SampleType.Temperature
+                                    }else if name == AFHTTPIOTServer.NAME_HUMIDITY {
+                                        data.type = IOTSampleData.SampleType.Humidity
+                                    }
+                                    
+                                    if let value = dataDict.valueForKey?("value") as? String {
+                                        data.value = Float(value)
+                                    }
+                                    
+                                    if let time = dataDict.valueForKey?("quarter_in_epoch") as? String {
+                                        data.time = formatter.dateFromString(time)
+                                    }
+                                    result.append(data)
+                                }
+                            }
+                            
+                            error = nil
+                            onSucceed?(result)
+                        }
+                    }else if responseName == "NBIError" {
+                        if let errorCodeStr = response.valueForKey?("Code") as? String{
+                            if let errorCode = Int(errorCodeStr){
+                                if let errorMsg = response.valueForKey?("String") as? String{
+                                    error = IOTError(errorCode: errorCode, errorMsg: errorMsg, errorGroup: "getDeviceAggregationDataListBy1Quarter")
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if error != nil{
+                    onFailed?(error!)
+                }
+                
+                
+            },
+            failure: { (operation, error) -> Void in
+                onFailed?(error.error("getDeviceAggregationDataListBy1Quarter"))
+                
+        })
+    }
+    
+    func getDeviceAggregationDataListBy1Hour(sessionID: String, deviceID: String, from: NSDate, to: NSDate, onSucceed: (([IOTSampleData]) -> ())?, onFailed: ((IOTError) -> ())?) {
+        let url = serverAddress + ServerAPIURI.GET_DEVICE_AGGREGATION_DATA_LIST_BY_1H
+        
+        var parameters = [
+            "dataType": "xml",
+            "__session_id": sessionID,
+            "__page_no": "1",
+            "__page_size": "10000",
+            "__column": "did,name,value,hour_in_epoch",
+            "__group_by": "did,name,hour_in_epoch",
+            "__sort": "-id",
+            "did[0]": deviceID,
+            "hour_in_epoch__from": ReportUtil.getServerTimeString(from),
+            "hour_in_epoch__to": ReportUtil.getServerTimeString(to)
+        ]
+        
+        xmlManager.GET(
+            url,
+            parameters: parameters,
+            success: { (operation, response) -> Void in
+                //print(response)
+                //print("get response for device:\(deviceID))")
+                var error: IOTError? = IOTError(errorCode: IOTError.InvalidMessageError, errorGroup: "getDeviceAggregationDataListBy1Hour")
+                
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                
+                
+                if let responseName = response.valueForKey?("__name") as? String{
+                    if responseName == "NBIResponse" {
+                        if let dataDictList = response.valueForKey?("Items")?.valueForKey?("Item") as? [AnyObject] {
+                            var result: [IOTSampleData] = []
+                            
+                            for dataDict in dataDictList {
+                                if let name = dataDict.valueForKey?("name") as? String {
+                                    var data = IOTSampleData()
+                                    
+                                    if name == AFHTTPIOTServer.NAME_CO2 {
+                                        data.type = IOTSampleData.SampleType.CO2
+                                    }else if name == AFHTTPIOTServer.NAME_TEMPERATURE || name == AFHTTPIOTServer.NAME_TEMPERATURE_FULL {
+                                        data.type = IOTSampleData.SampleType.Temperature
+                                    }else if name == AFHTTPIOTServer.NAME_HUMIDITY {
+                                        data.type = IOTSampleData.SampleType.Humidity
+                                    }
+                                    
+                                    if let value = dataDict.valueForKey?("value") as? String {
+                                        data.value = Float(value)
+                                    }
+                                    
+                                    if let time = dataDict.valueForKey?("hour_in_epoch") as? String {
+                                        data.time = formatter.dateFromString(time)
+                                    }
+                                    result.append(data)
+                                }
+                            }
+                            
+                            error = nil
+                            onSucceed?(result)
+                        }
+                    }else if responseName == "NBIError" {
+                        if let errorCodeStr = response.valueForKey?("Code") as? String{
+                            if let errorCode = Int(errorCodeStr){
+                                if let errorMsg = response.valueForKey?("String") as? String{
+                                    error = IOTError(errorCode: errorCode, errorMsg: errorMsg, errorGroup: "getDeviceAggregationDataListBy1Hour")
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if error != nil{
+                    onFailed?(error!)
+                }
+                
+                
+            },
+            failure: { (operation, error) -> Void in
+                onFailed?(error.error("getDeviceAggregationDataListBy1Hour"))
+                
+        })
+    }
+    
+    
+    func getDeviceAggregationDataListBy8Hours(sessionID: String, deviceID: String, from: NSDate, to: NSDate, onSucceed: (([IOTSampleData]) -> ())?, onFailed: ((IOTError) -> ())?) {
+        let url = serverAddress + ServerAPIURI.GET_DEVICE_AGGREGATION_DATA_LIST_BY_8H
+        
+        var parameters = [
+            "dataType": "xml",
+            "__session_id": sessionID,
+            "__page_no": "1",
+            "__page_size": "10000",
+            "__column": "did,name,value,hours_in_epoch",
+            "__group_by": "did,name,hours_in_epoch",
+            "__sort": "-id",
+            "did[0]": deviceID,
+            "hours_in_epoch__from": ReportUtil.getServerTimeString(from),
+            "hours_in_epoch__to": ReportUtil.getServerTimeString(to)
+        ]
+        xmlManager.GET(
+            url,
+            parameters: parameters,
+            success: { (operation, response) -> Void in
+                //print(response)
+                //print("get response for device:\(deviceID))")
+                var error: IOTError? = IOTError(errorCode: IOTError.InvalidMessageError, errorGroup: "getDeviceAggregationDataListBy8Hours")
+                
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                
+                
+                if let responseName = response.valueForKey?("__name") as? String{
+                    if responseName == "NBIResponse" {
+                        if let dataDictList = response.valueForKey?("Items")?.valueForKey?("Item") as? [AnyObject] {
+                            var result: [IOTSampleData] = []
+                            
+                            for dataDict in dataDictList {
+                                if let name = dataDict.valueForKey?("name") as? String {
+                                    var data = IOTSampleData()
+                                    
+                                    if name == AFHTTPIOTServer.NAME_CO2 {
+                                        data.type = IOTSampleData.SampleType.CO2
+                                    }else if name == AFHTTPIOTServer.NAME_TEMPERATURE || name == AFHTTPIOTServer.NAME_TEMPERATURE_FULL {
+                                        data.type = IOTSampleData.SampleType.Temperature
+                                    }else if name == AFHTTPIOTServer.NAME_HUMIDITY {
+                                        data.type = IOTSampleData.SampleType.Humidity
+                                    }
+                                    
+                                    if let value = dataDict.valueForKey?("value") as? String {
+                                        data.value = Float(value)
+                                    }
+                                    
+                                    if let time = dataDict.valueForKey?("hours_in_epoch") as? String {
+                                        data.time = formatter.dateFromString(time)
+                                    }
+                                    result.append(data)
+                                }
+                            }
+                            
+                            error = nil
+                            onSucceed?(result)
+                        }
+                    }else if responseName == "NBIError" {
+                        if let errorCodeStr = response.valueForKey?("Code") as? String{
+                            if let errorCode = Int(errorCodeStr){
+                                if let errorMsg = response.valueForKey?("String") as? String{
+                                    error = IOTError(errorCode: errorCode, errorMsg: errorMsg, errorGroup: "getDeviceAggregationDataListBy8Hours")
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if error != nil{
+                    onFailed?(error!)
+                }
+                
+                
+            },
+            failure: { (operation, error) -> Void in
+                onFailed?(error.error("getDeviceAggregationDataListBy8Hours"))
+                
+        })
+    }
+    
+    func getDeviceAggregationDataListBy1Day(sessionID: String, deviceID: String, from: NSDate, to: NSDate, onSucceed: (([IOTSampleData]) -> ())?, onFailed: ((IOTError) -> ())?) {
+        let url = serverAddress + ServerAPIURI.GET_DEVICE_AGGREGATION_DATA_LIST_BY_1D
+        
+        var parameters = [
+            "dataType": "xml",
+            "__session_id": sessionID,
+            "__page_no": "1",
+            "__page_size": "10000",
+            "__column": "did,name,value,day_in_epoch",
+            "__group_by": "did,name,day_in_epoch",
+            "__sort": "-id",
+            "did[0]": deviceID,
+            "day_in_epoch__from": ReportUtil.getServerTimeString(from),
+            "day_in_epoch__to": ReportUtil.getServerTimeString(to)
+        ]
+        
+        xmlManager.GET(
+            url,
+            parameters: parameters,
+            success: { (operation, response) -> Void in
+                //print(response)
+                //print("get response for device:\(deviceID))")
+                var error: IOTError? = IOTError(errorCode: IOTError.InvalidMessageError, errorGroup: "getDeviceAggregationDataListBy1Day")
+                
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                
+                
+                if let responseName = response.valueForKey?("__name") as? String{
+                    if responseName == "NBIResponse" {
+                        if let dataDictList = response.valueForKey?("Items")?.valueForKey?("Item") as? [AnyObject] {
+                            var result: [IOTSampleData] = []
+                            
+                            for dataDict in dataDictList {
+                                if let name = dataDict.valueForKey?("name") as? String {
+                                    var data = IOTSampleData()
+                                    
+                                    if name == AFHTTPIOTServer.NAME_CO2 {
+                                        data.type = IOTSampleData.SampleType.CO2
+                                    }else if name == AFHTTPIOTServer.NAME_TEMPERATURE || name == AFHTTPIOTServer.NAME_TEMPERATURE_FULL {
+                                        data.type = IOTSampleData.SampleType.Temperature
+                                    }else if name == AFHTTPIOTServer.NAME_HUMIDITY {
+                                        data.type = IOTSampleData.SampleType.Humidity
+                                    }
+                                    
+                                    if let value = dataDict.valueForKey?("value") as? String {
+                                        data.value = Float(value)
+                                    }
+                                    
+                                    if let time = dataDict.valueForKey?("day_in_epoch") as? String {
+                                        data.time = formatter.dateFromString(time)
+                                    }
+                                    result.append(data)
+                                }
+                            }
+                            
+                            error = nil
+                            onSucceed?(result)
+                        }
+                    }else if responseName == "NBIError" {
+                        if let errorCodeStr = response.valueForKey?("Code") as? String{
+                            if let errorCode = Int(errorCodeStr){
+                                if let errorMsg = response.valueForKey?("String") as? String{
+                                    error = IOTError(errorCode: errorCode, errorMsg: errorMsg, errorGroup: "getDeviceAggregationDataListBy1Day")
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if error != nil{
+                    onFailed?(error!)
+                }
+                
+                
+            },
+            failure: { (operation, error) -> Void in
+                onFailed?(error.error("getDeviceAggregationDataListBy1Day"))
+                
+        })
+    }
+    
+    func getDeviceAggregationDataListBy1Week(sessionID: String, deviceID: String, from: NSDate, to: NSDate, onSucceed: (([IOTSampleData]) -> ())?, onFailed: ((IOTError) -> ())?) {
+        let url = serverAddress + ServerAPIURI.GET_DEVICE_AGGREGATION_DATA_LIST_BY_1W
+        
+        var parameters = [
+            "dataType": "xml",
+            "__session_id": sessionID,
+            "__page_no": "1",
+            "__page_size": "10000",
+            "__column": "did,name,value,week_in_epoch",
+            "__group_by": "did,name,week_in_epoch",
+            "__sort": "-id",
+            "did[0]": deviceID,
+            "week_in_epoch__from": ReportUtil.getServerTimeString(from),
+            "week_in_epoch__to": ReportUtil.getServerTimeString(to)
+        ]
+        
+        xmlManager.GET(
+            url,
+            parameters: parameters,
+            success: { (operation, response) -> Void in
+                //print(response)
+                //print("get response for device:\(deviceID))")
+                var error: IOTError? = IOTError(errorCode: IOTError.InvalidMessageError, errorGroup: "getDeviceAggregationDataListBy1Week")
+                
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                
+                
+                if let responseName = response.valueForKey?("__name") as? String{
+                    if responseName == "NBIResponse" {
+                        if let dataDictList = response.valueForKey?("Items")?.valueForKey?("Item") as? [AnyObject] {
+                            var result: [IOTSampleData] = []
+                            
+                            for dataDict in dataDictList {
+                                if let name = dataDict.valueForKey?("name") as? String {
+                                    var data = IOTSampleData()
+                                    
+                                    if name == AFHTTPIOTServer.NAME_CO2 {
+                                        data.type = IOTSampleData.SampleType.CO2
+                                    }else if name == AFHTTPIOTServer.NAME_TEMPERATURE || name == AFHTTPIOTServer.NAME_TEMPERATURE_FULL {
+                                        data.type = IOTSampleData.SampleType.Temperature
+                                    }else if name == AFHTTPIOTServer.NAME_HUMIDITY {
+                                        data.type = IOTSampleData.SampleType.Humidity
+                                    }
+                                    
+                                    if let value = dataDict.valueForKey?("value") as? String {
+                                        data.value = Float(value)
+                                    }
+                                    
+                                    if let time = dataDict.valueForKey?("week_in_epoch") as? String {
+                                        data.time = formatter.dateFromString(time)
+                                    }
+                                    result.append(data)
+                                }
+                            }
+                            
+                            error = nil
+                            onSucceed?(result)
+                        }
+                    }else if responseName == "NBIError" {
+                        if let errorCodeStr = response.valueForKey?("Code") as? String{
+                            if let errorCode = Int(errorCodeStr){
+                                if let errorMsg = response.valueForKey?("String") as? String{
+                                    error = IOTError(errorCode: errorCode, errorMsg: errorMsg, errorGroup: "getDeviceAggregationDataListBy1Week")
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if error != nil{
+                    onFailed?(error!)
+                }
+                
+                
+            },
+            failure: { (operation, error) -> Void in
+                onFailed?(error.error("getDeviceAggregationDataListBy1Week"))
+                
+        })
+    }
+    
+    func getDeviceAggregationDataListBy1Month(sessionID: String, deviceID: String, from: NSDate, to: NSDate, onSucceed: (([IOTSampleData]) -> ())?, onFailed: ((IOTError) -> ())?) {
+        let url = serverAddress + ServerAPIURI.GET_DEVICE_AGGREGATION_DATA_LIST_BY_1M
+        
+        var parameters = [
+            "dataType": "xml",
+            "__session_id": sessionID,
+            "__page_no": "1",
+            "__page_size": "10000",
+            "__column": "did,name,value,month_in_epoch",
+            "__group_by": "did,name,month_in_epoch",
+            "__sort": "-id",
+            "did[0]": deviceID,
+            "month_in_epoch__from": ReportUtil.getServerTimeString(from),
+            "month_in_epoch__to": ReportUtil.getServerTimeString(to)
+        ]
+        
+        xmlManager.GET(
+            url,
+            parameters: parameters,
+            success: { (operation, response) -> Void in
+                //print(response)
+                //print("get response for device:\(deviceID))")
+                var error: IOTError? = IOTError(errorCode: IOTError.InvalidMessageError, errorGroup: "getDeviceAggregationDataListBy1Month")
+                
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                
+                
+                if let responseName = response.valueForKey?("__name") as? String{
+                    if responseName == "NBIResponse" {
+                        if let dataDictList = response.valueForKey?("Items")?.valueForKey?("Item") as? [AnyObject] {
+                            var result: [IOTSampleData] = []
+                            
+                            for dataDict in dataDictList {
+                                if let name = dataDict.valueForKey?("name") as? String {
+                                    var data = IOTSampleData()
+                                    
+                                    if name == AFHTTPIOTServer.NAME_CO2 {
+                                        data.type = IOTSampleData.SampleType.CO2
+                                    }else if name == AFHTTPIOTServer.NAME_TEMPERATURE || name == AFHTTPIOTServer.NAME_TEMPERATURE_FULL {
+                                        data.type = IOTSampleData.SampleType.Temperature
+                                    }else if name == AFHTTPIOTServer.NAME_HUMIDITY {
+                                        data.type = IOTSampleData.SampleType.Humidity
+                                    }
+                                    
+                                    if let value = dataDict.valueForKey?("value") as? String {
+                                        data.value = Float(value)
+                                    }
+                                    
+                                    if let time = dataDict.valueForKey?("month_in_epoch") as? String {
+                                        data.time = formatter.dateFromString(time)
+                                    }
+                                    result.append(data)
+                                }
+                            }
+                            
+                            error = nil
+                            onSucceed?(result)
+                        }
+                    }else if responseName == "NBIError" {
+                        if let errorCodeStr = response.valueForKey?("Code") as? String{
+                            if let errorCode = Int(errorCodeStr){
+                                if let errorMsg = response.valueForKey?("String") as? String{
+                                    error = IOTError(errorCode: errorCode, errorMsg: errorMsg, errorGroup: "getDeviceAggregationDataListBy1Month")
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if error != nil{
+                    onFailed?(error!)
+                }
+                
+                
+            },
+            failure: { (operation, error) -> Void in
+                onFailed?(error.error("getDeviceAggregationDataListBy1Month"))
+                
+        })
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Site{
+class Site{
     let siteID: String
     var siteName: String?
     var device: Device?

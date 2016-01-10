@@ -35,6 +35,7 @@ struct IOTError{
     static let UserPermissionWrongError: IOTErrorCode = (-4, StringKey.ERROR_USER_PERMISSION_WRONG)
     static let InvalidMessageError: IOTErrorCode = (-5, StringKey.ERROR_INVALID_MESSAGE)
     static let InvalidSessionError: IOTErrorCode = (-6, StringKey.ERROR_INVALID_SESSION)
+    static let InvalidDeviceError: IOTErrorCode = (-7, StringKey.ERROR_INVALID_DEVICE)
     
 }
 

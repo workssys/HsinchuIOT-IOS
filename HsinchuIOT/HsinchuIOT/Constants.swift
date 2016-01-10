@@ -37,6 +37,7 @@ struct StringKey{
     static let ERROR_USER_PERMISSION_WRONG = "ERROR_USER_PERMISSION_WRONG"
     static let ERROR_INVALID_MESSAGE = "ERROR_INVALID_MESSAGE"
     static let ERROR_INVALID_SESSION = "ERROR_INVALID_SESSION"
+    static let ERROR_INVALID_DEVICE = "ERROR_INVALID_DEVICE"
     
     //admin user 
     
@@ -55,6 +56,22 @@ struct StringKey{
     static let ADMINUSER_SORT_BY_HUMIDITY = "ADMINUSER_SORT_BY_HUMIDITY"
     static let ADMINUSER_SORT_BY_SITENAME = "ADMINUSER_SORT_BY_SITENAME"
     
+    //site detail
+    static let SITEDETAIL_TIMEINTERVAL_CURRENT = "SITEDETAIL_TIMEINTERVAL_CURRENT"
+    static let SITEDETAIL_TIMEINTERVAL_BY_15SECONDS = "SITEDETAIL_TIMEINTERVAL_BY_15SECONDS"
+    static let SITEDETAIL_TIMEINTERVAL_BY_QUARTER = "SITEDETAIL_TIMEINTERVAL_BY_QUARTER"
+    static let SITEDETAIL_TIMEINTERVAL_BY_HOUR = "SITEDETAIL_TIMEINTERVAL_BY_HOUR"
+    static let SITEDETAIL_TIMEINTERVAL_BY_8HOURS = "SITEDETAIL_TIMEINTERVAL_BY_8HOURS"
+    static let SITEDETAIL_TIMEINTERVAL_BY_DAY = "SITEDETAIL_TIMEINTERVAL_BY_DAY"
+    static let SITEDETAIL_TIMEINTERVAL_BY_WEEK = "SITEDETAIL_TIMEINTERVAL_BY_WEEK"
+    static let SITEDETAIL_TIMEINTERVAL_BY_MONTH = "SITEDETAIL_TIMEINTERVAL_BY_MONTH"
+    
+    //chart
+    static let CHART_LEGEND_CO2 = "CHART_LEGEND_CO2"
+    static let CHART_LEGEND_TEMPERATURE = "CHART_LEGEND_TEMPERATURE"
+    static let CHART_LEGEND_HUMIDITY = "CHART_LEGEND_HUMIDITY"
+    
+    
 }
 
 struct Colors{
@@ -68,6 +85,12 @@ struct Colors{
     static let STATUS_ALARM = UIColor(rgba: "#ff0000")
     static let STATUS_WARNING = UIColor(rgba: "#fcae00")
     static let STATUS_NORMAL = UIColor(rgba: "#000000")
+    
+    static let CHART_CO2 = UIColor(rgba: "#448CCB")
+    static let CHART_TEMPERATURE = UIColor(rgba: "#F8941D")
+    static let CHART_HUMIDITY = UIColor(rgba: "#7CC576")
+    static let CHART_AXIS = UIColor(rgba: "#707070")
+    
 }
 
 struct ServerAPIURI {
@@ -76,6 +99,17 @@ struct ServerAPIURI {
     static let GET_SITE_LIST_WITH_AGGREGATION_DATA = "_NBI/app_list.lua"
     static let GET_DEVICE_LIST = "Device/_NBI/list.lua"
     static let GET_MULTIPLE_DEVICES_REALTIME_DATA = "M2M_Last/_NBI/list.lua"
+    static let GET_DEVICE_REALTIME_DATA = "M2M/_NBI/list.lua"
+    static let GET_DEVICE_REALTIME_DATA_LIST = "M2M/_NBI/list.lua"
+    static let GET_DEVICE_AGGREGATION_DATA_LIST_BY_15S = "M2M/_NBI/list.lua"
+    static let GET_DEVICE_AGGREGATION_DATA_LIST_BY_1Q = "M2MAggByQuarter/_NBI/list.lua"
+    static let GET_DEVICE_AGGREGATION_DATA_LIST_BY_1H = "M2MAggByHour/_NBI/list.lua"
+    static let GET_DEVICE_AGGREGATION_DATA_LIST_BY_8H = "M2MAggByHours/_NBI/list.lua"
+    static let GET_DEVICE_AGGREGATION_DATA_LIST_BY_1D = "M2MAggByDay/_NBI/list.lua"
+    static let GET_DEVICE_AGGREGATION_DATA_LIST_BY_1W = "M2MAggByWeek/_NBI/list.lua"
+    static let GET_DEVICE_AGGREGATION_DATA_LIST_BY_1M = "M2MAggByMonth/_NBI/list.lua"
+    
+    
     
 }
 
@@ -89,4 +123,15 @@ struct Language{
     static let EN = "en"
     static let CN_SIMPLIFIED = "zh-Hans"
     static let CN_TRADITIONAL = "zh-Hant"
+}
+
+struct Fonts{
+    static let FONT_CHART_LABEL:UIFont = UIFont.systemFontOfSize(10)
+    
+    static let FONT_CHART_POINT_TEXT: UIFont = UIFont(name: "HelveticaNeue", size: 6.0)!
+    static let FONT_CHART_POINT_HINT: UIFont = UIFont(name: "HelveticaNeue", size: 8.0)!
+    static let FONT_CHART_AXIS: UIFont = UIFont(name: "HelveticaNeue", size: 8.0)!
+    static let FONT_CHART_AXIS_TITLE: UIFont = UIFont(name: "HelveticaNeue", size: 10.0)!
+    static let FONT_CHART_LEGEND: UIFont = UIFont(name: "HelveticaNeue", size: 8.0)!
+    
 }
