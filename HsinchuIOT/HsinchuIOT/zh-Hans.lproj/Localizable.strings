@@ -13,6 +13,7 @@
 "APP_TITLE_1" = "新竹县室内空气品质";
 "APP_TITLE_2" = "自主管理系统";
 "OK" = "确定";
+"CANCEL" = "取消";
 "INFO_WAITING" = "请稍候...";
 "ERROR_TITLE" = "错误";
 "ERROR_UNKNOWN" = "未知错误";
@@ -45,3 +46,6 @@
 "CHART_LEGEND_CO2" = "二氧化碳";
 "CHART_LEGEND_TEMPERATURE" = "温度";
 "CHART_LEGEND_HUMIDITY" = "湿度";
+"TIMESCOPE_SETTINGS_START_TIME" = "从:";
+"TIMESCOPE_SETTINGS_END_TIME" = "到:";
+"TIMESCOPE_SETTINGS_TITLE" = "设置时间范围";

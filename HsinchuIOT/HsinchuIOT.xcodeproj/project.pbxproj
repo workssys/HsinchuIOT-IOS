@@ -9,14 +9,12 @@
 /* Begin PBXBuildFile section */
 		C118BB201C1606FD00CC7D81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB1F1C1606FD00CC7D81 /* AppDelegate.swift */; };
 		C118BB221C1606FD00CC7D81 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB211C1606FD00CC7D81 /* BaseViewController.swift */; };
-		C118BB251C1606FD00CC7D81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C118BB231C1606FD00CC7D81 /* Main.storyboard */; };
 		C118BB2A1C1606FE00CC7D81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C118BB281C1606FE00CC7D81 /* LaunchScreen.storyboard */; };
 		C118BB351C1606FE00CC7D81 /* HsinchuIOTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB341C1606FE00CC7D81 /* HsinchuIOTTests.swift */; };
 		C118BB401C1606FE00CC7D81 /* HsinchuIOTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB3F1C1606FE00CC7D81 /* HsinchuIOTUITests.swift */; };
 		C118BB4F1C160A4400CC7D81 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C118BB4E1C160A4400CC7D81 /* Images.xcassets */; };
 		C118BB511C16153600CC7D81 /* LauchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB501C16153600CC7D81 /* LauchScreenViewController.swift */; };
-		C11D3B621C1760FB00E8F65D /* AdminUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C11D3B611C1760FB00E8F65D /* AdminUser.storyboard */; };
-		C11D3B641C17611400E8F65D /* NormalUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C11D3B631C17611400E8F65D /* NormalUser.storyboard */; };
+		C11D3B621C1760FB00E8F65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C11D3B611C1760FB00E8F65D /* Main.storyboard */; };
 		C11D3B661C1762F100E8F65D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11D3B651C1762F100E8F65D /* Constants.swift */; };
 		C132F9491C32E0E500B9CE51 /* MockServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F9481C32E0E400B9CE51 /* MockServer.swift */; };
 		C132F94F1C369E4D00B9CE51 /* SiteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F94E1C369E4D00B9CE51 /* SiteDetailViewController.swift */; };
@@ -25,6 +23,8 @@
 		C132F95A1C3EE65100B9CE51 /* LegendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F9591C3EE65100B9CE51 /* LegendView.swift */; };
 		C132F95C1C418E0000B9CE51 /* ChartPointPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F95B1C418E0000B9CE51 /* ChartPointPopupView.swift */; };
 		C132F95E1C42C02800B9CE51 /* IOTChartAxisValueDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F95D1C42C02800B9CE51 /* IOTChartAxisValueDate.swift */; };
+		C132F9601C44A0BD00B9CE51 /* IOTChartAxisValuesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F95F1C44A0BD00B9CE51 /* IOTChartAxisValuesGenerator.swift */; };
+		C132F9641C46939D00B9CE51 /* TimeScopeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F9631C46939D00B9CE51 /* TimeScopeSettingsViewController.swift */; };
 		C1343BBC1C2DBF1B000C7889 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1343BBB1C2DBF1B000C7889 /* Icons.xcassets */; };
 		C13889B01C1A877100543F44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13889B21C1A877100543F44 /* Localizable.strings */; };
 		C1589A0A1C2F8CD5007F81B9 /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1589A091C2F8CD5007F81B9 /* Site.swift */; };
@@ -69,7 +69,6 @@
 		C118BB1C1C1606FD00CC7D81 /* HsinchuIOT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HsinchuIOT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C118BB1F1C1606FD00CC7D81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C118BB211C1606FD00CC7D81 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		C118BB241C1606FD00CC7D81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C118BB291C1606FE00CC7D81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C118BB2B1C1606FE00CC7D81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C118BB301C1606FE00CC7D81 /* HsinchuIOTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HsinchuIOTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,8 +79,7 @@
 		C118BB411C1606FE00CC7D81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C118BB4E1C160A4400CC7D81 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C118BB501C16153600CC7D81 /* LauchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LauchScreenViewController.swift; sourceTree = "<group>"; };
-		C11D3B611C1760FB00E8F65D /* AdminUser.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdminUser.storyboard; sourceTree = "<group>"; };
-		C11D3B631C17611400E8F65D /* NormalUser.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NormalUser.storyboard; sourceTree = "<group>"; };
+		C11D3B611C1760FB00E8F65D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C11D3B651C1762F100E8F65D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C11D3B681C17EF3B00E8F65D /* HsinchuIOT-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HsinchuIOT-Bridging-Header.h"; sourceTree = "<group>"; };
 		C132F9481C32E0E400B9CE51 /* MockServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockServer.swift; sourceTree = "<group>"; };
@@ -91,6 +89,8 @@
 		C132F9591C3EE65100B9CE51 /* LegendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegendView.swift; sourceTree = "<group>"; };
 		C132F95B1C418E0000B9CE51 /* ChartPointPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPointPopupView.swift; sourceTree = "<group>"; };
 		C132F95D1C42C02800B9CE51 /* IOTChartAxisValueDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOTChartAxisValueDate.swift; sourceTree = "<group>"; };
+		C132F95F1C44A0BD00B9CE51 /* IOTChartAxisValuesGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOTChartAxisValuesGenerator.swift; sourceTree = "<group>"; };
+		C132F9631C46939D00B9CE51 /* TimeScopeSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeScopeSettingsViewController.swift; sourceTree = "<group>"; };
 		C1343BBB1C2DBF1B000C7889 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		C13889B11C1A877100543F44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C13889B51C1A87FA00543F44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -218,6 +218,7 @@
 				C132F9591C3EE65100B9CE51 /* LegendView.swift */,
 				C132F95B1C418E0000B9CE51 /* ChartPointPopupView.swift */,
 				C132F95D1C42C02800B9CE51 /* IOTChartAxisValueDate.swift */,
+				C132F95F1C44A0BD00B9CE51 /* IOTChartAxisValuesGenerator.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -250,6 +251,7 @@
 				C16EE3161C19F83100726659 /* LoginViewController.swift */,
 				C1CF148F1C2C7A3F000E70F3 /* NormalUserHomeViewController.swift */,
 				C132F94E1C369E4D00B9CE51 /* SiteDetailViewController.swift */,
+				C132F9631C46939D00B9CE51 /* TimeScopeSettingsViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -294,10 +296,8 @@
 		C1D754911C24FF910038C085 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				C118BB231C1606FD00CC7D81 /* Main.storyboard */,
-				C11D3B611C1760FB00E8F65D /* AdminUser.storyboard */,
+				C11D3B611C1760FB00E8F65D /* Main.storyboard */,
 				C118BB281C1606FE00CC7D81 /* LaunchScreen.storyboard */,
-				C11D3B631C17611400E8F65D /* NormalUser.storyboard */,
 			);
 			name = storyboard;
 			sourceTree = "<group>";
@@ -419,13 +419,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C11D3B641C17611400E8F65D /* NormalUser.storyboard in Resources */,
 				C118BB2A1C1606FE00CC7D81 /* LaunchScreen.storyboard in Resources */,
 				C1343BBC1C2DBF1B000C7889 /* Icons.xcassets in Resources */,
 				C13889B01C1A877100543F44 /* Localizable.strings in Resources */,
 				C118BB4F1C160A4400CC7D81 /* Images.xcassets in Resources */,
-				C118BB251C1606FD00CC7D81 /* Main.storyboard in Resources */,
-				C11D3B621C1760FB00E8F65D /* AdminUser.storyboard in Resources */,
+				C11D3B621C1760FB00E8F65D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +510,7 @@
 				C1CF14931C2D0B84000E70F3 /* AdminUserSiteListViewController.swift in Sources */,
 				C118BB201C1606FD00CC7D81 /* AppDelegate.swift in Sources */,
 				C132F9491C32E0E500B9CE51 /* MockServer.swift in Sources */,
+				C132F9641C46939D00B9CE51 /* TimeScopeSettingsViewController.swift in Sources */,
 				C118BB511C16153600CC7D81 /* LauchScreenViewController.swift in Sources */,
 				C132F9571C3C32E900B9CE51 /* ReportUtil.swift in Sources */,
 				C1589A0C1C2F8D82007F81B9 /* Device.swift in Sources */,
@@ -520,6 +519,7 @@
 				C132F94F1C369E4D00B9CE51 /* SiteDetailViewController.swift in Sources */,
 				C1CF14501C29DAE7000E70F3 /* PreferenceManager.swift in Sources */,
 				C1D754951C2503860038C085 /* Session.swift in Sources */,
+				C132F9601C44A0BD00B9CE51 /* IOTChartAxisValuesGenerator.swift in Sources */,
 				C16EE3171C19F83100726659 /* LoginViewController.swift in Sources */,
 				C11D3B661C1762F100E8F65D /* Constants.swift in Sources */,
 				C132F9511C36FBBB00B9CE51 /* IOTSampleData.swift in Sources */,
@@ -562,14 +562,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C118BB231C1606FD00CC7D81 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C118BB241C1606FD00CC7D81 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C118BB281C1606FE00CC7D81 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

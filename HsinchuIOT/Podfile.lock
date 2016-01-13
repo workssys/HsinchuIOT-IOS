@@ -26,6 +26,7 @@ PODS:
     - XMLDictionary
   - BButton (4.0.2)
   - CryptoSwift (0.2.2)
+  - DatePickerCell (1.0.4)
   - KxMenu (1)
   - M13Checkbox (1.1.2)
   - MBProgressHUD (0.9.2)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - AFXMLDictionarySerializer
   - BButton
   - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift`, branch `master`)
+  - DatePickerCell
   - KxMenu
   - M13Checkbox
   - MBProgressHUD (~> 0.9.2)
@@ -59,6 +61,7 @@ SPEC CHECKSUMS:
   AFXMLDictionarySerializer: 12f42d62f7d6ad2a31aff4c8da3b14701d4c232f
   BButton: ab0f2ed3b998ae73c5188b57d270d81e4a1eeb27
   CryptoSwift: d382228d6301c09474132417878a741c2a2e68cd
+  DatePickerCell: 20d2ba8b5cd5bb8a5a79e2b43bc7758e3b65daf2
   KxMenu: c025365712f55fa99feb7830fbb7dea0e912be72
   M13Checkbox: 0c0bb08dcd144c4ea33f883b68270f3f56908ea2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1

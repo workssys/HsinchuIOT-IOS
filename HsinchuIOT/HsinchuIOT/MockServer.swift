@@ -208,7 +208,7 @@ class MockServer: IOTServerProtocol{
         
         var result: [IOTSampleData] = []
         for i in 0..<recordNumber {
-            let time = from.dateByAddingTimeInterval(Double(15 * (i/3)))
+            let time = from.dateByAddingTimeInterval(interval * Double(i/3))
             let type = IOTSampleData.SampleType(rawValue: i % 3)!
             var value:Float = 0
             

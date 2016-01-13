@@ -26,6 +26,7 @@ struct StringKey{
     static let APP_TITLE_2 = "APP_TITLE_2"
     
     static let OK = "OK"
+    static let CANCEL = "CANCEL"
     
     static let INFO_WAITING = "INFO_WAITING"
     
@@ -66,10 +67,17 @@ struct StringKey{
     static let SITEDETAIL_TIMEINTERVAL_BY_WEEK = "SITEDETAIL_TIMEINTERVAL_BY_WEEK"
     static let SITEDETAIL_TIMEINTERVAL_BY_MONTH = "SITEDETAIL_TIMEINTERVAL_BY_MONTH"
     
+    //time scope settings
+    static let TIMESCOPE_SETTINGS_START_TIME = "TIMESCOPE_SETTINGS_START_TIME"
+    static let TIMESCOPE_SETTINGS_END_TIME = "TIMESCOPE_SETTINGS_END_TIME"
+    static let TIMESCOPE_SETTINGS_TITLE = "TIMESCOPE_SETTINGS_TITLE"
+    
+    
     //chart
     static let CHART_LEGEND_CO2 = "CHART_LEGEND_CO2"
     static let CHART_LEGEND_TEMPERATURE = "CHART_LEGEND_TEMPERATURE"
     static let CHART_LEGEND_HUMIDITY = "CHART_LEGEND_HUMIDITY"
+    
     
     
 }
@@ -134,4 +142,14 @@ struct Fonts{
     static let FONT_CHART_AXIS_TITLE: UIFont = UIFont(name: "HelveticaNeue", size: 10.0)!
     static let FONT_CHART_LEGEND: UIFont = UIFont(name: "HelveticaNeue", size: 8.0)!
     
+}
+
+struct TimeIntervals{
+    static let TIME_INTERVAL_1_SECOND: NSTimeInterval = 1
+    static let TIME_INTERVAL_1_MINUTE: NSTimeInterval = 60
+    static let TIME_INTERVAL_1_QUARTER: NSTimeInterval = 60 * 15
+    static let TIME_INTERVAL_1_HOUR: NSTimeInterval = 60 * 60
+    static let TIME_INTERVAL_1_DAY: NSTimeInterval = 60 * 60 * 24
+    static let TIME_INTERVAL_1_WEEK: NSTimeInterval = 60 * 60 * 24 * 7
+    static let TIME_INTERVAL_1_MONTH: NSTimeInterval = 60 * 60 * 24 * 30
 }
