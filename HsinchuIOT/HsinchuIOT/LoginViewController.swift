@@ -255,18 +255,19 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, UIAlertViewD
     }
     
     func gotoNormalUserScreen() {
+        
         self.performSegueWithIdentifier("normalUser", sender: self)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "adminUser" {
-            if let adminUserTabVC = segue.destinationViewController as? AdminUserHomeViewController{
+            if let adminUserTabVC = segue.destinationViewController as? AdminUserTabViewController{
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 
                 //setup tab average value
-                let avListVC = storyboard.instantiateViewControllerWithIdentifier("siteList") as! AdminUserSiteListViewController
+                let avListVC = storyboard.instantiateViewControllerWithIdentifier("adminUserSiteList") as! AdminUserSiteListViewController
                 avListVC.dataLoader = AverageValueLoader()
                 
                 avListVC.tabBarItem.title = getString(StringKey.ADMINUSER_TAB_AVERAGEVALUE)
@@ -275,12 +276,12 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, UIAlertViewD
                 avListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Normal)
                 
                 avListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor(),
-                    NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 15)!], forState: UIControlState.Normal)
+                    NSFontAttributeName: Fonts.FONT_TABBAR], forState: UIControlState.Normal)
                 
                 avListVC.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -14)
                 
                 
-                let rdListVC = storyboard.instantiateViewControllerWithIdentifier("siteList") as! AdminUserSiteListViewController
+                let rdListVC = storyboard.instantiateViewControllerWithIdentifier("adminUserSiteList") as! AdminUserSiteListViewController
                 
                 rdListVC.dataLoader = RealtimeDataLoader()
                 
@@ -290,7 +291,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, UIAlertViewD
                 rdListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Normal)
                 
                 rdListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor(),
-                    NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 15)!], forState: UIControlState.Normal)
+                    NSFontAttributeName: Fonts.FONT_TABBAR], forState: UIControlState.Normal)
                 
                 rdListVC.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -14)
                 
@@ -299,7 +300,9 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, UIAlertViewD
                 adminUserTabVC.viewControllers = [avListVC, rdListVC]
             }
         }else if segue.identifier == "normalUser" {
-            
+            if let normalUserTabVC = segue.destinationViewController as? NormalUserTabViewController{
+                
+            }
         }
     }
     

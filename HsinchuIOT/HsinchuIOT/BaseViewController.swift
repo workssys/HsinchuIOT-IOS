@@ -8,10 +8,24 @@
 
 import UIKit
 import MBProgressHUD
+import ObjectiveC
 
-class BaseViewController: UIViewController {
 
-    private var waitingBar: MBProgressHUD?
+private var _waitingBar: MBProgressHUD?
+
+class BaseViewController: UIViewController{
+    
+}
+extension UIViewController{
+    var waitingBar: MBProgressHUD? {
+        get{
+            return (objc_getAssociatedObject(self, &_waitingBar) as? MBProgressHUD)
+        }
+        set(newValue){
+            objc_setAssociatedObject(self, &_waitingBar, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+        }
+    }
+    
     
     func showWaitingBar(){
         waitingBar = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -23,18 +37,14 @@ class BaseViewController: UIViewController {
         waitingBar?.hide(true)
     }
     
-
     func showError(error: IOTError){
         hideWaitingBar()
         showErrorMsg(error.errorMsg!)
+  
     }
-    
     
     func showErrorMsg(message: String){
         let alertView = UIAlertView(title: getString(StringKey.ERROR_TITLE), message: message, delegate: self, cancelButtonTitle: getString(StringKey.OK))
         alertView.show()
     }
-
-
 }
-

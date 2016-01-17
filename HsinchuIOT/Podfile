@@ -11,3 +11,4 @@ pod 'KxMenu'
 pod 'CryptoSwift', :git => "https://github.com/krzyzanowskim/CryptoSwift", :branch => "master"
 pod 'SwiftCharts', '~> 0.3'
 pod 'DatePickerCell'
+pod 'FBGlowLabel', :git => 'https://github.com/lyokato/FBGlowLabel.git'

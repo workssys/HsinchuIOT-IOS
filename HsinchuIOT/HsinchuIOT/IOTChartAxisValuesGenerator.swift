@@ -15,14 +15,28 @@ public typealias IOTChartAxisValueGenerator = Double -> ChartAxisValue
 public struct IOTChartAxisValuesGenerator {
     
     public static func generateXAxisValuesWithChartPoints(chartPoints: [ChartPoint], minSegmentCount: Double, maxSegmentCount: Double, multiple: Double = 10, axisValueGenerator: ChartAxisValueGenerator, addPaddingSegmentIfEdge: Bool) -> [ChartAxisValue] {
-        return self.generateAxisValuesWithChartPoints(chartPoints, minSegmentCount: minSegmentCount, maxSegmentCount: maxSegmentCount, multiple: multiple, axisValueGenerator: axisValueGenerator, addPaddingSegmentIfEdge: addPaddingSegmentIfEdge, needSegment: false, axisPicker: {$0.x})
+        return self.generateXAxisValuesWithChartPoints(chartPoints, minSegmentCount: minSegmentCount, maxSegmentCount: maxSegmentCount, multiple: multiple, axisValueGenerator: axisValueGenerator, addPaddingSegmentIfEdge: addPaddingSegmentIfEdge, needSegment: false, axisPicker: {$0.x})
     }
     
     public static func generateYAxisValuesWithChartPoints(chartPoints: [ChartPoint], minSegmentCount: Double, maxSegmentCount: Double, multiple: Double = 10, axisValueGenerator: ChartAxisValueGenerator, addPaddingSegmentIfEdge: Bool) -> [ChartAxisValue] {
-        return self.generateAxisValuesWithChartPoints(chartPoints, minSegmentCount: minSegmentCount, maxSegmentCount: maxSegmentCount, multiple: multiple, axisValueGenerator: axisValueGenerator, addPaddingSegmentIfEdge: addPaddingSegmentIfEdge, needSegment: true, axisPicker: {$0.y})
+        return self.generateYAxisValuesWithChartPoints(chartPoints, minSegmentCount: minSegmentCount, maxSegmentCount: maxSegmentCount, multiple: multiple, axisValueGenerator: axisValueGenerator, addPaddingSegmentIfEdge: addPaddingSegmentIfEdge, needSegment: true, axisPicker: {$0.y})
     }
     
-    private static func generateAxisValuesWithChartPoints(chartPoints: [ChartPoint], minSegmentCount: Double, maxSegmentCount: Double, multiple: Double = 10, axisValueGenerator: ChartAxisValueGenerator, addPaddingSegmentIfEdge: Bool, needSegment: Bool, axisPicker: (ChartPoint) -> ChartAxisValue) -> [ChartAxisValue] {
+    private static func generateXAxisValuesWithChartPoints(chartPoints: [ChartPoint], minSegmentCount: Double, maxSegmentCount: Double, multiple: Double = 10, axisValueGenerator: ChartAxisValueGenerator, addPaddingSegmentIfEdge: Bool, needSegment: Bool, axisPicker: (ChartPoint) -> ChartAxisValue) -> [ChartAxisValue] {
+        let sortedChartPoints = chartPoints.sort {(obj1, obj2) in
+            return axisPicker(obj1).scalar < axisPicker(obj2).scalar
+        }
+        
+        if let first = sortedChartPoints.first, last = sortedChartPoints.last {
+            return self.generateAxisValuesWithChartPoints(axisPicker(first).scalar, last: axisPicker(last).scalar, minSegmentCount: minSegmentCount, maxSegmentCount: maxSegmentCount, multiple: multiple, axisValueGenerator: axisValueGenerator, addPaddingSegmentIfEdge: addPaddingSegmentIfEdge, needSegment: needSegment)
+            
+        } else {
+            print("Trying to generate X axis without datapoints, returning empty array")
+            return []
+        }
+    }
+    
+    private static func generateYAxisValuesWithChartPoints(chartPoints: [ChartPoint], minSegmentCount: Double, maxSegmentCount: Double, multiple: Double = 10, axisValueGenerator: ChartAxisValueGenerator, addPaddingSegmentIfEdge: Bool, needSegment: Bool, axisPicker: (ChartPoint) -> ChartAxisValue) -> [ChartAxisValue] {
         
         let sortedChartPoints = chartPoints.sort {(obj1, obj2) in
             return axisPicker(obj1).scalar < axisPicker(obj2).scalar

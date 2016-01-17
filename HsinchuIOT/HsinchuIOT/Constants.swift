@@ -27,6 +27,7 @@ struct StringKey{
     
     static let OK = "OK"
     static let CANCEL = "CANCEL"
+    static let CLOSE = "CLOSE"
     
     static let INFO_WAITING = "INFO_WAITING"
     
@@ -57,6 +58,15 @@ struct StringKey{
     static let ADMINUSER_SORT_BY_HUMIDITY = "ADMINUSER_SORT_BY_HUMIDITY"
     static let ADMINUSER_SORT_BY_SITENAME = "ADMINUSER_SORT_BY_SITENAME"
     
+    //normal user
+    static let NORMALUSER_CO2_NAME = "NORMALUSER_CO2_NAME"
+    static let NORMALUSER_TEMPERATURE_NAME = "NORMALUSER_TEMPERATURE_NAME"
+    static let NORMALUSER_HUMIDITY_NAME = "NORMALUSER_HUMIDITY_NAME"
+    static let NORMALUSER_CO2_UNIT = "NORMALUSER_CO2_UNIT"
+    static let NORMALUSER_TEMPERATURE_UNIT = "NORMALUSER_TEMPERATURE_UNIT"
+    static let NORMALUSER_HUMIDITY_UNIT = "NORMALUSER_HUMIDITY_UNIT"
+
+    
     //site detail
     static let SITEDETAIL_TIMEINTERVAL_CURRENT = "SITEDETAIL_TIMEINTERVAL_CURRENT"
     static let SITEDETAIL_TIMEINTERVAL_BY_15SECONDS = "SITEDETAIL_TIMEINTERVAL_BY_15SECONDS"
@@ -71,6 +81,22 @@ struct StringKey{
     static let TIMESCOPE_SETTINGS_START_TIME = "TIMESCOPE_SETTINGS_START_TIME"
     static let TIMESCOPE_SETTINGS_END_TIME = "TIMESCOPE_SETTINGS_END_TIME"
     static let TIMESCOPE_SETTINGS_TITLE = "TIMESCOPE_SETTINGS_TITLE"
+    
+    static let TIMESCOPE_SETTINGS_1HOUR = "TIMESCOPE_SETTINGS_1HOUR"
+    static let TIMESCOPE_SETTINGS_4HOURS = "TIMESCOPE_SETTINGS_4HOURS"
+    static let TIMESCOPE_SETTINGS_8HOURS = "TIMESCOPE_SETTINGS_8HOURS"
+    static let TIMESCOPE_SETTINGS_TODAY = "TIMESCOPE_SETTINGS_TODAY"
+    static let TIMESCOPE_SETTINGS_YESTERDAY = "TIMESCOPE_SETTINGS_YESTERDAY"
+    static let TIMESCOPE_SETTINGS_LAST3DAYS = "TIMESCOPE_SETTINGS_LAST3DAYS"
+    static let TIMESCOPE_SETTINGS_LAST5DAYS = "TIMESCOPE_SETTINGS_LAST5DAYS"
+    static let TIMESCOPE_SETTINGS_THISWEEK = "TIMESCOPE_SETTINGS_THISWEEK"
+    static let TIMESCOPE_SETTINGS_LASTWEEK = "TIMESCOPE_SETTINGS_LASTWEEK"
+    static let TIMESCOPE_SETTINGS_LAST2WEEKS = "TIMESCOPE_SETTINGS_LAST2WEEKS"
+    static let TIMESCOPE_SETTINGS_LAST3WEEKS = "TIMESCOPE_SETTINGS_LAST3WEEKS"
+    static let TIMESCOPE_SETTINGS_THISMONTH = "TIMESCOPE_SETTINGS_THISMONTH"
+    static let TIMESCOPE_SETTINGS_LASTMONTH = "TIMESCOPE_SETTINGS_LASTMONTH"
+    static let TIMESCOPE_SETTINGS_LAST2MONTHS = "TIMESCOPE_SETTINGS_LAST2MONTHS"
+    static let TIMESCOPE_SETTINGS_LAST3MONTHS = "TIMESCOPE_SETTINGS_LAST3MONTHS"
     
     
     //chart
@@ -98,6 +124,53 @@ struct Colors{
     static let CHART_TEMPERATURE = UIColor(rgba: "#F8941D")
     static let CHART_HUMIDITY = UIColor(rgba: "#7CC576")
     static let CHART_AXIS = UIColor(rgba: "#707070")
+    
+    static let PANEL_STATUS_NORMAL_START = UIColor(rgba: "#FFFFFF")
+    static let PANEL_STATUS_NORMAL_END = UIColor(rgba: "#8bd543")
+    
+    static let PANEL_STATUS_WORSE_START = UIColor(rgba: "#FFFFFF")
+    static let PANEL_STATUS_WORSE_END = UIColor(rgba: "#959799")
+    
+    static let PANEL_STATUS_WORST_START = UIColor(rgba: "#d5d7d9")
+    static let PANEL_STATUS_WORST_END = UIColor(rgba: "#292627")
+    
+    static let PANEL_STATUS_WET_START = UIColor(rgba: "#FFFFFF")
+    static let PANEL_STATUS_WET_END = UIColor(rgba: "#2eb676")
+    
+    static let PANEL_STATUS_DRY_START = UIColor(rgba: "#FFFFFF")
+    static let PANEL_STATUS_DRY_END = UIColor(rgba: "#d5be6c")
+    
+    static let PANEL_STATUS_HOT_START = UIColor(rgba: "#f9f5bb")
+    static let PANEL_STATUS_HOT_END = UIColor(rgba: "#f69422")
+    
+    static let PANEL_STATUS_COLD_START = UIColor(rgba: "#FFFFFF")
+    static let PANEL_STATUS_COLD_END = UIColor(rgba: "#85d2f0")
+    
+    static let PANEL_STATUS_MISSING_START = UIColor(rgba: "#AAAAAA")
+    static let PANEL_STATUS_MISSING_END = UIColor(rgba: "#EEEEEE")
+    
+    static let PANEL_TEXT_STATUS_NORMAL = UIColor(rgba: "#5dbc00")
+    static let PANEL_TEXT_STATUS_WORSE = UIColor(rgba: "#58595B")
+    static let PANEL_TEXT_STATUS_WORST = UIColor(rgba: "#F1F1F2")
+    static let PANEL_TEXT_STATUS_COLD = UIColor(rgba: "#1B75BB")
+    static let PANEL_TEXT_STATUS_HOT = UIColor(rgba: "#EC1C24")
+    static let PANEL_TEXT_STATUS_DRY = UIColor(rgba: "#a67c52")
+    static let PANEL_TEXT_STATUS_WET = UIColor(rgba: "#5a45c6")
+    static let PANEL_TEXT_STATUS_MISSING = UIColor(rgba: "#A2A2A2")
+    
+    static let PANEL_TEXT_SHADOW = UIColor(rgba: "#FFFFFF")
+    
+    static let PANEL_UNIT_TEXT = UIColor(rgba: "#58595B")
+    static let PANEL_UNIT_TEXT_SHADOW = UIColor(rgba: "#F3F3F3")
+    
+    static let PANEL_CAPTION_TEXT = UIColor(rgba: "#58595B")
+    static let PANEL_CAPTION_TEXT_SHADOW = UIColor(rgba: "#F3F3F3")
+    
+    static let STATUS_ICON_NORMAL = UIColor(rgba: "#00FF00")
+    static let STATUS_ICON_WARNING = UIColor(rgba: "#FFCC00")
+    static let STATUS_ICON_ALARM = UIColor(rgba: "#FF0000")
+    static let STATUS_ICON_MISSING = UIColor(rgba: "#CCCCCC")
+    
     
 }
 
@@ -134,14 +207,18 @@ struct Language{
 }
 
 struct Fonts{
-    static let FONT_CHART_LABEL:UIFont = UIFont.systemFontOfSize(10)
-    
+    static let FONT_TITLE = UIFont(name: "HelveticaNeue", size: 18.0)!
+    static let FONT_INFO = UIFont(name: "HelveticaNeue", size: 17.0)!
+    static let FONT_TABBAR = UIFont(name: "HelveticaNeue", size: 15)!
     static let FONT_CHART_POINT_TEXT: UIFont = UIFont(name: "HelveticaNeue", size: 6.0)!
     static let FONT_CHART_POINT_HINT: UIFont = UIFont(name: "HelveticaNeue", size: 8.0)!
     static let FONT_CHART_AXIS: UIFont = UIFont(name: "HelveticaNeue", size: 8.0)!
     static let FONT_CHART_AXIS_TITLE: UIFont = UIFont(name: "HelveticaNeue", size: 10.0)!
     static let FONT_CHART_LEGEND: UIFont = UIFont(name: "HelveticaNeue", size: 8.0)!
     
+    static let FONT_PANEL_CAPTION: UIFont = UIFont(name: "HelveticaNeue", size: 36.0)!
+    static let FONT_PANEL_VALUE: UIFont = UIFont(name: "HelveticaNeue-Bold", size: 36.0)!
+    static let FONT_PANEL_UNIT: UIFont = UIFont(name: "HelveticaNeue", size: 24.0)!
 }
 
 struct TimeIntervals{

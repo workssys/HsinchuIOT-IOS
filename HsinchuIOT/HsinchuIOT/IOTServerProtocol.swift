@@ -43,8 +43,8 @@ protocol IOTServerProtocol{
 }
 
 class IOTServer{
-    static let serverInstance = MockServer()
-    //static let serverInstance = AFHTTPIOTServer()
+    //static let serverInstance = MockServer()
+    static let serverInstance = AFHTTPIOTServer()
     
     static func getServer() -> IOTServerProtocol {
         return serverInstance

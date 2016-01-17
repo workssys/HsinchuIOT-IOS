@@ -27,6 +27,7 @@ PODS:
   - BButton (4.0.2)
   - CryptoSwift (0.2.2)
   - DatePickerCell (1.0.4)
+  - FBGlowLabel (0.0.1)
   - KxMenu (1)
   - M13Checkbox (1.1.2)
   - MBProgressHUD (0.9.2)
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - BButton
   - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift`, branch `master`)
   - DatePickerCell
+  - FBGlowLabel (from `https://github.com/lyokato/FBGlowLabel.git`)
   - KxMenu
   - M13Checkbox
   - MBProgressHUD (~> 0.9.2)
@@ -49,11 +51,16 @@ EXTERNAL SOURCES:
   CryptoSwift:
     :branch: master
     :git: https://github.com/krzyzanowskim/CryptoSwift
+  FBGlowLabel:
+    :git: https://github.com/lyokato/FBGlowLabel.git
 
 CHECKOUT OPTIONS:
   CryptoSwift:
     :commit: 8679ad09c1e84da099076596b0715c7ec376f7dc
     :git: https://github.com/krzyzanowskim/CryptoSwift
+  FBGlowLabel:
+    :commit: b32e566de10ba470566f1c4b02ca4140b94164e5
+    :git: https://github.com/lyokato/FBGlowLabel.git
 
 SPEC CHECKSUMS:
   ADDropDownMenuView: dd0fcd96c83ec92eeed47a790e0d6ac4ca984639
@@ -62,6 +69,7 @@ SPEC CHECKSUMS:
   BButton: ab0f2ed3b998ae73c5188b57d270d81e4a1eeb27
   CryptoSwift: d382228d6301c09474132417878a741c2a2e68cd
   DatePickerCell: 20d2ba8b5cd5bb8a5a79e2b43bc7758e3b65daf2
+  FBGlowLabel: 35276711c4051f4a08b2d8de4e2f770fc0faf24d
   KxMenu: c025365712f55fa99feb7830fbb7dea0e912be72
   M13Checkbox: 0c0bb08dcd144c4ea33f883b68270f3f56908ea2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1

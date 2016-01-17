@@ -9,6 +9,10 @@
 import Foundation
 import SwiftCharts
 
+protocol TimeScopeSettingsDelegate {
+    func timeScopeChanged(startTime startTime: NSDate?, endTime: NSDate?)
+}
+
 
 class SiteDetailViewController: BaseViewController, TimeScopeSettingsDelegate{
     
@@ -69,6 +73,7 @@ class SiteDetailViewController: BaseViewController, TimeScopeSettingsDelegate{
     var popups: [UIView] = []
     
     override func viewDidLoad() {
+        lbTitle.font = Fonts.FONT_TITLE
         lbTitle.text = currentSite.siteName
         
         segChartInterval.tintColor = Colors.TEXT_BLUE
@@ -245,6 +250,7 @@ class SiteDetailViewController: BaseViewController, TimeScopeSettingsDelegate{
     }
     
     @IBAction func btnTimeScope2Clicked(sender: UIButton) {
+        self.performSegueWithIdentifier("predefinedTimeScopeSettings", sender: self)
     }
     
     func timeScopeChanged(startTime startTime: NSDate?, endTime: NSDate?) {
@@ -265,6 +271,10 @@ class SiteDetailViewController: BaseViewController, TimeScopeSettingsDelegate{
                 timeScopeSettingsVC.startTime = chartStartTime
                 timeScopeSettingsVC.endTime = chartEndTime
                 timeScopeSettingsVC.delegate = self
+            }
+        }else if segue.identifier == "predefinedTimeScopeSettings" {
+            if let predefinedTimeScopeSettingsVC = segue.destinationViewController as? PredefinedTimeScopeSettingsViewController {
+                predefinedTimeScopeSettingsVC.delegate = self
             }
         }
     }
@@ -708,7 +718,7 @@ class SiteDetailViewController: BaseViewController, TimeScopeSettingsDelegate{
         var result: [ChartPoint] = []
         
         for data in chartData{
-            print("\(data)")
+            //print("\(data)")
             if data.type == type {
                 result.append(createChartPoint(data.time!, Double(data.value!), formatter, color))
             }

@@ -9,10 +9,6 @@
 import Foundation
 import DatePickerCell
 
-protocol TimeScopeSettingsDelegate {
-    func timeScopeChanged(startTime startTime: NSDate?, endTime: NSDate?)
-}
-
 class TimeScopeSettingsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate{
     
     var delegate: TimeScopeSettingsDelegate!
@@ -31,8 +27,9 @@ class TimeScopeSettingsViewController: BaseViewController, UITableViewDataSource
     @IBOutlet weak var btnCancel: UIButton!
     
     override func viewDidLoad() {
-        
+        lbTitle.font = Fonts.FONT_TITLE
         lbTitle.text = getString(StringKey.TIMESCOPE_SETTINGS_TITLE)
+        
         btnOk.setTitle(getString(StringKey.OK), forState: UIControlState.Normal)
         btnCancel.setTitle(getString(StringKey.CANCEL), forState: UIControlState.Normal)
         

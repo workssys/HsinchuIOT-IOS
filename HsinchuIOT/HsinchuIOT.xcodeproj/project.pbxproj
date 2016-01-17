@@ -25,6 +25,10 @@
 		C132F95E1C42C02800B9CE51 /* IOTChartAxisValueDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F95D1C42C02800B9CE51 /* IOTChartAxisValueDate.swift */; };
 		C132F9601C44A0BD00B9CE51 /* IOTChartAxisValuesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F95F1C44A0BD00B9CE51 /* IOTChartAxisValuesGenerator.swift */; };
 		C132F9641C46939D00B9CE51 /* TimeScopeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F9631C46939D00B9CE51 /* TimeScopeSettingsViewController.swift */; };
+		C132F9661C47ED4800B9CE51 /* PredefinedTimeScopeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F9651C47ED4800B9CE51 /* PredefinedTimeScopeSettingsViewController.swift */; };
+		C132F9691C499CF100B9CE51 /* NormalUserSiteHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F9681C499CF100B9CE51 /* NormalUserSiteHomeViewController.swift */; };
+		C132F96B1C49FCE400B9CE51 /* EclipsePanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F96A1C49FCE400B9CE51 /* EclipsePanelView.swift */; };
+		C132F96D1C4ABA0C00B9CE51 /* StatusIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F96C1C4ABA0C00B9CE51 /* StatusIconView.swift */; };
 		C1343BBC1C2DBF1B000C7889 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1343BBB1C2DBF1B000C7889 /* Icons.xcassets */; };
 		C13889B01C1A877100543F44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13889B21C1A877100543F44 /* Localizable.strings */; };
 		C1589A0A1C2F8CD5007F81B9 /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1589A091C2F8CD5007F81B9 /* Site.swift */; };
@@ -35,8 +39,8 @@
 		C1CF144E1C27B40C000E70F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF144D1C27B40C000E70F3 /* User.swift */; };
 		C1CF14501C29DAE7000E70F3 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF144F1C29DAE7000E70F3 /* PreferenceManager.swift */; };
 		C1CF148C1C2C2086000E70F3 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF148B1C2C2086000E70F3 /* SessionManager.swift */; };
-		C1CF148E1C2C76EF000E70F3 /* AdminUserHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF148D1C2C76EF000E70F3 /* AdminUserHomeViewController.swift */; };
-		C1CF14901C2C7A3F000E70F3 /* NormalUserHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF148F1C2C7A3F000E70F3 /* NormalUserHomeViewController.swift */; };
+		C1CF148E1C2C76EF000E70F3 /* AdminUserTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF148D1C2C76EF000E70F3 /* AdminUserTabViewController.swift */; };
+		C1CF14901C2C7A3F000E70F3 /* NormalUserTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF148F1C2C7A3F000E70F3 /* NormalUserTabViewController.swift */; };
 		C1CF14931C2D0B84000E70F3 /* AdminUserSiteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF14921C2D0B84000E70F3 /* AdminUserSiteListViewController.swift */; };
 		C1D754811C21B6DB0038C085 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754801C21B6DB0038C085 /* UIColorExtension.swift */; };
 		C1D754831C230CC80038C085 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D754821C230CC80038C085 /* LanguageManager.swift */; };
@@ -91,6 +95,10 @@
 		C132F95D1C42C02800B9CE51 /* IOTChartAxisValueDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOTChartAxisValueDate.swift; sourceTree = "<group>"; };
 		C132F95F1C44A0BD00B9CE51 /* IOTChartAxisValuesGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOTChartAxisValuesGenerator.swift; sourceTree = "<group>"; };
 		C132F9631C46939D00B9CE51 /* TimeScopeSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeScopeSettingsViewController.swift; sourceTree = "<group>"; };
+		C132F9651C47ED4800B9CE51 /* PredefinedTimeScopeSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredefinedTimeScopeSettingsViewController.swift; sourceTree = "<group>"; };
+		C132F9681C499CF100B9CE51 /* NormalUserSiteHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalUserSiteHomeViewController.swift; sourceTree = "<group>"; };
+		C132F96A1C49FCE400B9CE51 /* EclipsePanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EclipsePanelView.swift; sourceTree = "<group>"; };
+		C132F96C1C4ABA0C00B9CE51 /* StatusIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusIconView.swift; sourceTree = "<group>"; };
 		C1343BBB1C2DBF1B000C7889 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		C13889B11C1A877100543F44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C13889B51C1A87FA00543F44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -103,8 +111,8 @@
 		C1CF144D1C27B40C000E70F3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C1CF144F1C29DAE7000E70F3 /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		C1CF148B1C2C2086000E70F3 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = "../../../HsinchuIOT-IOS-back/HsinchuIOT/HsinchuIOT/SessionManager.swift"; sourceTree = "<group>"; };
-		C1CF148D1C2C76EF000E70F3 /* AdminUserHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdminUserHomeViewController.swift; path = "../../../HsinchuIOT-IOS-back/HsinchuIOT/HsinchuIOT/AdminUserHomeViewController.swift"; sourceTree = "<group>"; };
-		C1CF148F1C2C7A3F000E70F3 /* NormalUserHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NormalUserHomeViewController.swift; path = "../../../HsinchuIOT-IOS-back/HsinchuIOT/HsinchuIOT/NormalUserHomeViewController.swift"; sourceTree = "<group>"; };
+		C1CF148D1C2C76EF000E70F3 /* AdminUserTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdminUserTabViewController.swift; path = "../../../HsinchuIOT-IOS-back/HsinchuIOT/HsinchuIOT/AdminUserTabViewController.swift"; sourceTree = "<group>"; };
+		C1CF148F1C2C7A3F000E70F3 /* NormalUserTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NormalUserTabViewController.swift; path = "../../../HsinchuIOT-IOS-back/HsinchuIOT/HsinchuIOT/NormalUserTabViewController.swift"; sourceTree = "<group>"; };
 		C1CF14921C2D0B84000E70F3 /* AdminUserSiteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdminUserSiteListViewController.swift; path = "../../../HsinchuIOT-IOS-back/HsinchuIOT/HsinchuIOT/AdminUserSiteListViewController.swift"; sourceTree = "<group>"; };
 		C1D754801C21B6DB0038C085 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		C1D754821C230CC80038C085 /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
@@ -219,8 +227,19 @@
 				C132F95B1C418E0000B9CE51 /* ChartPointPopupView.swift */,
 				C132F95D1C42C02800B9CE51 /* IOTChartAxisValueDate.swift */,
 				C132F95F1C44A0BD00B9CE51 /* IOTChartAxisValuesGenerator.swift */,
+				C132F96A1C49FCE400B9CE51 /* EclipsePanelView.swift */,
+				C132F96C1C4ABA0C00B9CE51 /* StatusIconView.swift */,
 			);
 			name = ui;
+			sourceTree = "<group>";
+		};
+		C132F9671C49996B00B9CE51 /* normaluser */ = {
+			isa = PBXGroup;
+			children = (
+				C1CF148F1C2C7A3F000E70F3 /* NormalUserTabViewController.swift */,
+				C132F9681C499CF100B9CE51 /* NormalUserSiteHomeViewController.swift */,
+			);
+			name = normaluser;
 			sourceTree = "<group>";
 		};
 		C13889AA1C1A6A5500543F44 /* Resources */ = {
@@ -236,7 +255,7 @@
 		C1CF14911C2D0AE7000E70F3 /* adminuser */ = {
 			isa = PBXGroup;
 			children = (
-				C1CF148D1C2C76EF000E70F3 /* AdminUserHomeViewController.swift */,
+				C1CF148D1C2C76EF000E70F3 /* AdminUserTabViewController.swift */,
 				C1CF14921C2D0B84000E70F3 /* AdminUserSiteListViewController.swift */,
 			);
 			name = adminuser;
@@ -245,13 +264,14 @@
 		C1D7548D1C24FECF0038C085 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				C132F9671C49996B00B9CE51 /* normaluser */,
 				C1CF14911C2D0AE7000E70F3 /* adminuser */,
 				C118BB211C1606FD00CC7D81 /* BaseViewController.swift */,
 				C118BB501C16153600CC7D81 /* LauchScreenViewController.swift */,
 				C16EE3161C19F83100726659 /* LoginViewController.swift */,
-				C1CF148F1C2C7A3F000E70F3 /* NormalUserHomeViewController.swift */,
 				C132F94E1C369E4D00B9CE51 /* SiteDetailViewController.swift */,
 				C132F9631C46939D00B9CE51 /* TimeScopeSettingsViewController.swift */,
+				C132F9651C47ED4800B9CE51 /* PredefinedTimeScopeSettingsViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -502,7 +522,7 @@
 				C1D754881C247B330038C085 /* AppConfig.swift in Sources */,
 				C1D754831C230CC80038C085 /* LanguageManager.swift in Sources */,
 				C1D754931C25020C0038C085 /* IOTError.swift in Sources */,
-				C1CF148E1C2C76EF000E70F3 /* AdminUserHomeViewController.swift in Sources */,
+				C1CF148E1C2C76EF000E70F3 /* AdminUserTabViewController.swift in Sources */,
 				C1D7548A1C24F96C0038C085 /* IOTServerProtocol.swift in Sources */,
 				C1589A0A1C2F8CD5007F81B9 /* Site.swift in Sources */,
 				C1589A101C2F99A9007F81B9 /* IOTMonitorData.swift in Sources */,
@@ -521,10 +541,14 @@
 				C1D754951C2503860038C085 /* Session.swift in Sources */,
 				C132F9601C44A0BD00B9CE51 /* IOTChartAxisValuesGenerator.swift in Sources */,
 				C16EE3171C19F83100726659 /* LoginViewController.swift in Sources */,
+				C132F9691C499CF100B9CE51 /* NormalUserSiteHomeViewController.swift in Sources */,
+				C132F9661C47ED4800B9CE51 /* PredefinedTimeScopeSettingsViewController.swift in Sources */,
 				C11D3B661C1762F100E8F65D /* Constants.swift in Sources */,
 				C132F9511C36FBBB00B9CE51 /* IOTSampleData.swift in Sources */,
-				C1CF14901C2C7A3F000E70F3 /* NormalUserHomeViewController.swift in Sources */,
+				C132F96B1C49FCE400B9CE51 /* EclipsePanelView.swift in Sources */,
+				C1CF14901C2C7A3F000E70F3 /* NormalUserTabViewController.swift in Sources */,
 				C1589A0E1C2F94AC007F81B9 /* StringExtension.swift in Sources */,
+				C132F96D1C4ABA0C00B9CE51 /* StatusIconView.swift in Sources */,
 				C1D754811C21B6DB0038C085 /* UIColorExtension.swift in Sources */,
 				C132F95C1C418E0000B9CE51 /* ChartPointPopupView.swift in Sources */,
 			);

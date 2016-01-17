@@ -496,6 +496,9 @@ class AFHTTPIOTServer: IOTServerProtocol{
                             
                             error = nil
                             onSucceed?(result)
+                        }else{
+                            error = nil
+                            onSucceed?([])
                         }
                     }else if responseName == "NBIError" {
                         if let errorCodeStr = response.valueForKey?("Code") as? String{
@@ -578,6 +581,9 @@ class AFHTTPIOTServer: IOTServerProtocol{
                             
                             error = nil
                             onSucceed?(result)
+                        }else{
+                            error = nil
+                            onSucceed?([])
                         }
                     }else if responseName == "NBIError" {
                         if let errorCodeStr = response.valueForKey?("Code") as? String{
@@ -622,7 +628,7 @@ class AFHTTPIOTServer: IOTServerProtocol{
             url,
             parameters: parameters,
             success: { (operation, response) -> Void in
-                //print(response)
+                print(response)
                 //print("get response for device:\(deviceID))")
                 var error: IOTError? = IOTError(errorCode: IOTError.InvalidMessageError, errorGroup: "getDeviceAggregationDataListBy1Quarter")
                 
@@ -660,6 +666,9 @@ class AFHTTPIOTServer: IOTServerProtocol{
                             
                             error = nil
                             onSucceed?(result)
+                        }else{
+                            error = nil
+                            onSucceed?([])
                         }
                     }else if responseName == "NBIError" {
                         if let errorCodeStr = response.valueForKey?("Code") as? String{
@@ -742,6 +751,9 @@ class AFHTTPIOTServer: IOTServerProtocol{
                             
                             error = nil
                             onSucceed?(result)
+                        }else{
+                            error = nil
+                            onSucceed?([])
                         }
                     }else if responseName == "NBIError" {
                         if let errorCodeStr = response.valueForKey?("Code") as? String{
@@ -824,6 +836,9 @@ class AFHTTPIOTServer: IOTServerProtocol{
                             
                             error = nil
                             onSucceed?(result)
+                        }else{
+                            error = nil
+                            onSucceed?([])
                         }
                     }else if responseName == "NBIError" {
                         if let errorCodeStr = response.valueForKey?("Code") as? String{
@@ -906,6 +921,9 @@ class AFHTTPIOTServer: IOTServerProtocol{
                             
                             error = nil
                             onSucceed?(result)
+                        }else{
+                            error = nil
+                            onSucceed?([])
                         }
                     }else if responseName == "NBIError" {
                         if let errorCodeStr = response.valueForKey?("Code") as? String{
@@ -988,6 +1006,9 @@ class AFHTTPIOTServer: IOTServerProtocol{
                             
                             error = nil
                             onSucceed?(result)
+                        }else{
+                            error = nil
+                            onSucceed?([])
                         }
                     }else if responseName == "NBIError" {
                         if let errorCodeStr = response.valueForKey?("Code") as? String{
@@ -1070,6 +1091,9 @@ class AFHTTPIOTServer: IOTServerProtocol{
                             
                             error = nil
                             onSucceed?(result)
+                        }else{
+                            error = nil
+                            onSucceed?([])
                         }
                     }else if responseName == "NBIError" {
                         if let errorCodeStr = response.valueForKey?("Code") as? String{
