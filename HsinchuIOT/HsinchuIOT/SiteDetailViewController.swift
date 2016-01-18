@@ -14,7 +14,7 @@ protocol TimeScopeSettingsDelegate {
 }
 
 
-class SiteDetailViewController: BaseViewController, TimeScopeSettingsDelegate{
+class SiteDetailViewController: UIViewController, TimeScopeSettingsDelegate{
     
     @IBOutlet weak var titleView: UIView!
     

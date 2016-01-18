@@ -9,7 +9,7 @@
 import Foundation
 import FBGlowLabel
 
-class NormalUserSiteHomeViewController: BaseViewController {
+class NormalUserSiteHomeViewController: UIViewController {
     
     var currentSite: Site?
     
@@ -53,14 +53,15 @@ class NormalUserSiteHomeViewController: BaseViewController {
     
     @IBOutlet weak var lbHumidityUnit: FBGlowLabel!
     
-    
-    
     private var timer: NSTimer?
     
-    var stopRefresh = false
-    var refreshInterval: NSTimeInterval = 30
+    var refreshInterval: NSTimeInterval = 10
     
-    var refreshIntervalQueue = dispatch_queue_create("normaluser_refresh_interval_queue", DISPATCH_QUEUE_CONCURRENT)
+    private var lastCallName: String? = nil
+    
+    var requestHandlers = [String: RealtimeDataHandler]()
+    
+    //var refreshIntervalQueue = dispatch_queue_create("normaluser_refresh_interval_queue", DISPATCH_QUEUE_CONCURRENT)
     
     override func viewDidLoad() {
     
@@ -164,14 +165,24 @@ class NormalUserSiteHomeViewController: BaseViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         startTimer()
-        stopRefresh = false
+        
+        lastCallName = nil
         getDeviceRealtimeData()
     }
     
     override func viewDidDisappear(animated: Bool) {
         stopTimer()
         hideWaitingBar()
-        stopRefresh = true
+        for callName in requestHandlers.keys {
+            if let requestHandler = requestHandlers[callName] {
+                print("set request handle cancelled - \(callName)")
+                requestHandler.cancelled = true
+            }
+        }
+        
+        if let callName = lastCallName {
+            self.cancelDelayed(callName)
+        }
         super.viewDidAppear(animated)
     }
     
@@ -216,8 +227,25 @@ class NormalUserSiteHomeViewController: BaseViewController {
         SessionManager.sharedInstance.session = nil
         SessionManager.sharedInstance.loginUser = nil
         
-        self.dismissViewControllerAnimated(true
-            , completion: nil)
+        if self.presentingViewController == nil{
+            if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate{
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc         = storyboard.instantiateViewControllerWithIdentifier("login")
+                
+                appDelegate.window?.rootViewController = vc
+                
+                appDelegate.window?.makeKeyAndVisible()
+            }
+        }else {
+            self.dismissViewControllerAnimated(true, completion: {
+                print("dismiss vc")
+            })
+        }
+        
+        
+        
+
     }
     
     @IBAction func btnAlarmClicked(sender: UIButton) {
@@ -258,25 +286,40 @@ class NormalUserSiteHomeViewController: BaseViewController {
     }
     
     func getDeviceRealtimeData(){
+        
         print("get real time data for site: \(currentSite?.siteName!)")
         showWaitingBar()
+        
+        
+        lastCallName = "\(NSDate().timeIntervalSince1970)"
+        
+        let handler = RealtimeDataHandler(controller: self, handlerName: lastCallName!)
+        requestHandlers[lastCallName!] = handler
         
         if let sessionID = SessionManager.sharedInstance.session?.sessionID, deviceID = currentSite?.device?.deviceID{
              IOTServer.getServer().getDeviceRealtimeData(sessionID,
                 deviceID: deviceID,
-                onSucceed: updateRealtimeData,
+                onSucceed: handler.process,
                 onFailed: showError)
         }else{
             showError(IOTError(errorCode: IOTError.InvalidSessionError, errorGroup: "Client"))
         }
     }
     
-    func updateRealtimeData(data: IOTMonitorData?) {
+    func updateRealtimeData(callName: String, data: IOTMonitorData?) {
+        
+        print("update real time date for site: \(currentSite?.siteName!)")
+            
         hideWaitingBar()
         
         updateUI(data)
         
+        self.delayed(self.refreshInterval, name: callName, closure: self.getDeviceRealtimeData)
+        
+        //self.performSelector("getDeviceRealtimeData", withObject: nil, afterDelay: self.refreshInterval)
+        /*
         if (!stopRefresh) {
+            
             dispatch_async(refreshIntervalQueue){
                 NSThread.sleepForTimeInterval(self.refreshInterval)
                 dispatch_async(dispatch_get_main_queue()){
@@ -285,7 +328,7 @@ class NormalUserSiteHomeViewController: BaseViewController {
                     }
                 }
             }
-        }
+        } */
     }
     
     
@@ -447,5 +490,26 @@ class NormalUserSiteHomeViewController: BaseViewController {
         lbBottom.text  = "\(strNow)"
     }
 
-    
+    class RealtimeDataHandler{
+        var cancelled: Bool = false
+        var controller: NormalUserSiteHomeViewController
+        var handlerName: String
+        
+        init(controller: NormalUserSiteHomeViewController, handlerName: String){
+            self.controller = controller
+            self.handlerName = handlerName
+        }
+        
+        func process(data: IOTMonitorData?) {
+            if !cancelled {
+                print("update method for handler - \(handlerName) has been called")
+                controller.updateRealtimeData(handlerName, data: data)
+            }else{
+                print("update method for handler - \(handlerName) not called")
+            }
+            
+            controller.requestHandlers[handlerName] = nil
+        }
+    }
+
 }

@@ -9,7 +9,7 @@
 import Foundation
 import DatePickerCell
 
-class TimeScopeSettingsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate{
+class TimeScopeSettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     var delegate: TimeScopeSettingsDelegate!
     

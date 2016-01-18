@@ -11,7 +11,7 @@ import CryptoSwift
 import MBProgressHUD
 
 
-class LoginViewController: BaseViewController, UITextFieldDelegate, UIAlertViewDelegate{
+class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate{
     
     @IBOutlet weak var ivBg: UIImageView!
     
@@ -28,8 +28,6 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, UIAlertViewD
     @IBOutlet weak var lbAppName1: UILabel!
     
     @IBOutlet weak var lbAppName2: UILabel!
-    
-   
     
     
     override func viewDidLoad() {
@@ -110,6 +108,10 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, UIAlertViewD
         lbAppName2.textColor = Colors.TEXT_BLUE
         lbAppName2.text = getString(StringKey.APP_TITLE_2)
         
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
         
     }
     
@@ -163,11 +165,16 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, UIAlertViewD
         let loginName = tvLoginname.text!
         let password = tvPassword.text!
         
-        
-        IOTServer.getServer().getSessionID(SessionHandler(controller: self, loginName: loginName, password: password).doLoginIn, onFailed: showError)
+        doLogin(loginName, password: password)
         
         
     }
+    
+    private func doLogin(loginName: String, password: String){
+    
+        IOTServer.getServer().getSessionID(SessionHandler(controller: self, loginName: loginName, password: password).doLoginIn, onFailed: showError)
+    }
+    
     struct SessionHandler {
         let controller: LoginViewController
         let loginName: String
@@ -251,16 +258,60 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, UIAlertViewD
     }
     
     func gotoAdminUserScreen() {
-        self.performSegueWithIdentifier("adminUser", sender: self)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let adminUserTabVC = storyboard.instantiateViewControllerWithIdentifier("adminUser") as! AdminUserTabViewController
+        
+        //setup tab average value
+        let avListVC = storyboard.instantiateViewControllerWithIdentifier("adminUserSiteList") as! AdminUserSiteListViewController
+        avListVC.dataLoader = AverageValueLoader()
+        
+        avListVC.tabBarItem.title = getString(StringKey.ADMINUSER_TAB_AVERAGEVALUE)
+        
+        avListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: UIControlState.Highlighted)
+        avListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Normal)
+        
+        avListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: Fonts.FONT_TABBAR], forState: UIControlState.Normal)
+        
+        avListVC.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -14)
+        
+        
+        let rdListVC = storyboard.instantiateViewControllerWithIdentifier("adminUserSiteList") as! AdminUserSiteListViewController
+        
+        rdListVC.dataLoader = RealtimeDataLoader()
+        
+        rdListVC.tabBarItem.title = getString(StringKey.ADMINUSER_TAB_REALTIMEDATA)
+        
+        rdListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: UIControlState.Highlighted)
+        rdListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Normal)
+        
+        rdListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: Fonts.FONT_TABBAR], forState: UIControlState.Normal)
+        
+        rdListVC.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -14)
+        
+        
+        
+        adminUserTabVC.viewControllers = [avListVC, rdListVC]
+
+        
+        self.presentViewController(adminUserTabVC, animated: true, completion: nil)
+        //self.performSegueWithIdentifier("adminUser", sender: self)
     }
     
     func gotoNormalUserScreen() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        self.performSegueWithIdentifier("normalUser", sender: self)
+        let normalUserTabVC = storyboard.instantiateViewControllerWithIdentifier("normalUser") as! NormalUserTabViewController
+        
+         self.presentViewController(normalUserTabVC, animated: true, completion: nil)
+        
+        //self.performSegueWithIdentifier("normalUser", sender: self)
     }
-
+/*
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         if segue.identifier == "adminUser" {
             if let adminUserTabVC = segue.destinationViewController as? AdminUserTabViewController{
                 
@@ -300,11 +351,10 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, UIAlertViewD
                 adminUserTabVC.viewControllers = [avListVC, rdListVC]
             }
         }else if segue.identifier == "normalUser" {
-            if let normalUserTabVC = segue.destinationViewController as? NormalUserTabViewController{
-                
-            }
+            
         }
     }
+*/
     
     
     

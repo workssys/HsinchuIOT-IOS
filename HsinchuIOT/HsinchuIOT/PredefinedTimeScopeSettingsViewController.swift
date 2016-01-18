@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PredefinedTimeScopeSettingsViewController: BaseViewController{
+class PredefinedTimeScopeSettingsViewController: UIViewController{
     enum PredefinedTimeScope{
         case OneHour, FourHours, EightHours
         case Today, Yesterday, Last3Days, Last5Days

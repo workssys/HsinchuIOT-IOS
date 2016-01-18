@@ -100,17 +100,17 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="4Pz-fL-pvV"/>
+                                        <exclude reference="U4L-9A-Y9j"/>
+                                        <exclude reference="dTz-OT-8sJ"/>
+                                        <exclude reference="gVJ-t6-5aE"/>
+                                        <exclude reference="ulx-Ko-xRd"/>
                                         <exclude reference="F0d-xW-68E"/>
                                         <exclude reference="LLX-oC-tFA"/>
                                         <exclude reference="VzQ-a7-yEu"/>
                                         <exclude reference="p69-XJ-ifB"/>
                                         <exclude reference="5J1-89-NcR"/>
                                         <exclude reference="kWE-QR-0cE"/>
-                                        <exclude reference="4Pz-fL-pvV"/>
-                                        <exclude reference="U4L-9A-Y9j"/>
-                                        <exclude reference="dTz-OT-8sJ"/>
-                                        <exclude reference="gVJ-t6-5aE"/>
-                                        <exclude reference="ulx-Ko-xRd"/>
                                         <exclude reference="62m-44-PIE"/>
                                         <exclude reference="OWl-id-Cvf"/>
                                         <exclude reference="WpG-VK-Bzb"/>
@@ -442,7 +442,6 @@
         <!--Site Detail View Controller-->
         <scene sceneID="EWG-WV-q2f">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CxD-A4-thh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Jkx-2f-aP9" customClass="SiteDetailViewController" customModule="HsinchuIOT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="37O-Eo-ChU"/>
@@ -541,13 +540,13 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="TL2-xg-kK7"/>
-                                        <exclude reference="qdP-Q6-rwo"/>
                                         <exclude reference="9U2-Fq-px8"/>
                                         <exclude reference="Aul-Ya-hNJ"/>
                                         <exclude reference="FRz-rJ-oz0"/>
                                         <exclude reference="q4z-Ua-cgW"/>
                                         <exclude reference="ykr-FJ-Aj5"/>
+                                        <exclude reference="TL2-xg-kK7"/>
+                                        <exclude reference="qdP-Q6-rwo"/>
                                         <exclude reference="SQg-Qc-OBH"/>
                                         <exclude reference="fD5-n6-xza"/>
                                         <exclude reference="rkw-BU-Wx8"/>
@@ -688,6 +687,7 @@
                         <segue destination="Rz8-VO-3oW" kind="presentation" identifier="predefinedTimeScopeSettings" modalPresentationStyle="formSheet" id="Rt5-DH-16m"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CxD-A4-thh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1091" y="377"/>
         </scene>
@@ -1256,7 +1256,7 @@
         <!--Admin User Tab View Controller-->
         <scene sceneID="JqC-TW-rDi">
             <objects>
-                <tabBarController storyboardIdentifier="adminUserHome" id="Bqo-Za-Qc7" customClass="AdminUserTabViewController" customModule="HsinchuIOT" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="adminUser" id="Bqo-Za-Qc7" customClass="AdminUserTabViewController" customModule="HsinchuIOT" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="XOz-l0-bg7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -1381,9 +1381,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Ler-BR-7Me"/>
                                 <exclude reference="gfw-cI-hjt"/>
                                 <exclude reference="znj-ag-swH"/>
-                                <exclude reference="Ler-BR-7Me"/>
                                 <exclude reference="QHd-ds-GYL"/>
                                 <exclude reference="ySU-wP-sPD"/>
                                 <exclude reference="UdI-T1-0YV"/>
@@ -1400,7 +1400,7 @@
                         <outlet property="tvLoginname" destination="uUU-Bv-C9Y" id="rOZ-Xl-2FO"/>
                         <outlet property="tvPassword" destination="KWF-oP-Vdq" id="8JY-F5-p8V"/>
                         <segue destination="Bqo-Za-Qc7" kind="show" identifier="adminUser" id="JF6-zj-Lhs"/>
-                        <segue destination="YCJ-lb-unX" kind="show" identifier="normalUser" action="showDetailViewController:sender:" id="sga-qN-SC0"/>
+                        <segue destination="YCJ-lb-unX" kind="show" identifier="normalUser" id="sga-qN-SC0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4O-xv-GGG" sceneMemberID="firstResponder"/>
@@ -1666,8 +1666,8 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="i70-Tt-3gZ"/>
                                                 <exclude reference="J1I-pc-a63"/>
+                                                <exclude reference="i70-Tt-3gZ"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -1825,7 +1825,7 @@
         <!--Normal User Tab View Controller-->
         <scene sceneID="nSr-Vb-5h0">
             <objects>
-                <tabBarController id="YCJ-lb-unX" customClass="NormalUserTabViewController" customModule="HsinchuIOT" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="normalUser" id="YCJ-lb-unX" customClass="NormalUserTabViewController" customModule="HsinchuIOT" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="jXL-Po-DGb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

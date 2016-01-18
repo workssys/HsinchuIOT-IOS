@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C118BB201C1606FD00CC7D81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB1F1C1606FD00CC7D81 /* AppDelegate.swift */; };
-		C118BB221C1606FD00CC7D81 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB211C1606FD00CC7D81 /* BaseViewController.swift */; };
+		C118BB221C1606FD00CC7D81 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB211C1606FD00CC7D81 /* UIViewControllerExtension.swift */; };
 		C118BB2A1C1606FE00CC7D81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C118BB281C1606FE00CC7D81 /* LaunchScreen.storyboard */; };
 		C118BB351C1606FE00CC7D81 /* HsinchuIOTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB341C1606FE00CC7D81 /* HsinchuIOTTests.swift */; };
 		C118BB401C1606FE00CC7D81 /* HsinchuIOTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118BB3F1C1606FE00CC7D81 /* HsinchuIOTUITests.swift */; };
@@ -72,7 +72,7 @@
 /* Begin PBXFileReference section */
 		C118BB1C1C1606FD00CC7D81 /* HsinchuIOT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HsinchuIOT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C118BB1F1C1606FD00CC7D81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C118BB211C1606FD00CC7D81 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C118BB211C1606FD00CC7D81 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		C118BB291C1606FE00CC7D81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C118BB2B1C1606FE00CC7D81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C118BB301C1606FE00CC7D81 /* HsinchuIOTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HsinchuIOTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,7 +266,6 @@
 			children = (
 				C132F9671C49996B00B9CE51 /* normaluser */,
 				C1CF14911C2D0AE7000E70F3 /* adminuser */,
-				C118BB211C1606FD00CC7D81 /* BaseViewController.swift */,
 				C118BB501C16153600CC7D81 /* LauchScreenViewController.swift */,
 				C16EE3161C19F83100726659 /* LoginViewController.swift */,
 				C132F94E1C369E4D00B9CE51 /* SiteDetailViewController.swift */,
@@ -293,6 +292,7 @@
 		C1D7548F1C24FF600038C085 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				C118BB211C1606FD00CC7D81 /* UIViewControllerExtension.swift */,
 				C1D754821C230CC80038C085 /* LanguageManager.swift */,
 				C1D754801C21B6DB0038C085 /* UIColorExtension.swift */,
 				C1CF144F1C29DAE7000E70F3 /* PreferenceManager.swift */,
@@ -516,7 +516,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C118BB221C1606FD00CC7D81 /* BaseViewController.swift in Sources */,
+				C118BB221C1606FD00CC7D81 /* UIViewControllerExtension.swift in Sources */,
 				C132F95E1C42C02800B9CE51 /* IOTChartAxisValueDate.swift in Sources */,
 				C132F95A1C3EE65100B9CE51 /* LegendView.swift in Sources */,
 				C1D754881C247B330038C085 /* AppConfig.swift in Sources */,

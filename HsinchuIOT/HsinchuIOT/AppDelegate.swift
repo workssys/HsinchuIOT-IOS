@@ -8,6 +8,8 @@
 
 import UIKit
 
+import CryptoSwift
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -18,20 +20,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //check remember username/password
         
-        if let loginame = PreferenceManager.sharedInstance.valueForKey(PreferenceKey.LOGINNAME){
-            if let password = PreferenceManager.sharedInstance.valueForKey(PreferenceKey.PASSWORD){
-                print("Username:'\(loginame)' Password:\(password)")
-            }
+        if let loginname = PreferenceManager.sharedInstance.valueForKey(PreferenceKey.LOGINNAME){
             
+            if let encryptedPassword = PreferenceManager.sharedInstance.valueForKey(PreferenceKey.PASSWORD){
+                if !encryptedPassword.isEmpty{
+                    if let encryptedData = NSData(base64EncodedString: encryptedPassword, options: NSDataBase64DecodingOptions(rawValue:0)){
+                        
+                        
+                        if let decryptedData = try? encryptedData.decrypt(AES(key: CryptoAlgorithm.AES_KEY, iv: CryptoAlgorithm.IV)) {
+                            if let decryptedPassword = String(data: decryptedData, encoding: NSUTF8StringEncoding){
+                                doAutoLogin(loginname, password: decryptedPassword)
+                                
+                                return true
+                            }
+                        }
+                    }
+                }
+            }
         }
         //show login page
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc         = storyboard.instantiateViewControllerWithIdentifier("login")
-        self.window?.rootViewController = vc
-        self.window?.makeKeyAndVisible()
-        // Override point for customization after application launch.
+        showLoginScreen()
         
-
         return true
     }
 
@@ -64,7 +73,129 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-   
+    func doAutoLogin(loginName: String, password: String){
+        IOTServer.getServer().getSessionID(SessionHandler(appDelegate: self, loginName: loginName, password: password).doLoginIn, onFailed: autoLoginFailed)
+    }
+    
+    func autoLoginFailed(error: IOTError){
+        print("Auto login failed: " + error.errorMsg!)
+        showLoginScreen()
+    }
+
+    func showLoginScreen(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc         = storyboard.instantiateViewControllerWithIdentifier("login")
+        self.window?.rootViewController = vc
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func gotoAdminUserScreen() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let loginVC = storyboard.instantiateViewControllerWithIdentifier("login") as! LoginViewController
+        
+        let adminUserTabVC = storyboard.instantiateViewControllerWithIdentifier("adminUser") as! AdminUserTabViewController
+        
+        //setup tab average value
+        let avListVC = storyboard.instantiateViewControllerWithIdentifier("adminUserSiteList") as! AdminUserSiteListViewController
+        avListVC.dataLoader = AverageValueLoader()
+        
+        avListVC.tabBarItem.title = getString(StringKey.ADMINUSER_TAB_AVERAGEVALUE)
+        
+        avListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: UIControlState.Highlighted)
+        avListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Normal)
+        
+        avListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: Fonts.FONT_TABBAR], forState: UIControlState.Normal)
+        
+        avListVC.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -14)
+        
+        
+        let rdListVC = storyboard.instantiateViewControllerWithIdentifier("adminUserSiteList") as! AdminUserSiteListViewController
+        
+        rdListVC.dataLoader = RealtimeDataLoader()
+        
+        rdListVC.tabBarItem.title = getString(StringKey.ADMINUSER_TAB_REALTIMEDATA)
+        
+        rdListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: UIControlState.Highlighted)
+        rdListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Normal)
+        
+        rdListVC.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: Fonts.FONT_TABBAR], forState: UIControlState.Normal)
+        
+        rdListVC.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -14)
+        
+        adminUserTabVC.viewControllers = [avListVC, rdListVC]
+        
+        self.window?.rootViewController = loginVC
+        self.window?.makeKeyAndVisible()
+        
+        loginVC.presentViewController(adminUserTabVC, animated: true, completion: nil)
+        
+    }
+    
+    func gotoNormalUserScreen(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyboard.instantiateViewControllerWithIdentifier("login") as! LoginViewController
+        let normalUserTabVC = storyboard.instantiateViewControllerWithIdentifier("normalUser") as! NormalUserTabViewController
+        
+        self.window?.rootViewController = loginVC
+        self.window?.makeKeyAndVisible()
+        
+        loginVC.presentViewController(normalUserTabVC, animated: true, completion: nil)
+        
+    }
+    
+    struct SessionHandler {
+        let appDelegate: AppDelegate
+        let loginName: String
+        let password: String
+        
+        init(appDelegate: AppDelegate, loginName: String, password: String){
+            self.appDelegate = appDelegate
+            self.loginName = loginName
+            self.password = password
+        }
+        
+        func doLoginIn(session: Session){
+            IOTServer.getServer().login(
+                session.sessionID,
+                loginName: loginName,
+                password: password,
+                onSucceed: LoginHandler(appDelegate: appDelegate, session: session).loginSucceed,
+                onFailed: appDelegate.autoLoginFailed)
+            
+        }
+    }
+    
+    struct LoginHandler {
+        let appDelegate: AppDelegate
+        let session: Session
+        
+        init(appDelegate: AppDelegate, session: Session){
+            self.appDelegate = appDelegate
+            self.session = session
+        }
+        
+        func loginSucceed(user: User){
+            //first set session ID and login user
+            
+            SessionManager.sharedInstance.session = session
+            SessionManager.sharedInstance.loginUser = user
+            
+            if user.isAdminUser() {
+                appDelegate.gotoAdminUserScreen()
+            }else if user.isNormalUser() {
+                appDelegate.gotoNormalUserScreen()
+            }else{
+                if AppConfig.TEST {
+                    appDelegate.gotoAdminUserScreen()
+                }else{
+                    appDelegate.autoLoginFailed(IOTError(errorCode: IOTError.UserPermissionWrongError, errorGroup: "Client"))
+                }
+            }
+        }
+    }
 
 }
 
