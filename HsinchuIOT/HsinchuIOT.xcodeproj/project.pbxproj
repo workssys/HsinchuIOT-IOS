@@ -175,6 +175,8 @@
 
 /* Begin PBXFileReference section */
 		434C327394AA37F25D2439AA /* libPods-HsinchuIOT.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HsinchuIOT.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D5992BD9DB9CE1DA560BF12 /* Pods-HsinchuIOT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HsinchuIOT.release.xcconfig"; path = "Pods/Target Support Files/Pods-HsinchuIOT/Pods-HsinchuIOT.release.xcconfig"; sourceTree = "<group>"; };
+		8DC093F29129C3B07EDE48A7 /* Pods-HsinchuIOT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HsinchuIOT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HsinchuIOT/Pods-HsinchuIOT.debug.xcconfig"; sourceTree = "<group>"; };
 		C118BB1C1C1606FD00CC7D81 /* HsinchuIOT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HsinchuIOT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C118BB1F1C1606FD00CC7D81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C118BB211C1606FD00CC7D81 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -261,6 +263,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8DE73AF79A37FEBE6EA338C8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8DC093F29129C3B07EDE48A7 /* Pods-HsinchuIOT.debug.xcconfig */,
+				4D5992BD9DB9CE1DA560BF12 /* Pods-HsinchuIOT.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		90BE82C5E3F7A60BE5EC539C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +291,7 @@
 				C118BB3E1C1606FE00CC7D81 /* HsinchuIOTUITests */,
 				C118BB1D1C1606FD00CC7D81 /* Products */,
 				90BE82C5E3F7A60BE5EC539C /* Frameworks */,
+				8DE73AF79A37FEBE6EA338C8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -916,6 +928,7 @@
 		};
 		C118BB451C1606FE00CC7D81 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DC093F29129C3B07EDE48A7 /* Pods-HsinchuIOT.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -934,6 +947,7 @@
 		};
 		C118BB461C1606FE00CC7D81 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D5992BD9DB9CE1DA560BF12 /* Pods-HsinchuIOT.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
