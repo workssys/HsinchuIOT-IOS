@@ -14,13 +14,13 @@ class IOTChartAxisValueDate: ChartAxisValueDate {
     
     override init(date: NSDate, formatter: NSDateFormatter, labelSettings: ChartLabelSettings = ChartLabelSettings()) {
         self._formatter = NSDateFormatter()
-        self._formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        self._formatter.dateFormat = "yyyy-MM-dd\r\nHH:mm:ss"
         super.init(date: date, formatter: formatter, labelSettings: labelSettings)
         
     }
     
     
-    override public var text: String {
+    override public var description: String {
         return _formatter.stringFromDate(date)
     }
 }

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import DatePickerCell
 
 class TimeScopeSettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     

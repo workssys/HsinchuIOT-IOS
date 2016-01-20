@@ -116,7 +116,7 @@ class MockServer: IOTServerProtocol{
         
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            NSThread.sleepForTimeInterval(6)
+            NSThread.sleepForTimeInterval(2)
             
             dispatch_async(dispatch_get_main_queue()){
                 
@@ -189,7 +189,10 @@ class MockServer: IOTServerProtocol{
         
         let timeIntervals = to.timeIntervalSinceDate(from)
         
-        let recordNumber = Int (3 * (timeIntervals/interval))
+        var recordNumber = Int (3 * (timeIntervals/interval))
+        if recordNumber < 0 {
+            recordNumber = 0
+        }
         
         var result: [IOTSampleData] = []
         for i in 0..<recordNumber {

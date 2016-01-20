@@ -1,5 +1,4 @@
 PODS:
-  - ADDropDownMenuView (1.0.2)
   - AFNetworking (2.6.3):
     - AFNetworking/NSURLConnection (= 2.6.3)
     - AFNetworking/NSURLSession (= 2.6.3)
@@ -32,7 +31,6 @@ PODS:
   - XMLDictionary (1.4)
 
 DEPENDENCIES:
-  - ADDropDownMenuView (~> 1.0.0)
   - AFNetworking (~> 2.6.3)
   - AFXMLDictionarySerializer
   - BButton
@@ -51,7 +49,6 @@ CHECKOUT OPTIONS:
     :git: https://github.com/lyokato/FBGlowLabel.git
 
 SPEC CHECKSUMS:
-  ADDropDownMenuView: dd0fcd96c83ec92eeed47a790e0d6ac4ca984639
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   AFXMLDictionarySerializer: 12f42d62f7d6ad2a31aff4c8da3b14701d4c232f
   BButton: ab0f2ed3b998ae73c5188b57d270d81e4a1eeb27
@@ -61,6 +58,6 @@ SPEC CHECKSUMS:
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
 
-PODFILE CHECKSUM: d595a5af44d1ebe8db89e43bf3a375f7e123fdbb
+PODFILE CHECKSUM: 64870332033bde0372a22122e8801fc6f5e5ef55
 
 COCOAPODS: 1.0.0.beta.2

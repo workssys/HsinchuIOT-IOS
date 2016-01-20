@@ -8,13 +8,13 @@
 
 import SwiftCharts
 
-public class ChartPointPopupView: UIView {
+public class IOTChartPointView: UIView {
     
     private let targetCenter: CGPoint
     
     var pointDiameter: CGFloat
     
-    public var viewTapped: ((ChartPointPopupView) -> ())?
+    public var viewTapped: ((IOTChartPointView) -> ())?
     
     var pointColor: UIColor = UIColor.grayColor()
     var textColor: UIColor = UIColor.grayColor()
@@ -60,7 +60,7 @@ public class ChartPointPopupView: UIView {
             self.textVPadding = 0
             
         }else{
-            let t: NSString = chartPoint.y.text
+            let t: NSString = chartPoint.y.description
             self.textSize = t.sizeWithAttributes([NSFontAttributeName:textFont])
             self.textVPadding = textVerticalPadding
         }
@@ -80,7 +80,7 @@ public class ChartPointPopupView: UIView {
         self.textLabel = UILabel(frame: CGRectMake(0, 0, textSize.width, textSize.height))
         self.textLabel.font = textFont
         self.textLabel.textColor = textColor
-        self.textLabel.text = chartPoint.y.text
+        self.textLabel.text = chartPoint.y.description
         self.textLabel.textAlignment = NSTextAlignment.Center
         self.textLabel.backgroundColor = UIColor.clearColor()
         self.addSubview(textLabel)

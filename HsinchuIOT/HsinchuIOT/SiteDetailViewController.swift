@@ -69,7 +69,7 @@ class SiteDetailViewController: UIViewController, TimeScopeSettingsDelegate{
         case Seconds, Quarter, Hour, Hours, Day, Week, Month
     }
     
-    var selectedView: ChartPointPopupView?
+    var selectedView: IOTChartPointView?
     var popups: [UIView] = []
     
     override func viewDidLoad() {
@@ -577,7 +577,7 @@ class SiteDetailViewController: UIViewController, TimeScopeSettingsDelegate{
             
             let (chartPoint, screenLoc) = (chartPointModel.chartPoint, chartPointModel.screenLoc)
             
-            let v = ChartPointPopupView(chartPoint: chartPoint, center: screenLoc, diameter: 5, pointColor: pointColor, selectedPointColor: selectedColor, hideText: false, textFont: Fonts.FONT_CHART_POINT_TEXT, textVerticalPadding: 2, textColor: pointColor, selectedTextColor: selectedColor)
+            let v = IOTChartPointView(chartPoint: chartPoint, center: screenLoc, diameter: 5, pointColor: pointColor, selectedPointColor: selectedColor, hideText: false, textFont: Fonts.FONT_CHART_POINT_TEXT, textVerticalPadding: 2, textColor: pointColor, selectedTextColor: selectedColor)
             
             v.viewTapped = {view in
                 for p in self.popups {p.removeFromSuperview()}
@@ -607,7 +607,10 @@ class SiteDetailViewController: UIViewController, TimeScopeSettingsDelegate{
                 let infoView = UILabel(frame: CGRectMake(0, 10, w, h - 30))
                 infoView.textColor = UIColor.whiteColor()
                 infoView.backgroundColor = UIColor.blackColor()
-                infoView.text = "Time: \(chartPoint.x.text), Value:\(chartPoint.y.text)"
+                let timeFormatter = NSDateFormatter()
+                timeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                let time = NSDate(timeIntervalSince1970: chartPoint.x.scalar)
+                infoView.text = "Time: \(timeFormatter.stringFromDate(time)), Value:\(chartPoint.y.description)"
                 infoView.font = Fonts.FONT_CHART_POINT_HINT
                 infoView.textAlignment = NSTextAlignment.Center
                 
@@ -644,7 +647,7 @@ class SiteDetailViewController: UIViewController, TimeScopeSettingsDelegate{
         chartSettings.labelsToAxisSpacingX = 5
         chartSettings.labelsToAxisSpacingY = 5
         chartSettings.axisTitleLabelsToLabelsSpacing = 4
-        chartSettings.axisStrokeWidth = 2
+        chartSettings.axisStrokeWidth = 1
         chartSettings.spacingBetweenAxesX = 8
         chartSettings.spacingBetweenAxesY = 8
         
