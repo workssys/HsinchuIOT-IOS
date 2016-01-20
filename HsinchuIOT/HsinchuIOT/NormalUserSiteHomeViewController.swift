@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import FBGlowLabel
 
 class NormalUserSiteHomeViewController: UIViewController {
     

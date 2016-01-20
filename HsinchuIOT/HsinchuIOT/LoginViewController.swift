@@ -8,7 +8,6 @@
 
 import Foundation
 import CryptoSwift
-import MBProgressHUD
 
 
 class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate{
