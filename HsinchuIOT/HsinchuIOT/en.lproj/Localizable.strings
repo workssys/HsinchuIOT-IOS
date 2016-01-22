@@ -70,4 +70,8 @@
 "TIMESCOPE_SETTINGS_LASTMONTH" = "Last Month";
 "TIMESCOPE_SETTINGS_LAST2MONTHS" = "Last 2 Months";
 "TIMESCOPE_SETTINGS_LAST3MONTHS" = "Last 3 Months";
-
+"ALARM_LIST_TITLE" = "Alarm";
+"ALARM_LIST_TITLE_DELETEALL" = "Delete All Alarms";
+"ALARM_LIST_TITLE_DELETE" = "Delete Alarm";
+"ALARM_LIST_DELETEALL" = "Do you want to delete all alarms?";
+"ALARM_LIST_DELETE" = "Do you want to delete selected alarm?";

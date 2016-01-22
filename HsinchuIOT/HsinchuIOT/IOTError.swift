@@ -10,7 +10,7 @@ import Foundation
 
 typealias IOTErrorCode = (code: Int, messageKey: String)
 
-struct IOTError{
+struct IOTError: ErrorType{
     var errorCode: Int = -1
     var errorMsg: String? = nil
     var errorGroup: String?
@@ -36,7 +36,7 @@ struct IOTError{
     static let InvalidMessageError: IOTErrorCode = (-5, StringKey.ERROR_INVALID_MESSAGE)
     static let InvalidSessionError: IOTErrorCode = (-6, StringKey.ERROR_INVALID_SESSION)
     static let InvalidDeviceError: IOTErrorCode = (-7, StringKey.ERROR_INVALID_DEVICE)
-    
+    static let RegisterNotificationError: IOTErrorCode = (-8, StringKey.ERROR_REGISTER_NOTIFICATION)
 }
 
 

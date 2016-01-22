@@ -39,6 +39,7 @@ protocol IOTServerProtocol{
     
     func getDeviceAggregationDataListBy1Month(sessionID: String, deviceID: String, from: NSDate, to: NSDate, onSucceed:(([IOTSampleData]) -> ())?, onFailed: ((IOTError) -> ())?)
 
+    func registerDeviceBinding(sessionID: String, username: String, token: String, deviceKey: String, onSucceed:((String) -> ())?, onFailed: ((IOTError) -> ())?)
     
 }
 

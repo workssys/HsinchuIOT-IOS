@@ -69,6 +69,7 @@ class NormalUserSiteHomeViewController: UIViewController {
         lbTitle.font = Fonts.FONT_TITLE
         lbTitle.text = currentSite?.siteName
         
+        
         lbBottom.font = Fonts.FONT_INFO
         
         panelCO2.gradientStartColor = Colors.PANEL_STATUS_NORMAL_START
@@ -163,6 +164,8 @@ class NormalUserSiteHomeViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        updateAlarmStatus()
+        
         startTimer()
         
         lastCallName = nil
@@ -248,6 +251,7 @@ class NormalUserSiteHomeViewController: UIViewController {
     }
     
     @IBAction func btnAlarmClicked(sender: UIButton) {
+        self.performSegueWithIdentifier("alarmList", sender: self)
     }
     
     @IBAction func btnDetailClicked(sender: UIButton) {
@@ -267,6 +271,21 @@ class NormalUserSiteHomeViewController: UIViewController {
                 detailVC.chartStartTime = start
                 detailVC.chartEndTime = now
             }
+        }else if segue.identifier == "alarmList" {
+            if let alarmListVC = segue.destinationViewController as? AlarmListViewController {
+                alarmListVC.site = self.currentSite
+                alarmListVC.alarms = AlarmManager.sharedInstance.loadAlarmList(self.currentSite)
+            }
+        }
+    }
+    
+    func updateAlarmStatus() {
+        if AlarmManager.sharedInstance.loadAlarmList(currentSite).count > 0 {
+            btnAlarm.setImage(UIImage(named: "btn_alarm_red.png") , forState: UIControlState.Normal)
+            btnAlarm.setImage(UIImage(named: "btn_alarm_red_pressed.png"), forState: UIControlState.Highlighted)
+        }else {
+            btnAlarm.setImage(UIImage(named: "btn_alarm.png") , forState: UIControlState.Normal)
+            btnAlarm.setImage(UIImage(named: "btn_alarm_pressed.png"), forState: UIControlState.Highlighted)
         }
     }
     

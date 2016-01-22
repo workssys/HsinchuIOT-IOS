@@ -220,5 +220,14 @@ class MockServer: IOTServerProtocol{
             }
         }
     }
-    
+   
+    func registerDeviceBinding(sessionID: String, username: String, token: String, deviceKey: String, onSucceed: ((String) -> ())?, onFailed: ((IOTError) -> ())?) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            NSThread.sleepForTimeInterval(2)
+            
+            dispatch_async(dispatch_get_main_queue()){
+                onSucceed?("OK")
+            }
+        }
+    }
 }

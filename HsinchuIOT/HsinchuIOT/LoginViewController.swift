@@ -232,11 +232,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
             controller.hideWaitingBar()
             
             if user.isAdminUser() {
+                NotificationManager.sharedInstance.registerPushNotification()
                 controller.gotoAdminUserScreen()
             }else if user.isNormalUser() {
+                NotificationManager.sharedInstance.registerPushNotification()
                 controller.gotoNormalUserScreen()
             }else{
                 if AppConfig.TEST {
+                    NotificationManager.sharedInstance.registerPushNotification()
                     controller.gotoAdminUserScreen()
                 }else{
                     controller.showError(IOTError(errorCode: IOTError.UserPermissionWrongError, errorGroup: "Client"))

@@ -423,6 +423,7 @@
                         <outlet property="lbTitle" destination="dJy-8I-kkx" id="DNX-uf-XvT"/>
                         <outlet property="tvSiteList" destination="1H9-wV-UvR" id="9dc-zc-nJd"/>
                         <segue destination="Jkx-2f-aP9" kind="presentation" identifier="siteDetail" id="l4b-OC-Bgp"/>
+                        <segue destination="cqp-RI-LnM" kind="presentation" identifier="alarmList" id="ghm-18-RIw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SE-5K-Mfi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -437,7 +438,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="327" y="377"/>
+            <point key="canvasLocation" x="349" y="393"/>
         </scene>
         <!--Site Detail View Controller-->
         <scene sceneID="EWG-WV-q2f">
@@ -1407,6 +1408,220 @@
             </objects>
             <point key="canvasLocation" x="-468" y="-612"/>
         </scene>
+        <!--Alarm List View Controller-->
+        <scene sceneID="XMX-GJ-vuj">
+            <objects>
+                <viewController id="cqp-RI-LnM" customClass="AlarmListViewController" customModule="HsinchuIOT" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9ig-lg-ruh"/>
+                        <viewControllerLayoutGuide type="bottom" id="j6L-fg-aIA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q70-31-j3O">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXF-ca-iJ7" userLabel="Title View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5I-ss-jlW" userLabel="BackButton">
+                                        <rect key="frame" x="10" y="5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="aYx-hY-ae7"/>
+                                            <constraint firstAttribute="width" constant="40" id="eA6-YA-7Bw"/>
+                                        </constraints>
+                                        <state key="normal" image="btn_back"/>
+                                        <state key="selected" image="btn_back_pressed"/>
+                                        <state key="highlighted" image="btn_back_pressed"/>
+                                        <connections>
+                                            <action selector="btnBackClicked:" destination="cqp-RI-LnM" eventType="touchUpInside" id="AqL-bT-aQX"/>
+                                            <action selector="btnLogoffClicked:" destination="KBJ-43-p90" eventType="touchUpInside" id="mbN-f5-RDd"/>
+                                            <action selector="logoffBtnClicked:" destination="Pp8-ND-1AI" eventType="touchUpInside" id="LsF-2I-8xW"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAE-3H-zQb" userLabel="TitleLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="xqH-6f-40i"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="xqH-6f-40i"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qf-f1-Mfr" userLabel="DeleteAllButton">
+                                        <rect key="frame" x="550" y="5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Pnq-1Y-aKr"/>
+                                            <constraint firstAttribute="width" constant="40" id="phD-GX-Azt"/>
+                                        </constraints>
+                                        <state key="normal" image="btn_deleteall"/>
+                                        <state key="selected" image="btn_back_pressed"/>
+                                        <state key="highlighted" image="btn_deleteall_pressed"/>
+                                        <connections>
+                                            <action selector="btnDeleteAllClicked:" destination="cqp-RI-LnM" eventType="touchUpInside" id="7Sd-2I-H2G"/>
+                                            <action selector="btnDetailClicked:" destination="KBJ-43-p90" eventType="touchUpInside" id="brS-VD-164"/>
+                                            <action selector="logoffBtnClicked:" destination="Pp8-ND-1AI" eventType="touchUpInside" id="3r6-yj-ciH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="mAE-3H-zQb" secondAttribute="trailing" id="0Fi-s3-cyi"/>
+                                    <constraint firstItem="mAE-3H-zQb" firstAttribute="centerY" secondItem="IXF-ca-iJ7" secondAttribute="centerY" id="4Iw-I0-ld7"/>
+                                    <constraint firstItem="mAE-3H-zQb" firstAttribute="top" secondItem="IXF-ca-iJ7" secondAttribute="top" constant="2" id="5Kq-HT-SBi"/>
+                                    <constraint firstItem="M5I-ss-jlW" firstAttribute="centerY" secondItem="IXF-ca-iJ7" secondAttribute="centerY" id="7rg-Zs-fP8"/>
+                                    <constraint firstAttribute="bottom" secondItem="M5I-ss-jlW" secondAttribute="bottom" constant="5" id="9lW-zq-SKu"/>
+                                    <constraint firstItem="mAE-3H-zQb" firstAttribute="centerX" secondItem="IXF-ca-iJ7" secondAttribute="centerX" id="AiX-gy-qZh"/>
+                                    <constraint firstAttribute="trailing" secondItem="mAE-3H-zQb" secondAttribute="trailing" id="FMS-zB-hNt"/>
+                                    <constraint firstItem="mAE-3H-zQb" firstAttribute="leading" secondItem="IXF-ca-iJ7" secondAttribute="leading" id="HEF-5S-I9H"/>
+                                    <constraint firstItem="M5I-ss-jlW" firstAttribute="top" secondItem="IXF-ca-iJ7" secondAttribute="top" constant="5" id="HbI-PF-Kof"/>
+                                    <constraint firstAttribute="bottom" secondItem="mAE-3H-zQb" secondAttribute="bottom" id="Ial-OZ-hb0"/>
+                                    <constraint firstAttribute="bottom" secondItem="mAE-3H-zQb" secondAttribute="bottom" constant="2" id="IlC-PH-iem"/>
+                                    <constraint firstItem="mAE-3H-zQb" firstAttribute="leading" secondItem="IXF-ca-iJ7" secondAttribute="leading" id="JDU-1v-q1b"/>
+                                    <constraint firstItem="M5I-ss-jlW" firstAttribute="top" secondItem="IXF-ca-iJ7" secondAttribute="top" constant="2" id="MYR-fx-YVk"/>
+                                    <constraint firstItem="5qf-f1-Mfr" firstAttribute="centerY" secondItem="IXF-ca-iJ7" secondAttribute="centerY" id="N8T-wY-RVY"/>
+                                    <constraint firstItem="mAE-3H-zQb" firstAttribute="top" secondItem="IXF-ca-iJ7" secondAttribute="top" id="P3j-r9-K1E"/>
+                                    <constraint firstItem="mAE-3H-zQb" firstAttribute="top" secondItem="IXF-ca-iJ7" secondAttribute="top" id="YaF-Xh-TX4"/>
+                                    <constraint firstItem="M5I-ss-jlW" firstAttribute="leading" secondItem="IXF-ca-iJ7" secondAttribute="leading" constant="10" id="gaG-Ff-fj3"/>
+                                    <constraint firstAttribute="bottom" secondItem="M5I-ss-jlW" secondAttribute="bottom" constant="2" id="tRb-B9-HZ5"/>
+                                    <constraint firstAttribute="height" constant="50" id="uVB-EX-U7M"/>
+                                    <constraint firstItem="mAE-3H-zQb" firstAttribute="top" secondItem="IXF-ca-iJ7" secondAttribute="top" id="vaZ-EK-zDv"/>
+                                    <constraint firstAttribute="trailing" secondItem="5qf-f1-Mfr" secondAttribute="trailing" constant="10" id="yaE-xI-ZlD"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4Iw-I0-ld7"/>
+                                        <exclude reference="5Kq-HT-SBi"/>
+                                        <exclude reference="AiX-gy-qZh"/>
+                                        <exclude reference="FMS-zB-hNt"/>
+                                        <exclude reference="HEF-5S-I9H"/>
+                                        <exclude reference="IlC-PH-iem"/>
+                                        <exclude reference="P3j-r9-K1E"/>
+                                        <exclude reference="vaZ-EK-zDv"/>
+                                        <exclude reference="9lW-zq-SKu"/>
+                                        <exclude reference="HbI-PF-Kof"/>
+                                        <exclude reference="MYR-fx-YVk"/>
+                                        <exclude reference="tRb-B9-HZ5"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ff9-ty-Lq5" userLabel="Alarm List Table View">
+                                <rect key="frame" x="0.0" y="50" width="600" height="550"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="alarmListTableViewCell" id="loq-9P-UPM" userLabel="Alarm List Table View Cell">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="loq-9P-UPM" id="002-m2-ujx">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="10021" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarm_type_breached" translatesAutoresizingMaskIntoConstraints="NO" id="l9n-0O-seL" userLabel="Alarm Type Icon">
+                                                    <rect key="frame" x="21" y="7" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="Jvp-j4-PGh"/>
+                                                        <constraint firstAttribute="height" constant="30" id="R2v-pH-62W"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="10022" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-11-10 02:03:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7j-Pc-PTA" userLabel="Alarm Time Label">
+                                                    <rect key="frame" x="61" y="0.0" width="150" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="Yjd-eh-BjL"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="10023" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EsK-db-nsC" userLabel="Site Name Label">
+                                                    <rect key="frame" x="231" y="0.0" width="102" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="10024" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CO2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfo-aD-4WI" userLabel="Alarm Value Type Label">
+                                                    <rect key="frame" x="370" y="0.0" width="80" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="rAe-5d-JvO"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="10025" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1299 ppm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFk-w0-sIJ" userLabel="Alarm Value Label">
+                                                    <rect key="frame" x="460" y="0.0" width="80" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="qHN-By-Qx7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" tag="10026" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyj-56-HQ3" userLabel="DeleteButton">
+                                                    <rect key="frame" x="550" y="2" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="350-fm-gUb"/>
+                                                        <constraint firstAttribute="height" constant="40" id="9LW-hC-qh0"/>
+                                                    </constraints>
+                                                    <state key="normal" image="btn_delete"/>
+                                                    <state key="selected" image="btn_back_pressed"/>
+                                                    <state key="highlighted" image="btn_delete_pressed"/>
+                                                    <connections>
+                                                        <action selector="btnDetailClicked:" destination="KBJ-43-p90" eventType="touchUpInside" id="Whz-fl-Gqu"/>
+                                                        <action selector="logoffBtnClicked:" destination="Pp8-ND-1AI" eventType="touchUpInside" id="cRU-mp-DLD"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="F7j-Pc-PTA" secondAttribute="bottom" id="6UQ-6a-cs7"/>
+                                                <constraint firstItem="YFk-w0-sIJ" firstAttribute="leading" secondItem="qfo-aD-4WI" secondAttribute="trailing" constant="10" id="73e-rM-h4F"/>
+                                                <constraint firstItem="l9n-0O-seL" firstAttribute="leading" secondItem="002-m2-ujx" secondAttribute="leading" constant="21" id="9h3-ty-cAF"/>
+                                                <constraint firstItem="qfo-aD-4WI" firstAttribute="leading" secondItem="EsK-db-nsC" secondAttribute="trailing" constant="37" id="Me1-nN-uw3"/>
+                                                <constraint firstItem="F7j-Pc-PTA" firstAttribute="leading" secondItem="l9n-0O-seL" secondAttribute="trailing" constant="10" id="O1v-YT-LsA"/>
+                                                <constraint firstAttribute="bottom" secondItem="YFk-w0-sIJ" secondAttribute="bottom" id="S4R-84-iLF"/>
+                                                <constraint firstItem="qyj-56-HQ3" firstAttribute="centerY" secondItem="002-m2-ujx" secondAttribute="centerY" id="W3v-hB-oiv"/>
+                                                <constraint firstItem="qyj-56-HQ3" firstAttribute="leading" secondItem="YFk-w0-sIJ" secondAttribute="trailing" constant="10" id="Wi0-sg-UBe"/>
+                                                <constraint firstItem="l9n-0O-seL" firstAttribute="centerY" secondItem="002-m2-ujx" secondAttribute="centerY" id="YDx-m1-O8X"/>
+                                                <constraint firstItem="YFk-w0-sIJ" firstAttribute="top" secondItem="002-m2-ujx" secondAttribute="top" id="aFP-8G-HiU"/>
+                                                <constraint firstItem="F7j-Pc-PTA" firstAttribute="top" secondItem="002-m2-ujx" secondAttribute="top" id="dIt-VF-1NQ"/>
+                                                <constraint firstItem="qfo-aD-4WI" firstAttribute="top" secondItem="002-m2-ujx" secondAttribute="top" id="hBb-LV-P1e"/>
+                                                <constraint firstAttribute="bottom" secondItem="qfo-aD-4WI" secondAttribute="bottom" id="mUW-8O-XLm"/>
+                                                <constraint firstItem="EsK-db-nsC" firstAttribute="top" secondItem="002-m2-ujx" secondAttribute="top" id="n11-ov-ikB"/>
+                                                <constraint firstAttribute="trailing" secondItem="qyj-56-HQ3" secondAttribute="trailing" constant="10" id="sp5-CH-h9a"/>
+                                                <constraint firstItem="EsK-db-nsC" firstAttribute="leading" secondItem="F7j-Pc-PTA" secondAttribute="trailing" constant="20" id="t9p-6R-xvh"/>
+                                                <constraint firstAttribute="bottom" secondItem="EsK-db-nsC" secondAttribute="bottom" id="vzB-RI-1xM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IXF-ca-iJ7" firstAttribute="leading" secondItem="Q70-31-j3O" secondAttribute="leading" id="EVX-N4-SEl"/>
+                            <constraint firstItem="ff9-ty-Lq5" firstAttribute="leading" secondItem="Q70-31-j3O" secondAttribute="leading" id="N66-JH-bQY"/>
+                            <constraint firstItem="j6L-fg-aIA" firstAttribute="top" secondItem="ff9-ty-Lq5" secondAttribute="bottom" id="RT4-dP-mf0"/>
+                            <constraint firstItem="IXF-ca-iJ7" firstAttribute="top" secondItem="Q70-31-j3O" secondAttribute="top" id="cex-Az-aoz"/>
+                            <constraint firstAttribute="trailing" secondItem="IXF-ca-iJ7" secondAttribute="trailing" id="uIC-B3-tqq"/>
+                            <constraint firstAttribute="trailing" secondItem="ff9-ty-Lq5" secondAttribute="trailing" id="w3Z-VN-FaS"/>
+                            <constraint firstItem="ff9-ty-Lq5" firstAttribute="top" secondItem="IXF-ca-iJ7" secondAttribute="bottom" id="wdq-Uu-oiN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnBack" destination="M5I-ss-jlW" id="TyH-Ev-NsL"/>
+                        <outlet property="btnDeleteAll" destination="5qf-f1-Mfr" id="dTP-pt-7Oj"/>
+                        <outlet property="lbTitle" destination="mAE-3H-zQb" id="qvt-Ta-9Qw"/>
+                        <outlet property="tvAlarmList" destination="ff9-ty-Lq5" id="via-k4-7Yu"/>
+                        <segue destination="Jkx-2f-aP9" kind="presentation" identifier="alarmChart" id="uAV-yO-3Uk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jch-JD-Y6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="-612"/>
+        </scene>
         <!--Normal User Site Home View Controller-->
         <scene sceneID="PF2-HM-lax">
             <objects>
@@ -1806,6 +2021,7 @@
                         <outlet property="panelHumidity" destination="edl-IY-dNF" id="Jls-sE-At3"/>
                         <outlet property="panelTemperature" destination="jHR-ed-7Gw" id="rPO-yN-tcB"/>
                         <segue destination="Jkx-2f-aP9" kind="presentation" identifier="siteDetail" id="VC8-fm-lBd"/>
+                        <segue destination="cqp-RI-LnM" kind="presentation" identifier="alarmList" id="2es-vn-Q0i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QNI-ao-j03" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1841,10 +2057,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="alarm_type_breached" width="36" height="36"/>
         <image name="btn_alarm" width="36" height="36"/>
         <image name="btn_alarm_pressed" width="36" height="36"/>
         <image name="btn_back" width="40" height="40"/>
         <image name="btn_back_pressed" width="40" height="40"/>
+        <image name="btn_delete" width="40" height="40"/>
+        <image name="btn_delete_pressed" width="40" height="40"/>
+        <image name="btn_deleteall" width="40" height="40"/>
+        <image name="btn_deleteall_pressed" width="40" height="40"/>
         <image name="btn_detail" width="40" height="40"/>
         <image name="btn_detail_pressed" width="40" height="40"/>
         <image name="btn_dropdown" width="24" height="24"/>
@@ -1861,6 +2082,7 @@
         <image name="status_temp_ok" width="13" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VC8-fm-lBd"/>
+        <segue reference="ghm-18-RIw"/>
+        <segue reference="uAV-yO-3Uk"/>
     </inferredMetricsTieBreakers>
 </document>

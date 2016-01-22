@@ -1036,7 +1036,7 @@ class AFHTTPIOTServer: IOTServerProtocol{
     func getDeviceAggregationDataListBy1Month(sessionID: String, deviceID: String, from: NSDate, to: NSDate, onSucceed: (([IOTSampleData]) -> ())?, onFailed: ((IOTError) -> ())?) {
         let url = serverAddress + ServerAPIURI.GET_DEVICE_AGGREGATION_DATA_LIST_BY_1M
         
-        var parameters = [
+        let parameters = [
             "dataType": "xml",
             "__session_id": sessionID,
             "__page_no": "1",
@@ -1114,6 +1114,49 @@ class AFHTTPIOTServer: IOTServerProtocol{
             },
             failure: { (operation, error) -> Void in
                 onFailed?(error.error("getDeviceAggregationDataListBy1Month"))
+                
+        })
+    }
+    
+    func registerDeviceBinding(sessionID: String, username: String, token: String, deviceKey: String, onSucceed: ((String) -> ())?, onFailed: ((IOTError) -> ())?) {
+        let url = serverAddress + ServerAPIURI.PUSH_DEVICE_BINDING
+        
+        let parameters = [
+            "dataType": "xml",
+            "__session_id": sessionID,
+            "username": username,
+            "token": token,
+            "platform": "IOS",
+            "dev_key": deviceKey
+        ]
+        
+        xmlManager.GET(
+            url,
+            parameters: parameters,
+            success: {(operation, response) -> Void in
+                //print(response)
+                //print("get response for device:\(deviceID))")
+                var error: IOTError? = IOTError(errorCode: IOTError.InvalidMessageError, errorGroup: "registerDeviceBinding")
+                
+                if let responseName = response.valueForKey?("__name") as? String{
+                    if responseName == "NBIResponse" {
+                        if let status = response.valueForKey?("Status") as? String {
+                            error = nil
+                            onSucceed?(status)
+                        }
+                    }else if responseName == "NBIError" {
+                        if let errorCodeStr = response.valueForKey?("Code") as? String{
+                            if let errorCode = Int(errorCodeStr){
+                                if let errorMsg = response.valueForKey?("String") as? String{
+                                    error = IOTError(errorCode: errorCode, errorMsg: errorMsg, errorGroup: "registerDeviceBinding")
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            failure: { (operation, error) -> Void in
+                onFailed?(error.error("registerDeviceBinding"))
                 
         })
     }

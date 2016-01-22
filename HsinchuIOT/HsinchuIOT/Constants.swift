@@ -14,6 +14,8 @@ struct PreferenceKey {
     static let PASSWORD = "PASSWORD"
     static let LANGUAGE = "LANGUAGE"
     static let SYSTEM_LANGUAGE = "AppleLanguages"
+    static let UUID = "UUID"
+    static let ALARM_LIST = "ALARM_LIST"
     
 }
 
@@ -40,6 +42,7 @@ struct StringKey{
     static let ERROR_INVALID_MESSAGE = "ERROR_INVALID_MESSAGE"
     static let ERROR_INVALID_SESSION = "ERROR_INVALID_SESSION"
     static let ERROR_INVALID_DEVICE = "ERROR_INVALID_DEVICE"
+    static let ERROR_REGISTER_NOTIFICATION = "ERROR_REGISTER_NOTIFICATION"
     
     //admin user 
     
@@ -105,6 +108,12 @@ struct StringKey{
     static let CHART_LEGEND_HUMIDITY = "CHART_LEGEND_HUMIDITY"
     
     
+    //alarm
+    static let ALARM_LIST_TITLE = "ALARM_LIST_TITLE"
+    static let ALARM_LIST_TITLE_DELETEALL = "ALARM_LIST_TITLE_DELETEALL"
+    static let ALARM_LIST_TITLE_DELETE = "ALARM_LIST_TITLE_DELETE"
+    static let ALARM_LIST_DELETEALL = "ALARM_LIST_DELETEALL"
+    static let ALARM_LIST_DELETE = "ALARM_LIST_DELETE"
     
 }
 
@@ -190,6 +199,8 @@ struct ServerAPIURI {
     static let GET_DEVICE_AGGREGATION_DATA_LIST_BY_1W = "M2MAggByWeek/_NBI/list.lua"
     static let GET_DEVICE_AGGREGATION_DATA_LIST_BY_1M = "M2MAggByMonth/_NBI/list.lua"
     
+    static let PUSH_DEVICE_BINDING = "_NBI/mobile_dev_binding.lua"
+    
     
     
 }
@@ -229,4 +240,26 @@ struct TimeIntervals{
     static let TIME_INTERVAL_1_DAY: NSTimeInterval = 60 * 60 * 24
     static let TIME_INTERVAL_1_WEEK: NSTimeInterval = 60 * 60 * 24 * 7
     static let TIME_INTERVAL_1_MONTH: NSTimeInterval = 60 * 60 * 24 * 30
+}
+
+struct ListItemTag{
+    static let LISTITEM_SITELIST_HEADER_STATUS = 10001
+    static let LISTITEM_SITELIST_HEADER_SITENAME = 10002
+    static let LISTITEM_SITELIST_HEADER_CO2 = 10003
+    static let LISTITEM_SITELIST_HEADER_TEMPERATURE = 10004
+    static let LISTITEM_SITELIST_HEADER_HUMIDITY = 10005
+    static let LISTITEM_SITELIST_CO2_STATUS = 10011
+    static let LISTITEM_SITELIST_TEMPERATURE_STATUS = 10012
+    static let LISTITEM_SITELIST_SITENAME = 10013
+    static let LISTITEM_SITELIST_CO2 = 10014
+    static let LISTITEM_SITELIST_TEMPERATURE = 10015
+    static let LISTITEM_SITELIST_HUMIDITY = 10016
+    static let LISTITEM_ALARMLIST_ALARMTYPE = 10021
+    static let LISTITEM_ALARMLIST_ALARMTIME = 10022
+    static let LISTITEM_ALARMLIST_ALARMSITE = 10023
+    static let LISTITEM_ALARMLIST_ALARMVALUETYPE = 10024
+    static let LISTITEM_ALARMLIST_ALARMVALUE = 10025
+    static let LISTITEM_ALARMLIST_DELETEBUTTON = 10026
+    
+    
 }

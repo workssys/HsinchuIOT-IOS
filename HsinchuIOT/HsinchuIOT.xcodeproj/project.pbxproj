@@ -36,6 +36,11 @@
 		C132F96D1C4ABA0C00B9CE51 /* StatusIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132F96C1C4ABA0C00B9CE51 /* StatusIconView.swift */; };
 		C1343BBC1C2DBF1B000C7889 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1343BBB1C2DBF1B000C7889 /* Icons.xcassets */; };
 		C13889B01C1A877100543F44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13889B21C1A877100543F44 /* Localizable.strings */; };
+		C13A9D561C508D6000023930 /* AlarmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13A9D551C508D6000023930 /* AlarmListViewController.swift */; };
+		C13A9D5E1C50932400023930 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13A9D5D1C50932400023930 /* Alarm.swift */; };
+		C13A9D601C5156C600023930 /* UUIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13A9D5F1C5156C600023930 /* UUIDManager.swift */; };
+		C13A9D621C515ECB00023930 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13A9D611C515ECB00023930 /* NotificationManager.swift */; };
+		C13A9D641C51DA3800023930 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13A9D631C51DA3800023930 /* AlarmManager.swift */; };
 		C1589A0A1C2F8CD5007F81B9 /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1589A091C2F8CD5007F81B9 /* Site.swift */; };
 		C1589A0C1C2F8D82007F81B9 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1589A0B1C2F8D82007F81B9 /* Device.swift */; };
 		C1589A0E1C2F94AC007F81B9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1589A0D1C2F94AC007F81B9 /* StringExtension.swift */; };
@@ -213,6 +218,11 @@
 		C13889B11C1A877100543F44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C13889B51C1A87FA00543F44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C13889B61C1A88DE00543F44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C13A9D551C508D6000023930 /* AlarmListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmListViewController.swift; sourceTree = "<group>"; };
+		C13A9D5D1C50932400023930 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		C13A9D5F1C5156C600023930 /* UUIDManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUIDManager.swift; sourceTree = "<group>"; };
+		C13A9D611C515ECB00023930 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		C13A9D631C51DA3800023930 /* AlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmManager.swift; sourceTree = "<group>"; };
 		C1589A091C2F8CD5007F81B9 /* Site.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Site.swift; sourceTree = "<group>"; };
 		C1589A0B1C2F8D82007F81B9 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		C1589A0D1C2F94AC007F81B9 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -416,6 +426,7 @@
 				C132F94E1C369E4D00B9CE51 /* SiteDetailViewController.swift */,
 				C132F9631C46939D00B9CE51 /* TimeScopeSettingsViewController.swift */,
 				C132F9651C47ED4800B9CE51 /* PredefinedTimeScopeSettingsViewController.swift */,
+				C13A9D551C508D6000023930 /* AlarmListViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -430,6 +441,7 @@
 				C1589A0B1C2F8D82007F81B9 /* Device.swift */,
 				C1589A0F1C2F99A9007F81B9 /* IOTMonitorData.swift */,
 				C132F9501C36FBBB00B9CE51 /* IOTSampleData.swift */,
+				C13A9D5D1C50932400023930 /* Alarm.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -444,6 +456,9 @@
 				C1CF148B1C2C2086000E70F3 /* SessionManager.swift */,
 				C1589A0D1C2F94AC007F81B9 /* StringExtension.swift */,
 				C132F9561C3C32E900B9CE51 /* ReportUtil.swift */,
+				C13A9D5F1C5156C600023930 /* UUIDManager.swift */,
+				C13A9D611C515ECB00023930 /* NotificationManager.swift */,
+				C13A9D631C51DA3800023930 /* AlarmManager.swift */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -731,10 +746,12 @@
 				C118BB221C1606FD00CC7D81 /* UIViewControllerExtension.swift in Sources */,
 				C132F95E1C42C02800B9CE51 /* IOTChartAxisValueDate.swift in Sources */,
 				C132F95A1C3EE65100B9CE51 /* LegendView.swift in Sources */,
+				C13A9D601C5156C600023930 /* UUIDManager.swift in Sources */,
 				C1D754881C247B330038C085 /* AppConfig.swift in Sources */,
 				C1D754831C230CC80038C085 /* LanguageManager.swift in Sources */,
 				C1D754931C25020C0038C085 /* IOTError.swift in Sources */,
 				C1CF148E1C2C76EF000E70F3 /* AdminUserTabViewController.swift in Sources */,
+				C13A9D561C508D6000023930 /* AlarmListViewController.swift in Sources */,
 				C1D7548A1C24F96C0038C085 /* IOTServerProtocol.swift in Sources */,
 				C1589A0A1C2F8CD5007F81B9 /* Site.swift in Sources */,
 				C1589A101C2F99A9007F81B9 /* IOTMonitorData.swift in Sources */,
@@ -748,8 +765,10 @@
 				C1589A0C1C2F8D82007F81B9 /* Device.swift in Sources */,
 				C1CF148C1C2C2086000E70F3 /* SessionManager.swift in Sources */,
 				C1D7548C1C24FC690038C085 /* AFHTTPIOTServer.swift in Sources */,
+				C13A9D621C515ECB00023930 /* NotificationManager.swift in Sources */,
 				C132F94F1C369E4D00B9CE51 /* SiteDetailViewController.swift in Sources */,
 				C1CF14501C29DAE7000E70F3 /* PreferenceManager.swift in Sources */,
+				C13A9D641C51DA3800023930 /* AlarmManager.swift in Sources */,
 				C1D754951C2503860038C085 /* Session.swift in Sources */,
 				C11B67F91C4EC329004730F3 /* DatePickerCell.swift in Sources */,
 				C132F9601C44A0BD00B9CE51 /* IOTChartAxisValuesGenerator.swift in Sources */,
@@ -758,6 +777,7 @@
 				C132F9661C47ED4800B9CE51 /* PredefinedTimeScopeSettingsViewController.swift in Sources */,
 				C11D3B661C1762F100E8F65D /* Constants.swift in Sources */,
 				C132F9511C36FBBB00B9CE51 /* IOTSampleData.swift in Sources */,
+				C13A9D5E1C50932400023930 /* Alarm.swift in Sources */,
 				C132F96B1C49FCE400B9CE51 /* EclipsePanelView.swift in Sources */,
 				C1CF14901C2C7A3F000E70F3 /* NormalUserTabViewController.swift in Sources */,
 				C1589A0E1C2F94AC007F81B9 /* StringExtension.swift in Sources */,
